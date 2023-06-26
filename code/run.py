@@ -19,30 +19,30 @@ MAX_PKT_NUM = 100
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
 
-def plot_heatmap(report, y_labels=None):
-    mt = []
-    if y_labels is None:
-        y_labels = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-                    'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-                    'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
-    support = []
-    x_labels = ['precision', 'recall', 'f1-score']
-    for name in y_labels:
-        mt.append([
-            report[name]['precision'],
-            report[name]['recall'],
-            report[name]['f1-score']
-        ])
-        support.append(report[name]['support'])
-    assert len(support) == len(y_labels)
-    y_labels_ = []
-    for i in range(len(y_labels)):
-        y_labels_.append(f'{y_labels[i]} ({support[i]})')
-    plt.figure(figsize=(5, 6), dpi=200)
-    sns.set()
-    sns.heatmap(mt, annot=True, xticklabels=x_labels, yticklabels=y_labels_, fmt='.4f',
-                linewidths=0.5, cmap='PuBu', robust=True)
-    plt.show()
+# def plot_heatmap(report, y_labels=None):
+#     mt = []
+#     if y_labels is None:
+#         y_labels = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+#                     'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+#                     'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+#     support = []
+#     x_labels = ['precision', 'recall', 'f1-score']
+#     for name in y_labels:
+#         mt.append([
+#             report[name]['precision'],
+#             report[name]['recall'],
+#             report[name]['f1-score']
+#         ])
+#         support.append(report[name]['support'])
+#     assert len(support) == len(y_labels)
+#     y_labels_ = []
+#     for i in range(len(y_labels)):
+#         y_labels_.append(f'{y_labels[i]} ({support[i]})')
+#     plt.figure(figsize=(5, 6), dpi=200)
+#     sns.set()
+#     sns.heatmap(mt, annot=True, xticklabels=x_labels, yticklabels=y_labels_, fmt='.4f',
+#                 linewidths=0.5, cmap='PuBu', robust=True)
+#     plt.show()
 
 class Client():
     def __init__(self):
@@ -212,32 +212,6 @@ class TF(object):
         x = layers.Activation(activation='relu')(x)
         return x
 
-    def _enhanced_pbcnn(self):
-        x = Input(shape=(self._pkt_num, self._pkt_bytes))
-        y = tf.reshape(x, shape=(-1, self._pkt_bytes, 1))
-        y = self._conv1d_block(y, filters=64)
-        # y = self._conv1d_block(y, filters=64)
-        y = layers.MaxPooling1D(pool_size=2, strides=2, padding='same', data_format='channels_last')(y)
-        y = self._conv1d_block(y, filters=128)
-        # y = self._conv1d_block(y, filters=128)
-        y = layers.MaxPooling1D(pool_size=2, strides=2, padding='same', data_format='channels_last')(y)
-        filters = 256
-        y = self._conv1d_block(y, filters=filters)
-        y = tf.reduce_max(y, axis=1, keepdims=False)
-        y = tf.reshape(y, shape=(-1, self._pkt_num, filters, 1))
-        y1 = self._text_cnn_block(y, filters=256, height=3, width=filters)
-        y2 = self._text_cnn_block(y, filters=256, height=4, width=filters)
-        y3 = self._text_cnn_block(y, filters=256, height=5, width=filters)
-        y = layers.concatenate(inputs=[y1, y2, y3], axis=-1)
-
-        y = layers.Flatten()(y)
-        y = layers.Dense(512, activation='relu')(y)
-        y = layers.Dense(256, activation='relu')(y)
-        # y = layers.Dense(128, activation='relu')(y)
-        y = layers.Dense(self._num_class, activation='linear')(y)
-
-        return Model(inputs=x, outputs=y)
-
     def _pbcnn(self):
         x = Input(shape=(self._pkt_num, self._pkt_bytes))
         y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
@@ -282,9 +256,14 @@ class TF(object):
         y_true = np.concatenate(y_true)
         y_pred = np.concatenate(y_pred)
 
-        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-                       'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-                       'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+        # label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+        #                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+        #                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+        
+        # 縮減至11類
+        label_names = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
+                       'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
+                       'webattack', 'dos-slowloris', 'benign']
 
         cl_re = classification_report(y_true, y_pred, digits=digits,
                                       labels=[i for i in range(self._num_class)],
@@ -305,11 +284,8 @@ class TF(object):
         return accuracy, precision, recall, f1_score, cl_re
 
     def init(self):
-        print('init 1')
         self._init_input_ds()
-        print('init 2')
         self._init_model()
-        print('init 3')
 
     def _init_(self):
         self._optimizer = K.optimizers.Adam()
@@ -507,11 +483,11 @@ def main(_):
             #   valid_path='../data/demo_tfrecord/_valid',
             #   test_path='../data/demo_tfrecord',
             # real data
-              train_path='/trainingData/sage/CIC-IDS2018/tfrecord/train',
-              valid_path='/trainingData/sage/CIC-IDS2018/tfrecord/valid',
-              test_path='/trainingData/sage/CIC-IDS2018/tfrecord/test',
+              train_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/train',
+              valid_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/valid',
+              test_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/test',
               batch_size=1,
-              num_class=15)
+              num_class=11)
     # There are two models can be choose, "pbcnn" and "en_pbcnn".
     demo.init()
     # demo.fit(1)

@@ -6,7 +6,7 @@ import random
 random.seed(42)
 
 # Load the data from the .npy file
-data = np.load('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/11 class/dos-slowhttptest.npy')
+data = np.load('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/11 class/webattack.npy')
 
 # Shuffle the data
 random.shuffle(data)
@@ -23,6 +23,6 @@ valid_data = data[train_samples:train_samples + valid_samples]
 test_data = data[train_samples + valid_samples:]
 
 # Save the split data as .npy files
-np.save('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/train/dos-slowhttptest.npy', train_data)
-np.save('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/valid/dos-slowhttptest.npy', valid_data)
-np.save('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/test/dos-slowhttptest.npy', test_data)
+np.save('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/train/webattack.npy', train_data)
+np.save('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/valid/webattack.npy', valid_data)
+np.save('/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/test/webattack.npy', test_data)
