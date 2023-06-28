@@ -135,9 +135,9 @@ class TF(object):
     def _parse_sparse_example(self, example_proto):
         features = {
             'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
-                                          value_key='val',
-                                          dtype=tf.int64,
-                                          size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
+                                        value_key='val',
+                                        dtype=tf.int64,
+                                        size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
             'label': tf.io.FixedLenFeature([], dtype=tf.int64),
             'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64),
             'last_time': tf.io.FixedLenFeature([], dtype=tf.float32),
@@ -145,10 +145,11 @@ class TF(object):
         batch_sample = tf.io.parse_example(example_proto, features)
         sparse_features = batch_sample['sparse']
         labels = batch_sample['label']
-        sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
+        sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, 60])
         dense_features = tf.sparse.to_dense(sparse_features)
         dense_features = tf.cast(dense_features, tf.float32) / 255.
         return dense_features, labels
+
 
     def _generate_ds(self, path_dir, use_cache=False):
         assert os.path.isdir(path_dir)
@@ -521,3 +522,4 @@ def main(_):
 
 if __name__ == '__main__':
     app.run(main)
+

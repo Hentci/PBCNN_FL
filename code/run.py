@@ -132,23 +132,44 @@ class TF(object):
                 print(e)
         return super().__new__(cls)
 
+    # def _parse_sparse_example(self, example_proto):
+    #     features = {
+    #         'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
+    #                                       value_key='val',
+    #                                       dtype=tf.int64,
+    #                                       size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
+    #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
+    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
+    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
+    #     }
+    #     batch_sample = tf.io.parse_example(example_proto, features)
+    #     sparse_features = batch_sample['sparse']
+    #     labels = batch_sample['label']
+
+    #     sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
+    #     dense_features = tf.sparse.to_dense(sparse_features)
+    #     dense_features = tf.cast(dense_features, tf.float32) / 255.
+    #     return dense_features, labels
+
     def _parse_sparse_example(self, example_proto):
         features = {
-            'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
-                                          value_key='val',
-                                          dtype=tf.int64,
-                                          size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
+            'sparse': tf.io.VarLenFeature(tf.float32),
             'label': tf.io.FixedLenFeature([], dtype=tf.int64),
-            # 'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), 已經處理好了(60bytes)
-            # 'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), 沒timestamp
         }
-        batch_sample = tf.io.parse_example(example_proto, features)
-        sparse_features = batch_sample['sparse']
+        batch_sample = tf.io.parse_single_example(example_proto, features)
+        sparse_features = tf.cast(batch_sample['sparse'].values, dtype=tf.int64)
+        sparse_indices = tf.expand_dims(batch_sample['sparse'].indices[:, 0], axis=1)
+        sparse_dense_shape = [MAX_PKT_NUM, 1]  # Updated dimensions
+        sparse_features = tf.sparse.SparseTensor(sparse_indices, sparse_features, sparse_dense_shape)
         labels = batch_sample['label']
-        sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
+
         dense_features = tf.sparse.to_dense(sparse_features)
-        dense_features = tf.cast(dense_features, tf.float32) / 255.
+        dense_features = tf.cast(dense_features, tf.float32) / 255.0
+
         return dense_features, labels
+
+
+
 
     def _generate_ds(self, path_dir, use_cache=False):
         assert os.path.isdir(path_dir)
@@ -264,7 +285,7 @@ class TF(object):
         label_namess = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
                        'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
                        'webattack', 'dos-slowloris', 'benign']
-        label_names = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        # label_names = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         cl_re = classification_report(y_true, y_pred, digits=digits,
                                       labels=[i for i in range(self._num_class)],
@@ -480,20 +501,20 @@ def main(_):
     s = time.time()
     demo = TF(pkt_bytes=256, pkt_num=20, model='pbcnn',
             # demo data
-              train_path='../data/demo_tfrecord/_train',
-              valid_path='../data/demo_tfrecord/_valid',
-              test_path='../data/demo_tfrecord',
+            #   train_path='../data/demo_tfrecord/_train',
+            #   valid_path='../data/demo_tfrecord/_valid',
+            #   test_path='../data/demo_tfrecord',
             # real data
-            #   train_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/train',
-            #   valid_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/valid',
-            #   test_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/test',
+              train_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/train',
+              valid_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/valid',
+              test_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/test',
               batch_size=1,
               num_class=11)
     # There are two models can be choose, "pbcnn" and "en_pbcnn".
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=11)
+    demo.train(epochs=20)
     logging.info(f'cost: {(time.time() - s) / 60} min')
 
 if __name__ == '__main__':
