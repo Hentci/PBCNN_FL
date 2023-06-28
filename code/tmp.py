@@ -145,13 +145,13 @@ class TF(object):
         batch_sample = tf.io.parse_example(example_proto, features)
         sparse_features = batch_sample['sparse']
         labels = batch_sample['label']
-        sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, 60])
+        sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[3, 60])
         dense_features = tf.sparse.to_dense(sparse_features)
         dense_features = tf.cast(dense_features, tf.float32) / 255.
         return dense_features, labels
 
 
-    def _generate_ds(self, path_dir, use_cache=False):
+    def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
         assert os.path.isdir(path_dir)
         ds = tf.data.Dataset.list_files(os.path.join(path_dir, '*.tfrecord'), shuffle=True)
         ds = ds.interleave(
@@ -162,14 +162,45 @@ class TF(object):
         )
         ds = ds.batch(self._batch_size, drop_remainder=False)
         if use_cache:
-            ds = ds.cache()
+            ds = ds.cache(cache_path)
         ds = ds.prefetch(buffer_size=AUTOTUNE)
         return ds
 
+
+    # def _generate_ds(self, path_dir, use_cache=False):
+    #     assert os.path.isdir(path_dir)
+    #     ds = tf.data.Dataset.list_files(os.path.join(path_dir, '*.tfrecord'), shuffle=True)
+
+    #     # Count the number of files
+    #     num_files = len(tf.io.gfile.glob(os.path.join(path_dir, '*.tfrecord')))
+
+    #     # Step 1: Interleave and parse TFRecord files with tqdm progress bar
+    #     ds = ds.interleave(
+    #         lambda x: tf.data.TFRecordDataset(x).map(self._parse_sparse_example),
+    #         cycle_length=AUTOTUNE,
+    #         block_length=8,
+    #         num_parallel_calls=AUTOTUNE
+    #     )
+
+    #     # Step 2: Batch the dataset
+    #     ds = ds.batch(self._batch_size, drop_remainder=False)
+
+    #     # Step 3: Cache the dataset (optional)
+    #     if use_cache:
+    #         ds = ds.cache()
+
+    #     # Step 4: Prefetch the dataset
+    #     ds = ds.prefetch(buffer_size=AUTOTUNE)
+
+    #     # Wrap the dataset with tqdm progress bar
+    #     ds = tqdm(ds, total=num_files, desc='Generating Dataset')
+
+    #     return ds
+
     def _init_input_ds(self):
-        self._train_ds = self._generate_ds(self._train_path)
+        self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/train_cache/')
         print('train ds size: ', len(list(self._train_ds)))
-        self._valid_ds = self._generate_ds(self._valid_path)
+        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/valid_cache/')
         print('valid ds size: ', len(list(self._valid_ds)))
         
         # Use tqdm to create a progress bar
@@ -273,7 +304,7 @@ class TF(object):
         if data_dir:
             test_ds = self._generate_ds(data_dir)
         else:
-            test_ds = self._generate_ds(self._test_path)
+            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/test_cache/')
         y_pred, y_true = [], []
         for features, labels in test_ds:
             y_ = model.predict(features)
