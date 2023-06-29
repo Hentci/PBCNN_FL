@@ -1,0 +1,64 @@
+2023-06-29 13:05:49.547339: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2023-06-29 13:05:51.058746: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2023-06-29 13:05:51.097089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-29 13:05:51.098237: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 1 with properties: 
+pciBusID: 0000:af:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-29 13:05:51.098283: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2023-06-29 13:05:51.110529: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2023-06-29 13:05:51.112803: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2023-06-29 13:05:51.113176: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2023-06-29 13:05:51.115536: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2023-06-29 13:05:51.116916: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2023-06-29 13:05:51.117171: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudnn.so.7'; dlerror: libcudnn.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /home/sage/TensorRT-8.5.2.2/targets/x86_64-linux-gnu/lib/
+2023-06-29 13:05:51.117191: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1753] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+60 3
+2023-06-29 13:05:51.118756: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-06-29 13:05:51.171730: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 3000000000 Hz
+2023-06-29 13:05:51.176787: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x23d4510 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-29 13:05:51.176826: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-06-29 13:05:51.178850: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-06-29 13:05:51.178882: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0629 13:05:51.469180 140193099015360 parsing_config.py:554] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:710: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0629 13:05:51.474012 140193099015360 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:710: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0629 13:32:55.435175 140193099015360 parsing_config.py:554] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:38<05:45, 38.41s/client]Initializing Input DS: 100%|██████████| 10/10 [00:38<00:00,  3.84s/client]
+Epoch 0/50
+client  0
+Epoch 0, step 4148, avg loss 0.004333, avg acc 0.998724
+client  1
+Epoch 0, step 4148, avg loss 0.004426, avg acc 0.998701
+client  2
+Epoch 0, step 4148, avg loss 0.004230, avg acc 0.998723
+client  3
+Epoch 0, step 4148, avg loss 0.004526, avg acc 0.998660
+client  4
+Epoch 0, step 4148, avg loss 0.004396, avg acc 0.998703
+client  5
+Epoch 0, step 4148, avg loss 0.004394, avg acc 0.998690
+client  6
+Epoch 0, step 4148, avg loss 0.004716, avg acc 0.998635
+client  7
+Epoch 0, step 4148, avg loss 0.004469, avg acc 0.998668
+client  8
+Epoch 0, step 4148, avg loss 0.004514, avg acc 0.998667
+client  9
+Epoch 0, step 4148, avg loss 0.004393, avg acc 0.998695
+Global model ===> VALID avg loss: 5158815.590748, avg acc: 0.999249
+Epoch 1/50
+client  0
+Epoch 1, step 4148, avg loss 168914.821179, avg acc 0.999463
+client  1

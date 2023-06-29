@@ -79,14 +79,15 @@ class TF(object):
 
     def __init__(self, pkt_bytes, pkt_num, model,
                  train_path, valid_path, test_path,
-                 batch_size=128, num_class=11):
+                 batch_size=128, num_class=15):
         model = model.lower().strip()
         assert pkt_bytes <= MAX_PKT_BYTES, f'Check pkt bytes less than max pkt bytes {MAX_PKT_BYTES}'
         assert pkt_num <= MAX_PKT_NUM, f'Check pkt num less than max pkt num {MAX_PKT_NUM}'
         assert model in ('pbcnn', 'en_pbcnn'), f'Check model type'
 
-        self._pkt_bytes = pkt_bytes
-        self._pkt_num = pkt_num
+        self._pkt_bytes = 60
+        self._pkt_num = 3
+        print(self._pkt_bytes, self._pkt_num)
         self._model_type = model
 
         assert os.path.isdir(train_path)
@@ -132,46 +133,46 @@ class TF(object):
                 print(e)
         return super().__new__(cls)
 
-    # def _parse_sparse_example(self, example_proto):
-    #     features = {
-    #         'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
-    #                                       value_key='val',
-    #                                       dtype=tf.int64,
-    #                                       size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
-    #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
-    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
-    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
-    #     }
-    #     batch_sample = tf.io.parse_example(example_proto, features)
-    #     sparse_features = batch_sample['sparse']
-    #     labels = batch_sample['label']
-
-    #     sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
-    #     dense_features = tf.sparse.to_dense(sparse_features)
-    #     dense_features = tf.cast(dense_features, tf.float32) / 255.
-    #     return dense_features, labels
-
     def _parse_sparse_example(self, example_proto):
         features = {
-            'sparse': tf.io.VarLenFeature(tf.float32),
+            'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
+                                          value_key='val',
+                                          dtype=tf.int64,
+                                          size=[3, 60]),
             'label': tf.io.FixedLenFeature([], dtype=tf.int64),
+            'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
+            'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
         }
-        batch_sample = tf.io.parse_single_example(example_proto, features)
-        sparse_features = tf.cast(batch_sample['sparse'].values, dtype=tf.int64)
-        sparse_indices = tf.expand_dims(batch_sample['sparse'].indices[:, 0], axis=1)
-        sparse_dense_shape = [MAX_PKT_NUM, 1]  # Updated dimensions
-        sparse_features = tf.sparse.SparseTensor(sparse_indices, sparse_features, sparse_dense_shape)
+        batch_sample = tf.io.parse_example(example_proto, features)
+        sparse_features = batch_sample['sparse']
         labels = batch_sample['label']
 
+        sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
         dense_features = tf.sparse.to_dense(sparse_features)
-        dense_features = tf.cast(dense_features, tf.float32) / 255.0
-
+        dense_features = tf.cast(dense_features, tf.float32) / 255.
         return dense_features, labels
 
+    # def _parse_sparse_example(self, example_proto):
+    #     features = {
+    #         'sparse': tf.io.VarLenFeature(tf.float32),
+    #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
+    #     }
+    #     batch_sample = tf.io.parse_single_example(example_proto, features)
+    #     sparse_features = tf.cast(batch_sample['sparse'].values, dtype=tf.int64)
+    #     sparse_indices = tf.expand_dims(batch_sample['sparse'].indices[:, 0], axis=1)
+    #     sparse_dense_shape = [MAX_PKT_NUM, 1]  # Updated dimensions
+    #     sparse_features = tf.sparse.SparseTensor(sparse_indices, sparse_features, sparse_dense_shape)
+    #     labels = batch_sample['label']
+
+    #     dense_features = tf.sparse.to_dense(sparse_features)
+    #     dense_features = tf.cast(dense_features, tf.float32) / 255.0
+
+    #     return dense_features, labels
 
 
 
-    def _generate_ds(self, path_dir, use_cache=False):
+
+    def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
         assert os.path.isdir(path_dir)
         ds = tf.data.Dataset.list_files(os.path.join(path_dir, '*.tfrecord'), shuffle=True)
         ds = ds.interleave(
@@ -182,14 +183,14 @@ class TF(object):
         )
         ds = ds.batch(self._batch_size, drop_remainder=False)
         if use_cache:
-            ds = ds.cache()
+            ds = ds.cache(cache_path)
         ds = ds.prefetch(buffer_size=AUTOTUNE)
         return ds
 
     def _init_input_ds(self):
-        self._train_ds = self._generate_ds(self._train_path)
+        self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/train_cache/')
         print('train ds size: ', len(list(self._train_ds)))
-        self._valid_ds = self._generate_ds(self._valid_path)
+        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/valid_cache/')
         print('valid ds size: ', len(list(self._valid_ds)))
         
         # Use tqdm to create a progress bar
@@ -217,14 +218,24 @@ class TF(object):
         #     print('len_client[{}]_ds: {}'.format(i, len(list(self.clients[i].ds))))
         #     print('client[{}]_ds[0]: {}'.format(i, list(self.clients[i].ds.as_numpy_iterator())[0]))
 
+    # @staticmethod
+    # def _text_cnn_block(x, filters, height, width, data_format='channels_last'):
+    #     x = layers.Conv2D(filters=filters, kernel_size=(height, width),
+    #                       strides=1, data_format=data_format)(x)
+    #     x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
+    #     x = layers.Activation(activation='relu')(x)
+    #     x = tf.reduce_max(x, axis=1, keepdims=False)
+    #     return x
+
     @staticmethod
     def _text_cnn_block(x, filters, height, width, data_format='channels_last'):
         x = layers.Conv2D(filters=filters, kernel_size=(height, width),
-                          strides=1, data_format=data_format)(x)
+                        strides=1, data_format=data_format)(x)
         x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
         x = layers.Activation(activation='relu')(x)
         x = tf.reduce_max(x, axis=1, keepdims=False)
         return x
+
 
     @staticmethod
     def _conv1d_block(x, filters, data_format='channels_last'):
@@ -232,21 +243,42 @@ class TF(object):
         x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
         x = layers.Activation(activation='relu')(x)
         return x
-
+    
     def _pbcnn(self):
         x = Input(shape=(self._pkt_num, self._pkt_bytes))
         y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
         data_format = 'channels_last'
-        y1 = self._text_cnn_block(y, filters=256, height=3, width=self._pkt_bytes)
+        
+        # Pad the input tensor
+        padding_height = 1  # Adjust the padding height as needed
+        y = tf.pad(y, paddings=[[0, 0], [padding_height, padding_height], [0, 0], [0, 0]], mode='CONSTANT')
+        
+        y1 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
         y2 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
-        y3 = self._text_cnn_block(y, filters=256, height=5, width=self._pkt_bytes)
+        y3 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
         y = layers.concatenate(inputs=[y1, y2, y3], axis=-1)
         y = layers.Flatten(data_format=data_format)(y)
         y = layers.Dense(512, activation='relu')(y)
         y = layers.Dense(256, activation='relu')(y)
-        # y = layers.Dense(128, activation='relu')(y)
         y = layers.Dense(self._num_class, activation='linear')(y)
         return Model(inputs=x, outputs=y)
+
+
+    # def _pbcnn(self):
+    #     x = Input(shape=(self._pkt_num, self._pkt_bytes))
+    #     y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
+    #     data_format = 'channels_last'
+    #     y1 = self._text_cnn_block(y, filters=256, height=3, width=self._pkt_bytes)
+    #     y2 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
+    #     y3 = self._text_cnn_block(y, filters=256, height=5, width=self._pkt_bytes)
+    #     y = layers.concatenate(inputs=[y1, y2, y3], axis=-1)
+    #     y = layers.Flatten(data_format=data_format)(y)
+    #     y = layers.Dense(512, activation='relu')(y)
+    #     y = layers.Dense(256, activation='relu')(y)
+    #     # y = layers.Dense(128, activation='relu')(y)
+    #     y = layers.Dense(self._num_class, activation='linear')(y)
+    #     return Model(inputs=x, outputs=y)
+
 
     def _init_model(self):
         if self._model_type == 'pbcnn':
@@ -267,7 +299,7 @@ class TF(object):
         if data_dir:
             test_ds = self._generate_ds(data_dir)
         else:
-            test_ds = self._generate_ds(self._test_path)
+            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/test_cache/')
         y_pred, y_true = [], []
         for features, labels in test_ds:
             y_ = model.predict(features)
@@ -281,7 +313,7 @@ class TF(object):
         #                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
         #                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
         
-        # 縮減至11類
+        # 縮減至15類
         label_namess = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
                        'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
                        'webattack', 'dos-slowloris', 'benign']
@@ -499,22 +531,26 @@ class TF(object):
 
 def main(_):
     s = time.time()
-    demo = TF(pkt_bytes=256, pkt_num=20, model='pbcnn',
+    demo = TF(pkt_bytes=256, pkt_num=20, model='pbcnn', # origin: pkt_byte: 256, pkt_num = 20
             # demo data
             #   train_path='../data/demo_tfrecord/_train',
             #   valid_path='../data/demo_tfrecord/_valid',
             #   test_path='../data/demo_tfrecord',
             # real data
-              train_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/train',
-              valid_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/valid',
-              test_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/test',
-              batch_size=1,
-              num_class=11)
+            #   train_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/train',
+            #   valid_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/valid',
+            #   test_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/test',
+            # QQ raw data
+              train_path='/trainingData/sage/CIC-IDS2018/tfrecord/train',
+              valid_path='/trainingData/sage/CIC-IDS2018/tfrecord/valid',
+              test_path='/trainingData/sage/CIC-IDS2018/tfrecord/test',
+              batch_size=256,
+              num_class=15)
     # There are two models can be choose, "pbcnn" and "en_pbcnn".
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=20)
+    demo.train(epochs=50)
     logging.info(f'cost: {(time.time() - s) / 60} min')
 
 if __name__ == '__main__':

@@ -1,0 +1,70 @@
+2023-06-29 03:53:24.413149: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2023-06-29 03:53:25.076909: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2023-06-29 03:53:25.143961: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-29 03:53:25.144831: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 1 with properties: 
+pciBusID: 0000:af:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-29 03:53:25.144874: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2023-06-29 03:53:25.146531: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2023-06-29 03:53:25.148149: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2023-06-29 03:53:25.148448: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2023-06-29 03:53:25.150180: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2023-06-29 03:53:25.151179: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2023-06-29 03:53:25.151374: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudnn.so.7'; dlerror: libcudnn.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /home/sage/TensorRT-8.5.2.2/targets/x86_64-linux-gnu/lib/
+2023-06-29 03:53:25.151391: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1753] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+60 3
+2023-06-29 03:53:25.152600: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-06-29 03:53:25.183592: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 3000000000 Hz
+2023-06-29 03:53:25.191815: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x337e480 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-29 03:53:25.191874: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-06-29 03:53:25.194653: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-06-29 03:53:25.194695: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0629 03:53:25.303199 140251878991040 parsing_config.py:554] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:710: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0629 03:53:25.305790 140251878991040 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:710: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  10000000
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0629 04:04:03.116069 140251878991040 parsing_config.py:554] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  17295
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]2023-06-29 04:31:49.389438: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 621539 of 10000000
+2023-06-29 04:31:59.389412: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 1867746 of 10000000
+2023-06-29 04:32:09.389427: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 3111160 of 10000000
+2023-06-29 04:32:19.389404: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 4353237 of 10000000
+2023-06-29 04:32:29.389405: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 5593025 of 10000000
+2023-06-29 04:32:39.389403: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 6768281 of 10000000
+2023-06-29 04:32:49.389404: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 7958037 of 10000000
+2023-06-29 04:32:59.389402: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 8937262 of 10000000
+2023-06-29 04:33:09.234755: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:221] Shuffle buffer filled.
+Initializing Input DS:  10%|█         | 1/10 [32:50<4:55:37, 1970.79s/client]Initializing Input DS: 100%|██████████| 10/10 [32:50<00:00, 197.08s/client]  
+Epoch 0/50
+client  0
+2023-06-29 04:52:15.299382: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 1139694 of 10000000
+2023-06-29 04:52:25.299376: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 2358365 of 10000000
+2023-06-29 04:52:35.299378: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 3534358 of 10000000
+2023-06-29 04:52:45.299375: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 4687089 of 10000000
+2023-06-29 04:52:55.299377: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 5812405 of 10000000
+2023-06-29 04:53:05.299380: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 6960581 of 10000000
+2023-06-29 04:53:15.299377: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 8138179 of 10000000
+2023-06-29 04:53:25.299375: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 9306231 of 10000000
+2023-06-29 04:53:31.273516: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:221] Shuffle buffer filled.
+Epoch 0, step 1000000, avg loss 0.073130, avg acc 0.990606
+client  1
+2023-06-29 09:58:23.108940: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 629181 of 10000000
+2023-06-29 09:58:33.108940: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 1867996 of 10000000
+2023-06-29 09:58:43.108934: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 3114041 of 10000000
+2023-06-29 09:58:53.108932: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 4367799 of 10000000
+2023-06-29 09:59:03.109047: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 5573740 of 10000000
+2023-06-29 09:59:13.119507: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 6723562 of 10000000
+2023-06-29 09:59:23.108946: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 7535609 of 10000000
+2023-06-29 09:59:33.108935: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 8713733 of 10000000
+2023-06-29 09:59:43.109125: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:172] Filling up shuffle buffer (this may take a while): 9848667 of 10000000
+2023-06-29 09:59:44.653587: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:221] Shuffle buffer filled.
