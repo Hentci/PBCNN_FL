@@ -1,0 +1,111 @@
+2023-06-30 03:17:42.961317: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-06-30 03:17:43.026158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-30 03:17:43.026908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 1 with properties: 
+pciBusID: 0000:af:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-30 03:17:43.027111: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-06-30 03:17:43.028554: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-06-30 03:17:43.030023: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2023-06-30 03:17:43.030303: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2023-06-30 03:17:43.031830: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2023-06-30 03:17:43.032702: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2023-06-30 03:17:43.036490: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-06-30 03:17:43.039206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0, 1
+60 3
+2023-06-30 03:17:43.040084: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-06-30 03:17:43.067574: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-06-30 03:17:43.075775: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fe470000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-30 03:17:43.075827: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-06-30 03:17:43.184934: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x25013e0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-06-30 03:17:43.185006: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 3090, Compute Capability 8.6
+2023-06-30 03:17:43.187097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:af:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-06-30 03:17:43.187204: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-06-30 03:17:43.187236: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-06-30 03:17:43.187264: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2023-06-30 03:17:43.187291: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2023-06-30 03:17:43.187364: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2023-06-30 03:17:43.187395: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2023-06-30 03:17:43.187423: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-06-30 03:17:43.189760: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 1
+2023-06-30 03:17:43.189820: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-06-30 03:17:43.192455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-06-30 03:17:43.192482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      1 
+2023-06-30 03:17:43.192491: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 1:   N 
+2023-06-30 03:17:43.194821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 22568 MB memory) -> physical GPU (device: 1, name: NVIDIA GeForce RTX 3090, pci bus id: 0000:af:00.0, compute capability: 8.6)
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 03:21:38.009349 140632063079616 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0630 03:21:38.012293 140632063079616 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  10000000
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 03:42:38.119363 140632063079616 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  17295
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]2023-06-30 04:07:21.226486: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 628958 of 10000000
+2023-06-30 04:07:31.235344: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 1251421 of 10000000
+2023-06-30 04:07:41.231532: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 1947798 of 10000000
+2023-06-30 04:07:51.226482: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 2724922 of 10000000
+2023-06-30 04:08:01.226481: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 3981421 of 10000000
+2023-06-30 04:08:11.226482: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5225984 of 10000000
+2023-06-30 04:08:21.226485: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 6359175 of 10000000
+2023-06-30 04:08:31.226482: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 7572956 of 10000000
+2023-06-30 04:08:41.226497: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 8729409 of 10000000
+2023-06-30 04:08:51.226483: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 9888680 of 10000000
+2023-06-30 04:08:52.225482: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Initializing Input DS:  10%|█         | 1/10 [46:39<6:59:55, 2799.46s/client]Initializing Input DS: 100%|██████████| 10/10 [46:39<00:00, 279.95s/client]  
+Traceback (most recent call last):
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 1654, in _create_c_op
+    c_op = pywrap_tf_session.TF_FinishOperation(op_desc)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Negative dimension size caused by subtracting 4 from 3 for '{{node conv2d_1/Conv2D}} = Conv2D[T=DT_FLOAT, data_format="NHWC", dilations=[1, 1, 1, 1], explicit_paddings=[], padding="VALID", strides=[1, 1, 1, 1], use_cudnn_on_gpu=true](Reshape, conv2d_1/Conv2D/ReadVariableOp)' with input shapes: [?,3,60,1], [4,60,1,256].
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "run.py", line 557, in <module>
+    app.run(main)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "run.py", line 550, in main
+    demo.init()
+  File "run.py", line 342, in init
+    self._init_model()
+  File "run.py", line 286, in _init_model
+    self._model = self._pbcnn()
+  File "run.py", line 272, in _pbcnn
+    y2 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
+  File "run.py", line 233, in _text_cnn_block
+    strides=1, data_format=data_format)(x)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/keras/engine/base_layer.py", line 922, in __call__
+    outputs = call_fn(cast_inputs, *args, **kwargs)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/keras/layers/convolutional.py", line 207, in call
+    outputs = self._convolution_op(inputs, self.kernel)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/nn_ops.py", line 1106, in __call__
+    return self.conv_op(inp, filter)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/nn_ops.py", line 638, in __call__
+    return self.call(inp, filter)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/nn_ops.py", line 237, in __call__
+    name=self.name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/nn_ops.py", line 2014, in conv2d
+    name=name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/gen_nn_ops.py", line 969, in conv2d
+    data_format=data_format, dilations=dilations, name=name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py", line 744, in _apply_op_helper
+    attrs=attr_protos, op_def=op_def)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/func_graph.py", line 595, in _create_op_internal
+    compute_device)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 3327, in _create_op_internal
+    op_def=op_def)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 1817, in __init__
+    control_input_ops, op_def)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 1657, in _create_c_op
+    raise ValueError(str(e))
+ValueError: Negative dimension size caused by subtracting 4 from 3 for '{{node conv2d_1/Conv2D}} = Conv2D[T=DT_FLOAT, data_format="NHWC", dilations=[1, 1, 1, 1], explicit_paddings=[], padding="VALID", strides=[1, 1, 1, 1], use_cudnn_on_gpu=true](Reshape, conv2d_1/Conv2D/ReadVariableOp)' with input shapes: [?,3,60,1], [4,60,1,256].

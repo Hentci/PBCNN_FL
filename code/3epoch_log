@@ -1,0 +1,68 @@
+60 3
+2023-06-30 16:40:59.472703: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-06-30 16:40:59.508860: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-06-30 16:40:59.508921: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-06-30 16:40:59.508930: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-06-30 16:40:59.509026: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.182.3
+2023-06-30 16:40:59.509054: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.182.3
+2023-06-30 16:40:59.509062: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.182.3
+2023-06-30 16:40:59.509329: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-06-30 16:40:59.539436: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-06-30 16:40:59.544478: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f4d84000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-30 16:40:59.544507: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 16:40:59.793436 139982397490368 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0630 16:40:59.797363 139982397490368 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 16:41:08.137886 139982397490368 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:19<02:51, 19.01s/client]Initializing Input DS: 100%|██████████| 10/10 [00:19<00:00,  1.90s/client]
+Epoch 0/3
+client  0
+Epoch 0, step 4148, avg loss 0.004126, avg acc 0.998740
+client  1
+Epoch 0, step 4148, avg loss 0.004288, avg acc 0.998728
+client  2
+Epoch 0, step 4148, avg loss 0.004200, avg acc 0.998715
+client  3
+Epoch 0, step 4148, avg loss 0.004512, avg acc 0.998644
+client  4
+Epoch 0, step 4148, avg loss 0.004336, avg acc 0.998726
+client  5
+Epoch 0, step 4148, avg loss 0.004200, avg acc 0.998723
+client  6
+Epoch 0, step 4148, avg loss 0.004210, avg acc 0.998687
+client  7
+Epoch 0, step 4148, avg loss 0.004167, avg acc 0.998740
+client  8
+Epoch 0, step 4148, avg loss 0.004165, avg acc 0.998722
+client  9
+Epoch 0, step 4148, avg loss 0.004159, avg acc 0.998735
+Global model ===> VALID avg loss: 6587939.080707, avg acc: 0.999295
+Epoch 1/3
+client  0
+Epoch 1, step 4148, avg loss 229093.408171, avg acc 0.999475
+client  1
+Epoch 1, step 4148, avg loss 252041.677555, avg acc 0.999518
+client  2
+Epoch 1, step 4148, avg loss 280636.692035, avg acc 0.999496
+client  3
+Epoch 1, step 4148, avg loss 305141.107100, avg acc 0.999490
+client  4
+Epoch 1, step 4148, avg loss 292993.437922, avg acc 0.999499
+client  5
+Epoch 1, step 4148, avg loss 289058.675627, avg acc 0.999503
+client  6
+Epoch 1, step 4148, avg loss 317693.632293, avg acc 0.999503
+client  7
+Epoch 1, step 4148, avg loss 325535.544660, avg acc 0.999517
+client  8
+Epoch 1, step 4148, avg loss 266476.640911, avg acc 0.999485
+client  9
+Epoch 1, step 4148, avg loss 186068.827326, avg acc 0.999531

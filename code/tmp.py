@@ -19,6 +19,7 @@ MAX_PKT_NUM = 100
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
 
+
 # def plot_heatmap(report, y_labels=None):
 #     mt = []
 #     if y_labels is None:
@@ -113,8 +114,32 @@ class TF(object):
         for i in range(self.client_num):
             self.clients.append(Client())
 
+    # gpu
+    # def __new__(cls, *args, **kwargs):
+    #     # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    #     logging.set_verbosity(logging.INFO)
+    #     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
+
+    #     tf.debugging.set_log_device_placement(False)
+    #     tf.config.set_soft_device_placement(True)
+    #     # tf.config.threading.set_inter_op_parallelism_threads(0)
+    #     # tf.config.threading.set_intra_op_parallelism_threads(0)
+
+    #     gpus = tf.config.list_physical_devices('GPU')
+    #     if gpus:
+    #         try:
+    #             tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
+    #             tf.config.experimental.set_memory_growth(gpus[0], True)
+    #         except RuntimeError as e:
+    #             # Visible devices must be set before GPUs have been initialized
+    #             print(e)
+    #     return super().__new__(cls)
+
+    # cpu
+    
+
     def __new__(cls, *args, **kwargs):
-        # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+        os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
         logging.set_verbosity(logging.INFO)
         tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
 
@@ -123,16 +148,9 @@ class TF(object):
         # tf.config.threading.set_inter_op_parallelism_threads(0)
         # tf.config.threading.set_intra_op_parallelism_threads(0)
 
-        gpus = tf.config.list_physical_devices('GPU')
-        if gpus:
-            try:
-                tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-                tf.config.experimental.set_memory_growth(gpus[0], True)
-            except RuntimeError as e:
-                # Visible devices must be set before GPUs have been initialized
-                print(e)
         return super().__new__(cls)
 
+    # old
     def _parse_sparse_example(self, example_proto):
         features = {
             'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
@@ -146,11 +164,13 @@ class TF(object):
         batch_sample = tf.io.parse_example(example_proto, features)
         sparse_features = batch_sample['sparse']
         labels = batch_sample['label']
+        print(labels)
 
         sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
         dense_features = tf.sparse.to_dense(sparse_features)
         dense_features = tf.cast(dense_features, tf.float32) / 255.
         return dense_features, labels
+
 
     # def _parse_sparse_example(self, example_proto):
     #     features = {
@@ -171,7 +191,7 @@ class TF(object):
 
 
 
-
+    # old
     def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
         assert os.path.isdir(path_dir)
         ds = tf.data.Dataset.list_files(os.path.join(path_dir, '*.tfrecord'), shuffle=True)
@@ -186,6 +206,8 @@ class TF(object):
             ds = ds.cache(cache_path)
         ds = ds.prefetch(buffer_size=AUTOTUNE)
         return ds
+
+    
 
     def _init_input_ds(self):
         self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_cache/train/')
@@ -236,13 +258,13 @@ class TF(object):
         x = tf.reduce_max(x, axis=1, keepdims=False)
         return x
 
-
-    @staticmethod
-    def _conv1d_block(x, filters, data_format='channels_last'):
-        x = layers.Conv1D(filters=filters, kernel_size=3, strides=1, padding='same', data_format=data_format)(x)
-        x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
-        x = layers.Activation(activation='relu')(x)
-        return x
+    # old
+    # @staticmethod
+    # def _conv1d_block(x, filters, data_format='channels_last'):
+    #     x = layers.Conv1D(filters=filters, kernel_size=3, strides=1, padding='same', data_format=data_format)(x)
+    #     x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
+    #     x = layers.Activation(activation='relu')(x)
+    #     return x
     
     def _pbcnn(self):
         x = Input(shape=(self._pkt_num, self._pkt_bytes))
@@ -263,7 +285,7 @@ class TF(object):
         y = layers.Dense(self._num_class, activation='linear')(y)
         return Model(inputs=x, outputs=y)
 
-
+    # old
     # def _pbcnn(self):
     #     x = Input(shape=(self._pkt_num, self._pkt_bytes))
     #     y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
@@ -293,13 +315,15 @@ class TF(object):
                 self.clients[i].model = self._enhanced_pbcnn()
         # self._model.summary()
 
-    def predict(self, model_dir, data_dir=None, digits=6):
+    def _predict(self, model_dir=None, data_dir=None, digits=6):
         # model = tf.saved_model.load()
+        model_dir = '/trainingData/sage/PBCNN/code/' + self._prefix + '/models_tf'
         model = K.models.load_model(model_dir)
         if data_dir:
             test_ds = self._generate_ds(data_dir)
         else:
-            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_cache/test')
+            print('QQ')
+            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_cache/test/')
         y_pred, y_true = [], []
         for features, labels in test_ds:
             y_ = model.predict(features)
@@ -309,20 +333,23 @@ class TF(object):
         y_true = np.concatenate(y_true)
         y_pred = np.concatenate(y_pred)
 
-        # label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-        #                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-        #                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+                       'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+                       'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
         
-        # 縮減至15類
-        label_namess = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
-                       'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
-                       'webattack', 'dos-slowloris', 'benign']
+        # SQL, brute force xss , web, infiltration 丟掉
+        # 縮減至11類
+        # label_namess = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
+        #                'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
+        #                'webattack', 'dos-slowloris', 'benign']
         # label_names = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         cl_re = classification_report(y_true, y_pred, digits=digits,
                                       labels=[i for i in range(self._num_class)],
                                       target_names=label_names, output_dict=True)
-        accuracy = round(cl_re['accuracy'], digits)
+        
+        print(cl_re.keys())
+        accuracy = round(cl_re['macro avg']['precision'], digits)
         precision = round(cl_re['macro avg']['precision'], digits)
         recall = round(cl_re['macro avg']['recall'], digits)
         f1_score = round(cl_re['macro avg']['f1-score'], digits)
@@ -554,7 +581,8 @@ def main(_):
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=50)
+    demo.train(epochs=2)
+    print(demo._predict())
     logging.info(f'cost: {(time.time() - s) / 60} min')
 
 if __name__ == '__main__':

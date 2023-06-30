@@ -101,7 +101,7 @@ class TF(object):
         self._batch_size = batch_size
         self._num_class = num_class
 
-        self._prefix = f'bytes_{pkt_bytes}_num_{pkt_num}_{model}'
+        self._prefix = f'bytes_{self.pkt_bytes}_num_{self.pkt_num}_{model}'
         if not os.path.exists(self._prefix):
             os.makedirs(self._prefix)
         
@@ -126,8 +126,8 @@ class TF(object):
         gpus = tf.config.list_physical_devices('GPU')
         if gpus:
             try:
-                tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-                tf.config.experimental.set_memory_growth(gpus[0], True)
+                tf.config.experimental.set_visible_devices(gpus[1], 'GPU')
+                tf.config.experimental.set_memory_growth(gpus[1], True)
             except RuntimeError as e:
                 # Visible devices must be set before GPUs have been initialized
                 print(e)
@@ -244,40 +244,40 @@ class TF(object):
         x = layers.Activation(activation='relu')(x)
         return x
     
-    def _pbcnn(self):
-        x = Input(shape=(self._pkt_num, self._pkt_bytes))
-        y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
-        data_format = 'channels_last'
-        
-        # Pad the input tensor
-        padding_height = 1  # Adjust the padding height as needed
-        y = tf.pad(y, paddings=[[0, 0], [padding_height, padding_height], [0, 0], [0, 0]], mode='CONSTANT')
-        
-        y1 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
-        y2 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
-        y3 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
-        y = layers.concatenate(inputs=[y1, y2, y3], axis=-1)
-        y = layers.Flatten(data_format=data_format)(y)
-        y = layers.Dense(512, activation='relu')(y)
-        y = layers.Dense(256, activation='relu')(y)
-        y = layers.Dense(self._num_class, activation='linear')(y)
-        return Model(inputs=x, outputs=y)
-
-
     # def _pbcnn(self):
     #     x = Input(shape=(self._pkt_num, self._pkt_bytes))
     #     y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
     #     data_format = 'channels_last'
-    #     y1 = self._text_cnn_block(y, filters=256, height=3, width=self._pkt_bytes)
+        
+    #     # Pad the input tensor
+    #     padding_height = 1  # Adjust the padding height as needed
+    #     y = tf.pad(y, paddings=[[0, 0], [padding_height, padding_height], [0, 0], [0, 0]], mode='CONSTANT')
+        
+    #     y1 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
     #     y2 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
-    #     y3 = self._text_cnn_block(y, filters=256, height=5, width=self._pkt_bytes)
+    #     y3 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
     #     y = layers.concatenate(inputs=[y1, y2, y3], axis=-1)
     #     y = layers.Flatten(data_format=data_format)(y)
     #     y = layers.Dense(512, activation='relu')(y)
     #     y = layers.Dense(256, activation='relu')(y)
-    #     # y = layers.Dense(128, activation='relu')(y)
     #     y = layers.Dense(self._num_class, activation='linear')(y)
     #     return Model(inputs=x, outputs=y)
+
+
+    def _pbcnn(self):
+        x = Input(shape=(self._pkt_num, self._pkt_bytes))
+        y = tf.reshape(x, shape=(-1, self._pkt_num, self._pkt_bytes, 1))
+        data_format = 'channels_last'
+        y1 = self._text_cnn_block(y, filters=256, height=3, width=self._pkt_bytes)
+        y2 = self._text_cnn_block(y, filters=256, height=4, width=self._pkt_bytes)
+        y3 = self._text_cnn_block(y, filters=256, height=5, width=self._pkt_bytes)
+        y = layers.concatenate(inputs=[y1, y2, y3], axis=-1)
+        y = layers.Flatten(data_format=data_format)(y)
+        y = layers.Dense(512, activation='relu')(y)
+        y = layers.Dense(256, activation='relu')(y)
+        # y = layers.Dense(128, activation='relu')(y)
+        y = layers.Dense(self._num_class, activation='linear')(y)
+        return Model(inputs=x, outputs=y)
 
 
     def _init_model(self):
@@ -294,7 +294,7 @@ class TF(object):
         # self._model.summary()
 
     def predict(self, model_dir, data_dir=None, digits=6):
-        # model = tf.saved_model.load()
+        model = tf.saved_model.load()
         model = K.models.load_model(model_dir)
         if data_dir:
             test_ds = self._generate_ds(data_dir)
@@ -309,14 +309,14 @@ class TF(object):
         y_true = np.concatenate(y_true)
         y_pred = np.concatenate(y_pred)
 
-        # label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-        #                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-        #                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+                       'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+                       'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
         
-        # 縮減至15類
-        label_namess = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
-                       'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
-                       'webattack', 'dos-slowloris', 'benign']
+        # 縮減至11類
+        # label_namess = ['bruteforce-ftp', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http',
+        #                'dos-hulk', 'botnet', 'bruteforce-ssh', 'dos-slowhttptest',
+        #                'webattack', 'dos-slowloris', 'benign']
         # label_names = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         cl_re = classification_report(y_true, y_pred, digits=digits,
@@ -549,8 +549,8 @@ def main(_):
     # There are two models can be choose, "pbcnn" and "en_pbcnn".
     demo.init()
     # demo.fit(1)
-    # print(demo._predict())
-    demo.train(epochs=50)
+    print(demo._predict())
+    demo.train(epochs=1)
     logging.info(f'cost: {(time.time() - s) / 60} min')
 
 if __name__ == '__main__':

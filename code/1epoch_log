@@ -1,0 +1,71 @@
+60 3
+2023-06-30 14:21:59.982688: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-06-30 14:22:00.016394: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-06-30 14:22:00.016437: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-06-30 14:22:00.016446: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-06-30 14:22:00.016540: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.182.3
+2023-06-30 14:22:00.016569: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.182.3
+2023-06-30 14:22:00.016577: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.182.3
+2023-06-30 14:22:00.016881: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-06-30 14:22:00.029947: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-06-30 14:22:00.035065: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fb004000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-30 14:22:00.035099: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 14:22:00.274753 140405460137152 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0630 14:22:00.278800 140405460137152 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 14:22:07.392127 140405460137152 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]
+Initializing Input DS:  10%|█         | 1/10 [00:16<02:25, 16.16s/client]
+Initializing Input DS: 100%|██████████| 10/10 [00:16<00:00,  1.62s/client]
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0630 14:22:27.175428 140405460137152 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 14:22:27.187544 140405460137152 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
+(0.51401, 0.51401, 0.487952, 0.450854, 
+{'ftp-bruteforce': {'precision': 0.322236727589208, 'recall': 1.0, 'f1-score': 0.4874115517525095, 'support': 1481}, 
+'ddos-hoic': {'precision': 0.9996289195373863, 'recall': 1.0, 'f1-score': 0.9998144253371274, 'support': 16163}, 
+'dos-goldeneye': {'precision': 0.16164658634538154, 'recall': 0.11769005847953216, 'f1-score': 0.13620981387478848, 'support': 1368}, 
+'ddos-loic-http': {'precision': 0.9943294926705677, 'recall': 1.0, 'f1-score': 0.997156684815487, 'support': 16483}, 
+'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6},
+'dos-hulk': {'precision': 0.9983922829581994, 'recall': 0.42768595041322316, 'f1-score': 0.5988428158148505, 'support': 1452},
+ 'bot': {'precision': 0.9997536338999754, 'recall': 0.9968066814050602, 'f1-score': 0.9982779827798278, 'support': 8142}, 
+ 'ssh-bruteforce': {'precision': 0.4604620891636837, 'recall': 0.9985885673959068, 'f1-score': 0.6302895322939865, 'support': 1417}, 
+ 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 
+ 'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 
+ 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 
+ 'dos-slowloris': {'precision': 0.8333333333333334, 'recall': 0.04950495049504951, 'f1-score': 0.09345794392523366, 'support': 707}, 
+ 'benign': {'precision': 0.9999381487600348, 'recall': 0.999631669848334, 'f1-score': 0.9997848858168016, 'support': 5256154}, 
+ 'ddos-loic-udp': {'precision': 0.9404255319148936, 'recall': 0.7293729372937293, 'f1-score': 0.8215613382899628, 'support': 303}, 
+ 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 
+ 'micro avg': {'precision': 0.9988153130542323, 'recall': 0.9988153130542323, 'f1-score': 0.9988153130542323, 'support': 5305199}, 
+ 'macro avg': {'precision': 0.5140097830781776, 'recall': 0.48795205435538896, 'f1-score': 0.45085379831337163, 'support': 5305199}, 
+ 'weighted avg': {'precision': 0.9990558414115578, 'recall': 0.9988153130542323, 'f1-score': 0.9987812482953161, 'support': 5305199}})
+Epoch 0/1
+client  0
+Epoch 0, step 4148, avg loss 0.004343, avg acc 0.998657
+client  1
+Epoch 0, step 4148, avg loss 0.004189,Epoch 0, step 4148, avg loss 0.004224, avg acc 0.998731
+client  3

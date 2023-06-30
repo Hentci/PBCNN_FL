@@ -62,3 +62,321 @@ Epoch 1/50
 client  0
 Epoch 1, step 4148, avg loss 168914.821179, avg acc 0.999463
 client  1
+Epoch 1, step 4148, avg loss 189224.058509, avg acc 0.999469
+client  2
+Epoch 1, step 4148, avg loss 242726.616080, avg acc 0.999459
+client  3
+Epoch 1, step 4148, avg loss 224074.091189, avg acc 0.999470
+client  4
+Epoch 1, step 4148, avg loss 204489.524530, avg acc 0.999466
+client  5
+Epoch 1, step 4148, avg loss 258497.709197, avg acc 0.999427
+client  6
+Epoch 1, step 4148, avg loss 296465.218057, avg acc 0.999442
+client  7
+Epoch 1, step 4148, avg loss 216138.997951, avg acc 0.999451
+client  8
+Epoch 1, step 4148, avg loss 299801.007986, avg acc 0.999427
+client  9
+Epoch 1, step 4148, avg loss 183528.945968, avg acc 0.999431
+Global model ===> VALID avg loss: 12494964499223226.000000, avg acc: 0.999493
+Epoch 2/50
+client  0
+Epoch 2, step 4148, avg loss 469534491031625.062500, avg acc 0.999497
+client  1
+Epoch 2, step 4148, avg loss 555850645155916.500000, avg acc 0.999523
+client  2
+Epoch 2, step 4148, avg loss 779402939797895.000000, avg acc 0.999500
+client  3
+Epoch 2, step 4148, avg loss 708684763583534.375000, avg acc 0.999511
+client  4
+Epoch 2, step 4148, avg loss 650371404481001.750000, avg acc 0.999508
+client  5
+Epoch 2, step 4148, avg loss 864961973756401.625000, avg acc 0.999477
+client  6
+Epoch 2, step 4148, avg loss 1015999171102094.000000, avg acc 0.999488
+client  7
+Epoch 2, step 4148, avg loss 694696246914033.250000, avg acc 0.999470
+client  8
+Epoch 2, step 4148, avg loss 1013492458946970.750000, avg acc 0.999460
+client  9
+Epoch 2, step 4148, avg loss 551669397323902.375000, avg acc 0.999473
+Global model ===> VALID avg loss: 53513297136088544238895104.000000, avg acc: 0.999493
+Epoch 3/50
+client  0
+Epoch 3, step 4148, avg loss nan, avg acc 0.001233
+client  1
+Epoch 3, step 4148, avg loss nan, avg acc 0.001469
+client  2
+Epoch 3, step 4148, avg loss nan, avg acc 0.000728
+client  3
+Epoch 3, step 4148, avg loss nan, avg acc 0.000744
+client  4
+Epoch 3, step 4148, avg loss nan, avg acc 0.002438
+client  5
+Epoch 3, step 4148, avg loss nan, avg acc 0.001482
+client  6
+Epoch 3, step 4148, avg loss nan, avg acc 0.000722
+client  7
+Epoch 3, step 4148, avg loss nan, avg acc 0.001480
+client  8
+Epoch 3, step 4148, avg loss nan, avg acc 0.002719
+client  9
+Epoch 3, step 4148, avg loss nan, avg acc 0.000977
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 4/50
+client  0
+Epoch 4, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 4, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 4, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 4, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 4, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 4, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 4, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 4, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 4, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 4, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 5/50
+client  0
+Epoch 5, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 5, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 5, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 5, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 5, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 5, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 5, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 5, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 5, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 5, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 6/50
+client  0
+Epoch 6, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 6, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 6, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 6, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 6, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 6, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 6, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 6, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 6, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 6, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 7/50
+client  0
+Epoch 7, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 7, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 7, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 7, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 7, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 7, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 7, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 7, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 7, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 7, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 8/50
+client  0
+Epoch 8, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 8, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 8, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 8, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 8, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 8, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 8, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 8, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 8, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 8, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 9/50
+client  0
+Epoch 9, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 9, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 9, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 9, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 9, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 9, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 9, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 9, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 9, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 9, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 10/50
+client  0
+Epoch 10, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 10, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 10, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 10, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 10, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 10, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 10, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 10, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 10, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 10, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 11/50
+client  0
+Epoch 11, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 11, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 11, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 11, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 11, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 11, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 11, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 11, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 11, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 11, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 12/50
+client  0
+Epoch 12, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 12, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 12, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 12, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 12, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 12, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 12, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 12, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 12, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 12, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 13/50
+client  0
+Epoch 13, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 13, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 13, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 13, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 13, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 13, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 13, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 13, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 13, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 13, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 14/50
+client  0
+Epoch 14, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 14, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 14, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 14, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 14, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 14, step 4148, avg loss nan, avg acc 0.000279
+client  6
+Epoch 14, step 4148, avg loss nan, avg acc 0.000241
+client  7
+Epoch 14, step 4148, avg loss nan, avg acc 0.000277
+client  8
+Epoch 14, step 4148, avg loss nan, avg acc 0.000310
+client  9
+Epoch 14, step 4148, avg loss nan, avg acc 0.000254
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 15/50
+client  0
+Epoch 15, step 4148, avg loss nan, avg acc 0.000269
+client  1
+Epoch 15, step 4148, avg loss nan, avg acc 0.000266
+client  2
+Epoch 15, step 4148, avg loss nan, avg acc 0.000247
+client  3
+Epoch 15, step 4148, avg loss nan, avg acc 0.000264
+client  4
+Epoch 15, step 4148, avg loss nan, avg acc 0.000269
+client  5
+Epoch 15, step 4148, avg loss nan, avg acc 0.000279
+client  6
