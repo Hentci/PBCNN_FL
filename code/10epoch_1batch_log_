@@ -1,0 +1,275 @@
+60 3
+2023-06-30 18:15:15.782720: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-06-30 18:15:15.813205: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-06-30 18:15:15.813268: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-06-30 18:15:15.813277: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-06-30 18:15:15.813379: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.182.3
+2023-06-30 18:15:15.813406: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.182.3
+2023-06-30 18:15:15.813414: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.182.3
+2023-06-30 18:15:15.813711: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-06-30 18:15:15.847443: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-06-30 18:15:15.853264: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fe638000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-30 18:15:15.853310: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 18:15:16.144623 140638289290432 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0630 18:15:16.149258 140638289290432 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 18:15:25.180343 140638289290432 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:23<03:29, 23.25s/client]Initializing Input DS: 100%|██████████| 10/10 [00:23<00:00,  2.33s/client]
+Epoch 0/10
+client  0
+2023-06-30 18:16:01.551040: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26067 of 41486
+2023-06-30 18:16:05.132747: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 0, step 4148, avg loss 0.003982, avg acc 0.998745
+client  1
+Epoch 0, step 4148, avg loss 0.004257, avg acc 0.998741
+client  2
+Epoch 0, step 4148, avg loss 0.004163, avg acc 0.998736
+client  3
+Epoch 0, step 4148, avg loss 0.003999, avg acc 0.998777
+client  4
+Epoch 0, step 4148, avg loss 0.004047, avg acc 0.998728
+client  5
+Epoch 0, step 4148, avg loss 0.004159, avg acc 0.998704
+client  6
+Epoch 0, step 4148, avg loss 0.004067, avg acc 0.998794
+client  7
+Epoch 0, step 4148, avg loss 0.003947, avg acc 0.998769
+client  8
+Epoch 0, step 4148, avg loss 0.004055, avg acc 0.998755
+client  9
+Epoch 0, step 4148, avg loss 0.004300, avg acc 0.998695
+Global model ===> VALID avg loss: 6130567.349116, avg acc: 0.999132
+Epoch 1/10
+client  0
+Epoch 1, step 4148, avg loss 261568.388561, avg acc 0.999481
+client  1
+Epoch 1, step 4148, avg loss 204912.836246, avg acc 0.999485
+client  2
+Epoch 1, step 4148, avg loss 220967.264676, avg acc 0.999473
+client  3
+Epoch 1, step 4148, avg loss 269314.109089, avg acc 0.999484
+client  4
+Epoch 1, step 4148, avg loss 237037.349446, avg acc 0.999443
+client  5
+Epoch 1, step 4148, avg loss 232516.245148, avg acc 0.999483
+client  6
+Epoch 1, step 4148, avg loss 239731.046438, avg acc 0.999499
+client  7
+Epoch 1, step 4148, avg loss 203783.707817, avg acc 0.999521
+client  8
+Epoch 1, step 4148, avg loss 259303.442261, avg acc 0.999436
+client  9
+Epoch 1, step 4148, avg loss 257677.876748, avg acc 0.999477
+Global model ===> VALID avg loss: 10967791567826980.000000, avg acc: 0.999569
+Epoch 2/10
+client  0
+Epoch 2, step 4148, avg loss 798225723278528.500000, avg acc 0.999548
+client  1
+Epoch 2, step 4148, avg loss 571684360389903.500000, avg acc 0.999565
+client  2
+Epoch 2, step 4148, avg loss 643041006194636.625000, avg acc 0.999545
+client  3
+Epoch 2, step 4148, avg loss 823133796045507.000000, avg acc 0.999573
+client  4
+Epoch 2, step 4148, avg loss 707634569528639.000000, avg acc 0.999534
+client  5
+Epoch 2, step 4148, avg loss 693906017972812.500000, avg acc 0.999566
+client  6
+Epoch 2, step 4148, avg loss 688141511515535.875000, avg acc 0.999577
+client  7
+Epoch 2, step 4148, avg loss 559878599217903.375000, avg acc 0.999587
+client  8
+Epoch 2, step 4148, avg loss 813567113229034.500000, avg acc 0.999524
+client  9
+Epoch 2, step 4148, avg loss 781983915126693.125000, avg acc 0.999547
+Global model ===> VALID avg loss: 46914486573521854139465728.000000, avg acc: 0.999568
+Epoch 3/10
+client  0
+Epoch 3, step 4148, avg loss nan, avg acc 0.003175
+client  1
+Epoch 3, step 4148, avg loss nan, avg acc 0.003172
+client  2
+Epoch 3, step 4148, avg loss nan, avg acc 0.000734
+client  3
+Epoch 3, step 4148, avg loss nan, avg acc 0.000967
+client  4
+Epoch 3, step 4148, avg loss nan, avg acc 0.000739
+client  5
+Epoch 3, step 4148, avg loss nan, avg acc 0.003881
+client  6
+Epoch 3, step 4148, avg loss nan, avg acc 0.005791
+client  7
+Epoch 3, step 4148, avg loss nan, avg acc 0.000984
+client  8
+Epoch 3, step 4148, avg loss nan, avg acc 0.000540
+client  9
+Epoch 3, step 4148, avg loss nan, avg acc 0.000516
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 4/10
+client  0
+Epoch 4, step 4148, avg loss nan, avg acc 0.000283
+client  1
+Epoch 4, step 4148, avg loss nan, avg acc 0.000281
+client  2
+Epoch 4, step 4148, avg loss nan, avg acc 0.000252
+client  3
+Epoch 4, step 4148, avg loss nan, avg acc 0.000246
+client  4
+Epoch 4, step 4148, avg loss nan, avg acc 0.000258
+client  5
+Epoch 4, step 4148, avg loss nan, avg acc 0.000268
+client  6
+Epoch 4, step 4148, avg loss nan, avg acc 0.000247
+client  7
+Epoch 4, step 4148, avg loss nan, avg acc 0.000262
+client  8
+Epoch 4, step 4148, avg loss nan, avg acc 0.000301
+client  9
+Epoch 4, step 4148, avg loss nan, avg acc 0.000276
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 5/10
+client  0
+Epoch 5, step 4148, avg loss nan, avg acc 0.000283
+client  1
+Epoch 5, step 4148, avg loss nan, avg acc 0.000281
+client  2
+Epoch 5, step 4148, avg loss nan, avg acc 0.000252
+client  3
+Epoch 5, step 4148, avg loss nan, avg acc 0.000246
+client  4
+Epoch 5, step 4148, avg loss nan, avg acc 0.000258
+client  5
+Epoch 5, step 4148, avg loss nan, avg acc 0.000268
+client  6
+Epoch 5, step 4148, avg loss nan, avg acc 0.000247
+client  7
+Epoch 5, step 4148, avg loss nan, avg acc 0.000262
+client  8
+Epoch 5, step 4148, avg loss nan, avg acc 0.000301
+client  9
+Epoch 5, step 4148, avg loss nan, avg acc 0.000276
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 6/10
+client  0
+Epoch 6, step 4148, avg loss nan, avg acc 0.000283
+client  1
+Epoch 6, step 4148, avg loss nan, avg acc 0.000281
+client  2
+Epoch 6, step 4148, avg loss nan, avg acc 0.000252
+client  3
+Epoch 6, step 4148, avg loss nan, avg acc 0.000246
+client  4
+Epoch 6, step 4148, avg loss nan, avg acc 0.000258
+client  5
+Epoch 6, step 4148, avg loss nan, avg acc 0.000268
+client  6
+Epoch 6, step 4148, avg loss nan, avg acc 0.000247
+client  7
+Epoch 6, step 4148, avg loss nan, avg acc 0.000262
+client  8
+Epoch 6, step 4148, avg loss nan, avg acc 0.000301
+client  9
+Epoch 6, step 4148, avg loss nan, avg acc 0.000276
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 7/10
+client  0
+Epoch 7, step 4148, avg loss nan, avg acc 0.000283
+client  1
+Epoch 7, step 4148, avg loss nan, avg acc 0.000281
+client  2
+Epoch 7, step 4148, avg loss nan, avg acc 0.000252
+client  3
+Epoch 7, step 4148, avg loss nan, avg acc 0.000246
+client  4
+Epoch 7, step 4148, avg loss nan, avg acc 0.000258
+client  5
+Epoch 7, step 4148, avg loss nan, avg acc 0.000268
+client  6
+Epoch 7, step 4148, avg loss nan, avg acc 0.000247
+client  7
+Epoch 7, step 4148, avg loss nan, avg acc 0.000262
+client  8
+Epoch 7, step 4148, avg loss nan, avg acc 0.000301
+client  9
+Epoch 7, step 4148, avg loss nan, avg acc 0.000276
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 8/10
+client  0
+Epoch 8, step 4148, avg loss nan, avg acc 0.000283
+client  1
+Epoch 8, step 4148, avg loss nan, avg acc 0.000281
+client  2
+Epoch 8, step 4148, avg loss nan, avg acc 0.000252
+client  3
+Epoch 8, step 4148, avg loss nan, avg acc 0.000246
+client  4
+Epoch 8, step 4148, avg loss nan, avg acc 0.000258
+client  5
+Epoch 8, step 4148, avg loss nan, avg acc 0.000268
+client  6
+Epoch 8, step 4148, avg loss nan, avg acc 0.000247
+client  7
+Epoch 8, step 4148, avg loss nan, avg acc 0.000262
+client  8
+Epoch 8, step 4148, avg loss nan, avg acc 0.000301
+client  9
+Epoch 8, step 4148, avg loss nan, avg acc 0.000276
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+Epoch 9/10
+client  0
+Epoch 9, step 4148, avg loss nan, avg acc 0.000283
+client  1
+Epoch 9, step 4148, avg loss nan, avg acc 0.000281
+client  2
+Epoch 9, step 4148, avg loss nan, avg acc 0.000252
+client  3
+Epoch 9, step 4148, avg loss nan, avg acc 0.000246
+client  4
+Epoch 9, step 4148, avg loss nan, avg acc 0.000258
+client  5
+Epoch 9, step 4148, avg loss nan, avg acc 0.000268
+client  6
+Epoch 9, step 4148, avg loss nan, avg acc 0.000247
+client  7
+Epoch 9, step 4148, avg loss nan, avg acc 0.000262
+client  8
+Epoch 9, step 4148, avg loss nan, avg acc 0.000301
+client  9
+Epoch 9, step 4148, avg loss nan, avg acc 0.000276
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+2023-06-30 23:09:50.534170: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0630 23:09:51.248507 140638289290432 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0630 23:09:51.633855 140638289290432 tmp.py:564] After training 10 epochs, save model to bytes_256_num_20_pbcnn/models_tf, train logs to bytes_256_num_20_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0630 23:09:52.465367 140638289290432 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 23:09:52.478706 140638289290432 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
+(1.9e-05, 1.9e-05, 0.066667, 3.7e-05, {'ftp-bruteforce': {'precision': 0.000279160121985999, 'recall': 1.0, 'f1-score': 0.000558164426722546, 'support': 1481}, 'ddos-hoic': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16163}, 'dos-goldeneye': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1368}, 'ddos-loic-http': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16483}, 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 'dos-hulk': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1452}, 'bot': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 8142}, 'ssh-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1417}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 'dos-slowloris': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 707}, 'benign': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 5256154}, 'ddos-loic-udp': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 303}, 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 'micro avg': {'precision': 0.000279160121985999, 'recall': 0.000279160121985999, 'f1-score': 0.000279160121985999, 'support': 5305199}, 'macro avg': {'precision': 1.8610674799066603e-05, 'recall': 0.06666666666666667, 'f1-score': 3.721096178150306e-05, 'support': 5305199}, 'weighted avg': {'precision': 7.793037370723785e-08, 'recall': 0.000279160121985999, 'f1-score': 1.5581724945211114e-07, 'support': 5305199}})
+I0630 23:19:03.832734 140638289290432 tmp.py:594] cost: 303.80086841980614 min

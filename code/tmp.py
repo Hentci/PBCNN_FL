@@ -164,7 +164,7 @@ class TF(object):
         batch_sample = tf.io.parse_example(example_proto, features)
         sparse_features = batch_sample['sparse']
         labels = batch_sample['label']
-        print(labels)
+        
 
         sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
         dense_features = tf.sparse.to_dense(sparse_features)
@@ -174,20 +174,26 @@ class TF(object):
 
     # def _parse_sparse_example(self, example_proto):
     #     features = {
-    #         'sparse': tf.io.VarLenFeature(tf.float32),
+    #         'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
+    #                                     value_key='val',
+    #                                     dtype=tf.int64,
+    #                                     size=[3, 60]),
     #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
+    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
+    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
     #     }
-    #     batch_sample = tf.io.parse_single_example(example_proto, features)
-    #     sparse_features = tf.cast(batch_sample['sparse'].values, dtype=tf.int64)
-    #     sparse_indices = tf.expand_dims(batch_sample['sparse'].indices[:, 0], axis=1)
-    #     sparse_dense_shape = [MAX_PKT_NUM, 1]  # Updated dimensions
-    #     sparse_features = tf.sparse.SparseTensor(sparse_indices, sparse_features, sparse_dense_shape)
+    #     batch_sample = tf.io.parse_example(example_proto, features)
+    #     sparse_features = batch_sample['sparse']
     #     labels = batch_sample['label']
 
+    #     sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
     #     dense_features = tf.sparse.to_dense(sparse_features)
-    #     dense_features = tf.cast(dense_features, tf.float32) / 255.0
+    #     dense_features = tf.cast(dense_features, tf.float32) / 255.
+
+    #     print("Label values:", labels)  # Print label values
 
     #     return dense_features, labels
+
 
 
 
@@ -212,6 +218,8 @@ class TF(object):
     def _init_input_ds(self):
         self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_cache/train/')
         print('train ds size: ', len(list(self._train_ds)))
+        # for feature, labels in self._train_ds:
+        #     print('--', labels, '--')
         self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_cache/valid/')
         print('valid ds size: ', len(list(self._valid_ds)))
         
@@ -581,7 +589,7 @@ def main(_):
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=2)
+    demo.train(epochs=10)
     print(demo._predict())
     logging.info(f'cost: {(time.time() - s) / 60} min')
 

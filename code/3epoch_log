@@ -22,7 +22,10 @@ train ds size:  41486
 WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
 W0630 16:41:08.137886 139982397490368 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
 valid ds size:  5743
-Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:19<02:51, 19.01s/client]Initializing Input DS: 100%|██████████| 10/10 [00:19<00:00,  1.90s/client]
+
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]
+Initializing Input DS:  10%|█         | 1/10 [00:19<02:51, 19.01s/client]
+Initializing Input DS: 100%|██████████| 10/10 [00:19<00:00,  1.90s/client]
 Epoch 0/3
 client  0
 Epoch 0, step 4148, avg loss 0.004126, avg acc 0.998740
@@ -66,3 +69,58 @@ client  8
 Epoch 1, step 4148, avg loss 266476.640911, avg acc 0.999485
 client  9
 Epoch 1, step 4148, avg loss 186068.827326, avg acc 0.999531
+Global model ===> VALID avg loss: 12146194408488756.000000, avg acc: 0.999553
+Epoch 2/3
+client  0
+Epoch 2, step 4148, avg loss 575608840367746.875000, avg acc 0.999565
+client  1
+Epoch 2, step 4148, avg loss 680821285949293.875000, avg acc 0.999572
+client  2
+Epoch 2, step 4148, avg loss 751911164571320.125000, avg acc 0.999581
+client  3
+Epoch 2, step 4148, avg loss 867051880717095.750000, avg acc 0.999558
+client  4
+Epoch 2, step 4148, avg loss 836769473204709.875000, avg acc 0.999566
+client  5
+Epoch 2, step 4148, avg loss 804968215170752.000000, avg acc 0.999557
+client  6
+Epoch 2, step 4148, avg loss 927373410643118.750000, avg acc 0.999583
+client  7
+Epoch 2, step 4148, avg loss 911042512465102.375000, avg acc 0.999551
+client  8
+Epoch 2, step 4148, avg loss 706217041613680.875000, avg acc 0.999555
+client  9
+Epoch 2, step 4148, avg loss 418054048323759.750000, avg acc 0.999587
+Global model ===> VALID avg loss: 51828801281398956319834112.000000, avg acc: 0.999555
+2023-06-30 18:03:27.485813: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0630 18:03:27.962203 139982397490368 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0630 18:03:28.197326 139982397490368 tmp.py:549] After training 3 epochs, save model to bytes_256_num_20_pbcnn/models_tf, train logs to bytes_256_num_20_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0630 18:03:28.722580 139982397490368 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 18:03:28.732048 139982397490368 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
+(0.638612, 0.638612, 0.617122, 0.623676, {
+'ftp-bruteforce': {'precision': 0.43491671807526217, 'recall': 0.47602970965563807, 'f1-score': 0.45454545454545453, 'support': 1481}, 'ddos-hoic': {'precision': 0.9987024221453287, 'recall': 1.0, 'f1-score': 0.999350789872322, 'support': 16163}, 'dos-goldeneye': {'precision': 0.9079584775086506, 'recall': 0.9590643274853801, 'f1-score': 0.9328119445431924, 'support': 1368}, 
+'ddos-loic-http': {'precision': 0.9965538089480048, 'recall': 1.0, 'f1-score': 0.9982739302910093, 'support': 16483}, 
+'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 
+'dos-hulk': {'precision': 1.0, 'recall': 0.9986225895316805, 'f1-score': 0.9993108201240524, 'support': 1452}, 'bot': {'precision': 0.999508116084604, 'recall': 0.9982805207565709, 'f1-score': 0.9988939412559912, 'support': 8142}, 'ssh-bruteforce': {'precision': 0.9826388888888888, 'recall': 0.9985885673959068, 'f1-score': 0.9905495274763737, 'support': 1417}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 'dos-slowhttptest': {'precision': 0.44669117647058826, 'recall': 0.4915711395819285, 'f1-score': 0.4680577849117175, 'support': 1483}, 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 'dos-slowloris': {'precision': 0.859375, 'recall': 0.4667609618104668, 'f1-score': 0.6049495875343722, 'support': 707}, 'benign': {'precision': 0.9999387377891762, 'recall': 0.9999275135393674, 'f1-score': 0.9999331256327737, 'support': 5256154}, 'ddos-loic-udp': {'precision': 0.9528985507246377, 'recall': 0.8679867986798679, 'f1-score': 0.9084628670120898, 'support': 303}, 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 'micro avg': {'precision': 0.999538565848331, 'recall': 0.999538565848331, 'f1-score': 0.999538565848331, 'support': 5305199}, 'macro avg': {'precision': 0.6386121264423428, 'recall': 0.6171221418957871, 'f1-score': 0.6236759848799565, 'support': 5305199}, 'weighted avg': {'precision': 0.9995529974863425, 'recall': 0.999538565848331, 'f1-score': 0.9995371556011927, 'support': 5305199}})
+I0630 18:12:48.006571 139982397490368 tmp.py:579] cost: 91.80892968177795 min

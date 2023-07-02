@@ -1,0 +1,75 @@
+60 3
+2023-06-30 18:08:27.368825: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-06-30 18:08:27.405282: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-06-30 18:08:27.405323: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-06-30 18:08:27.405334: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-06-30 18:08:27.405432: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.182.3
+2023-06-30 18:08:27.405459: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.182.3
+2023-06-30 18:08:27.405469: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.182.3
+2023-06-30 18:08:27.405763: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-06-30 18:08:27.439533: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-06-30 18:08:27.446116: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f87b0000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-06-30 18:08:27.446151: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 18:08:27.679122 140232280339648 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0630 18:08:27.683506 140232280339648 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 18:08:48.630534 140232280339648 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:20<03:08, 20.96s/client]Initializing Input DS: 100%|██████████| 10/10 [00:20<00:00,  2.10s/client]
+Epoch 0/1
+client  0
+Epoch 0, step 4148, avg loss 0.004279, avg acc 0.998699
+client  1
+Epoch 0, step 4148, avg loss 0.004227, avg acc 0.998660
+client  2
+Epoch 0, step 4148, avg loss 0.004098, avg acc 0.998725
+client  3
+Epoch 0, step 4148, avg loss 0.004237, avg acc 0.998692
+client  4
+Epoch 0, step 4148, avg loss 0.004173, avg acc 0.998701
+client  5
+Epoch 0, step 4148, avg loss 0.004156, avg acc 0.998715
+client  6
+Epoch 0, step 4148, avg loss 0.003968, avg acc 0.998743
+client  7
+Epoch 0, step 4148, avg loss 0.004446, avg acc 0.998675
+client  8
+Epoch 0, step 4148, avg loss 0.004147, avg acc 0.998701
+client  9
+Epoch 0, step 4148, avg loss 0.004131, avg acc 0.998689
+Global model ===> VALID avg loss: 4319770.041644, avg acc: 0.999362
+2023-06-30 18:43:30.669397: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0630 18:43:31.597899 140232280339648 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0630 18:43:32.081089 140232280339648 tmp.py:564] After training 1 epochs, save model to bytes_256_num_20_pbcnn/models_tf, train logs to bytes_256_num_20_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0630 18:43:32.937225 140232280339648 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0630 18:43:32.959604 140232280339648 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
+(0.587928, 0.587928, 0.610892, 0.583372, {'ftp-bruteforce': {'precision': 0.36834245893479345, 'recall': 0.9993247805536799, 'f1-score': 0.5382796872158574, 'support': 1481}, 'ddos-hoic': {'precision': 0.9999381341252165, 'recall': 1.0, 'f1-score': 0.999969066105732, 'support': 16163}, 'dos-goldeneye': {'precision': 0.9946140035906643, 'recall': 0.8099415204678363, 'f1-score': 0.8928283642224013, 'support': 1368}, 'ddos-loic-http': {'precision': 0.9956508607671398, 'recall': 1.0, 'f1-score': 0.9978206913251408, 'support': 16483}, 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 'dos-hulk': {'precision': 0.9972451790633609, 'recall': 0.9972451790633609, 'f1-score': 0.9972451790633609, 'support': 1452}, 'bot': {'precision': 0.9995082974800246, 'recall': 0.9986489805944485, 'f1-score': 0.9990784542606131, 'support': 8142}, 'ssh-bruteforce': {'precision': 0.8026091888825865, 'recall': 0.9985885673959068, 'f1-score': 0.889937106918239, 'support': 1417}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 'dos-slowhttptest': {'precision': 0.043478260869565216, 'recall': 0.0020229265003371545, 'f1-score': 0.003865979381443299, 'support': 1483}, 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 'dos-slowloris': {'precision': 0.8239795918367347, 'recall': 0.45685997171145687, 'f1-score': 0.5878070973612376, 'support': 707}, 'benign': {'precision': 0.999945006777106, 'recall': 0.9997621835281082, 'f1-score': 0.9998535867952985, 'support': 5256154}, 'ddos-loic-udp': {'precision': 0.7936046511627907, 'recall': 0.900990099009901, 'f1-score': 0.8438948995363215, 'support': 303}, 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 'micro avg': {'precision': 0.9993463016184689, 'recall': 0.9993463016184689, 'f1-score': 0.9993463016184689, 'support': 5305199}, 'macro avg': {'precision': 0.5879277088993322, 'recall': 0.6108922805883358, 'f1-score': 0.5833720074790432, 'support': 5305199}, 'weighted avg': {'precision': 0.9993885611661932, 'recall': 0.9993463016184689, 'f1-score': 0.9993090061679056, 'support': 5305199}})
+I0630 18:54:15.468014 140232280339648 tmp.py:594] cost: 45.80168981552124 min
