@@ -200,8 +200,26 @@ class TF(object):
 
     #     return dense_features, labels
 
-
-
+    new_label_maps = {
+        'ftp-bruteforce': 0,
+        'ddos-hoic': 1,
+        'dos-goldeneye': 2,
+        'ddos-loic-http': 3,
+        'sql-injection': 10,
+        'dos-hulk': 4,
+        'bot': 5,
+        'ssh-bruteforce': 6,
+        'bruteforce-xss': 10,
+        'dos-slowhttptest': 7,
+        'bruteforce-web': 10,
+        'dos-slowloris': 8,
+        'benign': 10,
+        'benign2': 10,
+        'ddos-loic-udp': 9,
+        'infiltration': 10
+    }
+    # 4, 8, 10, 14 -> 10
+    # 5 -> 4, 6 -> 5, 7 -> 6, 9 -> 7, 11 -> 8, 12 -> 10, 13 -> 9
 
     # old
     def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
@@ -216,22 +234,50 @@ class TF(object):
         ds = ds.batch(self._batch_size, drop_remainder=False)
         if use_cache:
             ds = ds.cache(cache_path)
-        
-        # 將label= 4, 8, 10, 14改成12(benign)
+
+        # 將label= 4, 8, 10, 14, 12 改成10(benign)
         for features, labels in ds:
             for i in range(len(labels)):
-                if labels[i] == tf.constant(4, shape=(), dtype=tf.int64):
-                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
+                if labels[i] in [4, 8, 10, 14]:
                     print(labels[i])
-                if labels[i] == tf.constant(8, shape=(), dtype=tf.int64):
-                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
-                    print(labels[i])
-                if labels[i] == tf.constant(10, shape=(), dtype=tf.int64):
-                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
-                    print(labels[i])
-                if labels[i] == tf.constant(14, shape=(), dtype=tf.int64):
-                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
-                    print(labels[i])
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(10, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
+
+                elif labels[i] in [12]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(10, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
+
+                elif labels[i] in [5]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(4, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
+
+                elif labels[i] in [6]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(5, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
+
+                elif labels[i] in [7]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(6, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)   
+
+                elif labels[i] in [9]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(7, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
+    
+                elif labels[i] in [11]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(8, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
+
+                elif labels[i] in [13]:
+                    labels = tf.Variable(labels)
+                    labels[i].assign(tf.constant(9, shape=(), dtype=tf.int64))
+                    labels = tf.convert_to_tensor(labels)
 
         ds = ds.prefetch(buffer_size=AUTOTUNE)
         return ds
