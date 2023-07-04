@@ -1,0 +1,60 @@
+256 20
+2023-07-03 01:52:56.067155: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-07-03 01:52:56.098373: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-07-03 01:52:56.098426: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-07-03 01:52:56.098434: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-07-03 01:52:56.098522: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.182.3
+2023-07-03 01:52:56.098554: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.182.3
+2023-07-03 01:52:56.098567: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.182.3
+2023-07-03 01:52:56.098799: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-07-03 01:52:56.127577: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-07-03 01:52:56.135342: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7efeb8000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-07-03 01:52:56.135396: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0703 01:52:56.306064 139643841520832 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0703 01:52:56.309233 139643841520832 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+Traceback (most recent call last):
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/eager/context.py", line 1986, in execution_mode
+    yield
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 655, in _next_internal
+    output_shapes=self._flat_output_shapes)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 2363, in iterator_get_next
+    _ops.raise_from_not_ok_status(e, name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 6653, in raise_from_not_ok_status
+    six.raise_from(core._status_to_exception(e.code, message), None)
+  File "<string>", line 3, in raise_from
+tensorflow.python.framework.errors_impl.AlreadyExistsError: There appears to be a concurrent caching iterator running - cache lockfile already exists ('/trainingData/sage/PBCNN/data/castrate_256_cache/train/_0.lockfile'). If you are sure no other running TF computations are using this cache prefix, delete the lockfile and re-initialize the iterator. Lockfile contents: Created at: 1688313369 [Op:IteratorGetNext]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "256_20_run.py", line 569, in <module>
+    app.run(main)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "256_20_run.py", line 561, in main
+    demo.init()
+  File "256_20_run.py", line 348, in init
+    self._init_input_ds()
+  File "256_20_run.py", line 220, in _init_input_ds
+    print('train ds size: ', len(list(self._train_ds)))
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 631, in __next__
+    return self.next()
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 670, in next
+    return self._next_internal()
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 661, in _next_internal
+    return structure.from_compatible_tensor_list(self._element_spec, ret)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/eager/context.py", line 1989, in execution_mode
+    executor_new.wait()
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/eager/executor.py", line 67, in wait
+    pywrap_tfe.TFE_ExecutorWaitForAllPendingNodes(self._handle)
+tensorflow.python.framework.errors_impl.AlreadyExistsError: There appears to be a concurrent caching iterator running - cache lockfile already exists ('/trainingData/sage/PBCNN/data/castrate_256_cache/train/_0.lockfile'). If you are sure no other running TF computations are using this cache prefix, delete the lockfile and re-initialize the iterator. Lockfile contents: Created at: 1688313369

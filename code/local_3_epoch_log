@@ -395,3 +395,347 @@ client  2
 2023-07-03 01:46:44.876957: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16390 of 41486
 2023-07-03 01:46:54.848645: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 19772 of 41486
 2023-07-03 01:47:00.572522: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 28391267.697020, avg acc 0.999182
+client  3
+2023-07-03 01:55:53.719880: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12058 of 41486
+2023-07-03 01:55:56.764665: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:01:27.205844: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15045 of 41486
+2023-07-03 02:01:37.195048: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 18303 of 41486
+2023-07-03 02:01:47.200176: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23856 of 41486
+2023-07-03 02:01:57.191465: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 33032 of 41486
+2023-07-03 02:01:58.172848: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 29965921.057216, avg acc 0.999118
+client  4
+2023-07-03 02:05:21.787585: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 3596 of 41486
+2023-07-03 02:05:31.762093: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 6803 of 41486
+2023-07-03 02:05:41.788311: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10983 of 41486
+2023-07-03 02:05:51.785563: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28228 of 41486
+2023-07-03 02:06:01.761106: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32982 of 41486
+2023-07-03 02:06:07.037759: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:08:54.472578: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 1919 of 41486
+2023-07-03 02:09:04.440806: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 2932 of 41486
+2023-07-03 02:09:14.417367: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 4029 of 41486
+2023-07-03 02:09:24.434556: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5666 of 41486
+2023-07-03 02:09:34.400551: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15991 of 41486
+2023-07-03 02:09:44.394195: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28658 of 41486
+2023-07-03 02:09:54.395089: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 40887 of 41486
+2023-07-03 02:09:54.766426: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 27793763.959016, avg acc 0.999175
+client  5
+2023-07-03 02:18:33.198050: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5081 of 41486
+2023-07-03 02:18:43.191847: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10651 of 41486
+2023-07-03 02:18:53.223601: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16784 of 41486
+2023-07-03 02:19:03.183164: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 22478 of 41486
+2023-07-03 02:19:13.258217: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28211 of 41486
+2023-07-03 02:19:23.233807: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32937 of 41486
+2023-07-03 02:19:33.198289: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38457 of 41486
+2023-07-03 02:19:38.616483: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:22:27.761199: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 4850 of 41486
+2023-07-03 02:22:37.741823: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 8896 of 41486
+2023-07-03 02:22:47.687596: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 14365 of 41486
+2023-07-03 02:22:57.684698: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 19614 of 41486
+2023-07-03 02:23:07.715769: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 24824 of 41486
+2023-07-03 02:23:17.760694: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29426 of 41486
+2023-07-03 02:23:27.710357: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 33039 of 41486
+2023-07-03 02:23:37.686433: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38136 of 41486
+2023-07-03 02:23:45.503566: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 29467864.902764, avg acc 0.999161
+client  6
+2023-07-03 02:27:08.090245: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 14927 of 41486
+2023-07-03 02:27:18.087064: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29156 of 41486
+2023-07-03 02:27:26.517139: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:30:16.364850: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 8648 of 41486
+2023-07-03 02:30:26.352143: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16970 of 41486
+2023-07-03 02:30:36.387852: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23856 of 41486
+2023-07-03 02:30:46.408402: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 30811 of 41486
+2023-07-03 02:30:56.354136: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37725 of 41486
+2023-07-03 02:31:02.508632: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:33:52.105785: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 6077 of 41486
+2023-07-03 02:34:02.127461: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11180 of 41486
+2023-07-03 02:34:12.085729: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16716 of 41486
+2023-07-03 02:34:22.081718: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23074 of 41486
+2023-07-03 02:34:32.114185: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 30107 of 41486
+2023-07-03 02:34:42.083258: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 36758 of 41486
+2023-07-03 02:34:49.169828: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 27257280.409515, avg acc 0.999148
+client  7
+2023-07-03 02:38:29.269159: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 13948 of 41486
+2023-07-03 02:38:39.270503: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28363 of 41486
+2023-07-03 02:38:48.355797: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:41:40.373361: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15137 of 41486
+2023-07-03 02:41:50.377279: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 30051 of 41486
+2023-07-03 02:41:58.598239: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:44:47.585066: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5458 of 41486
+2023-07-03 02:44:57.574917: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10122 of 41486
+2023-07-03 02:45:07.568561: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15586 of 41486
+2023-07-03 02:45:17.625739: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 20914 of 41486
+2023-07-03 02:45:27.637314: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 25719 of 41486
+2023-07-03 02:45:37.607851: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 31075 of 41486
+2023-07-03 02:45:47.571859: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 35666 of 41486
+2023-07-03 02:45:57.615108: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 40285 of 41486
+2023-07-03 02:46:00.017928: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 28581061.306011, avg acc 0.999132
+client  8
+2023-07-03 02:49:57.587593: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5964 of 41486
+2023-07-03 02:50:07.659652: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10921 of 41486
+2023-07-03 02:50:17.612889: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15906 of 41486
+2023-07-03 02:50:27.588969: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21043 of 41486
+2023-07-03 02:50:37.625140: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26056 of 41486
+2023-07-03 02:50:47.646459: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 31503 of 41486
+2023-07-03 02:50:57.621495: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 36606 of 41486
+2023-07-03 02:51:07.556383: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:53:57.935328: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 14427 of 41486
+2023-07-03 02:54:07.948730: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28836 of 41486
+2023-07-03 02:54:16.808595: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 02:57:07.419119: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5424 of 41486
+2023-07-03 02:57:17.380373: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10021 of 41486
+2023-07-03 02:57:27.362575: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 14972 of 41486
+2023-07-03 02:57:37.418640: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 19828 of 41486
+2023-07-03 02:57:47.349047: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26276 of 41486
+2023-07-03 02:57:57.346833: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32543 of 41486
+2023-07-03 02:58:07.347591: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38485 of 41486
+2023-07-03 02:58:11.952913: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 27619732.412327, avg acc 0.999142
+client  9
+2023-07-03 03:02:25.451919: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5942 of 41486
+2023-07-03 03:02:35.402925: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10446 of 41486
+2023-07-03 03:02:45.435434: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15659 of 41486
+2023-07-03 03:02:55.477431: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 20661 of 41486
+2023-07-03 03:03:05.476327: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 25522 of 41486
+2023-07-03 03:03:15.417881: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32566 of 41486
+2023-07-03 03:03:25.406036: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39357 of 41486
+2023-07-03 03:03:28.506786: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:06:18.007887: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5239 of 41486
+2023-07-03 03:06:28.031935: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10494 of 41486
+2023-07-03 03:06:38.042449: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15782 of 41486
+2023-07-03 03:06:48.008566: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21701 of 41486
+2023-07-03 03:06:58.007685: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29432 of 41486
+2023-07-03 03:07:08.003942: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 41304 of 41486
+2023-07-03 03:07:08.142368: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:10:00.544324: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12187 of 41486
+2023-07-03 03:10:10.540108: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 24070 of 41486
+2023-07-03 03:10:20.537012: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 36533 of 41486
+2023-07-03 03:10:24.512786: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 1, step 12444, avg loss 26781732.492366, avg acc 0.999173
+Global model ===> VALID avg loss: 172696159233080197120.000000, avg acc: 0.999363
+Epoch 2/3
+client  0
+2023-07-03 03:15:31.587905: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5689 of 41486
+2023-07-03 03:15:41.520392: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11186 of 41486
+2023-07-03 03:15:51.521262: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16570 of 41486
+2023-07-03 03:16:01.519155: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 22669 of 41486
+2023-07-03 03:16:11.523649: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28363 of 41486
+2023-07-03 03:16:21.583229: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 33629 of 41486
+2023-07-03 03:16:31.524353: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39413 of 41486
+2023-07-03 03:16:34.373152: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:19:23.154448: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 6077 of 41486
+2023-07-03 03:19:33.219180: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11439 of 41486
+2023-07-03 03:19:43.222717: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 17037 of 41486
+2023-07-03 03:19:53.156559: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23170 of 41486
+2023-07-03 03:20:03.181230: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28903 of 41486
+2023-07-03 03:20:13.150527: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 36499 of 41486
+2023-07-03 03:20:19.761545: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:23:09.956260: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12182 of 41486
+2023-07-03 03:23:19.960438: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 25100 of 41486
+2023-07-03 03:23:29.956342: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38384 of 41486
+2023-07-03 03:23:32.378758: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 4704548896832281600.000000, avg acc 0.999378
+client  1
+2023-07-03 03:29:37.486734: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 3568 of 41486
+2023-07-03 03:29:47.494448: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 6904 of 41486
+2023-07-03 03:29:57.483810: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10843 of 41486
+2023-07-03 03:30:07.450719: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 14477 of 41486
+2023-07-03 03:30:17.478699: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 19035 of 41486
+2023-07-03 03:30:27.467091: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 24087 of 41486
+2023-07-03 03:30:37.434824: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29494 of 41486
+2023-07-03 03:30:47.427955: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 34614 of 41486
+2023-07-03 03:30:57.422280: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39250 of 41486
+2023-07-03 03:31:01.569262: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:33:50.868636: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 4879 of 41486
+2023-07-03 03:34:00.866696: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10325 of 41486
+2023-07-03 03:34:10.843909: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16846 of 41486
+2023-07-03 03:34:20.838162: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21977 of 41486
+2023-07-03 03:34:30.837607: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28239 of 41486
+2023-07-03 03:34:40.835775: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 34259 of 41486
+2023-07-03 03:34:50.843728: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39751 of 41486
+2023-07-03 03:34:53.832041: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 5402499714516747264.000000, avg acc 0.999362
+client  2
+2023-07-03 03:38:17.503597: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 34063 of 41486
+2023-07-03 03:38:20.083034: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:43:58.239182: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 4215 of 41486
+2023-07-03 03:44:08.231969: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5689 of 41486
+2023-07-03 03:44:18.193016: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 8395 of 41486
+2023-07-03 03:44:28.178201: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10533 of 41486
+2023-07-03 03:44:38.223819: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12260 of 41486
+2023-07-03 03:44:48.179125: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15692 of 41486
+2023-07-03 03:44:58.202413: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 18528 of 41486
+2023-07-03 03:45:08.169491: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21066 of 41486
+2023-07-03 03:45:18.168929: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 25302 of 41486
+2023-07-03 03:45:28.170454: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 30794 of 41486
+2023-07-03 03:45:38.170194: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 36060 of 41486
+2023-07-03 03:45:48.169607: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 41478 of 41486
+2023-07-03 03:45:48.172177: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 4964246074417757184.000000, avg acc 0.999405
+client  3
+2023-07-03 03:49:52.444853: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5993 of 41486
+2023-07-03 03:50:02.457713: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11400 of 41486
+2023-07-03 03:50:12.473441: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16801 of 41486
+2023-07-03 03:50:22.505761: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 22557 of 41486
+2023-07-03 03:50:32.443533: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28065 of 41486
+2023-07-03 03:50:42.476672: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 34091 of 41486
+2023-07-03 03:50:52.445467: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39515 of 41486
+2023-07-03 03:50:56.042737: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:53:47.112254: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5222 of 41486
+2023-07-03 03:53:57.090498: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16851 of 41486
+2023-07-03 03:54:07.087282: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29496 of 41486
+2023-07-03 03:54:16.732103: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 03:57:07.251229: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12120 of 41486
+2023-07-03 03:57:17.252556: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 24655 of 41486
+2023-07-03 03:57:27.252049: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37281 of 41486
+2023-07-03 03:57:30.564682: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 5736775235484251136.000000, avg acc 0.999334
+client  4
+2023-07-03 04:01:37.080309: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 4620 of 41486
+2023-07-03 04:01:47.024301: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10644 of 41486
+2023-07-03 04:01:57.037125: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15963 of 41486
+2023-07-03 04:02:07.024587: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21572 of 41486
+2023-07-03 04:02:17.082417: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26866 of 41486
+2023-07-03 04:02:27.047892: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32273 of 41486
+2023-07-03 04:02:37.059744: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37787 of 41486
+2023-07-03 04:02:43.943098: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:05:34.182358: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5419 of 41486
+2023-07-03 04:05:44.182031: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10719 of 41486
+2023-07-03 04:05:54.179391: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16175 of 41486
+2023-07-03 04:06:04.180572: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21775 of 41486
+2023-07-03 04:06:14.257453: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28279 of 41486
+2023-07-03 04:06:24.233824: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 34108 of 41486
+2023-07-03 04:06:34.180383: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39638 of 41486
+2023-07-03 04:06:37.320691: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:09:27.291398: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5362 of 41486
+2023-07-03 04:09:37.288157: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10758 of 41486
+2023-07-03 04:09:47.297744: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15895 of 41486
+2023-07-03 04:09:57.290362: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21420 of 41486
+2023-07-03 04:10:07.289740: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 27001 of 41486
+2023-07-03 04:10:17.332618: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 33393 of 41486
+2023-07-03 04:10:23.823170: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 5015076429988058112.000000, avg acc 0.999415
+client  5
+2023-07-03 04:16:33.932366: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5115 of 41486
+2023-07-03 04:16:43.848817: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 9997 of 41486
+2023-07-03 04:16:53.863483: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15451 of 41486
+2023-07-03 04:17:03.848880: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 20841 of 41486
+2023-07-03 04:17:13.906147: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26405 of 41486
+2023-07-03 04:17:23.924845: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 31986 of 41486
+2023-07-03 04:17:33.902360: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37292 of 41486
+2023-07-03 04:17:41.178914: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:20:31.266663: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5582 of 41486
+2023-07-03 04:20:41.258325: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11383 of 41486
+2023-07-03 04:20:51.244193: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 17448 of 41486
+2023-07-03 04:21:01.284324: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23333 of 41486
+2023-07-03 04:21:11.296380: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29488 of 41486
+2023-07-03 04:21:21.271794: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 35407 of 41486
+2023-07-03 04:21:31.245817: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 41242 of 41486
+2023-07-03 04:21:31.665023: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 5534975659640601600.000000, avg acc 0.999378
+client  6
+2023-07-03 04:25:38.967228: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5199 of 41486
+2023-07-03 04:25:48.970887: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10179 of 41486
+2023-07-03 04:25:59.014024: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15580 of 41486
+2023-07-03 04:26:08.971000: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21026 of 41486
+2023-07-03 04:26:18.982896: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26304 of 41486
+2023-07-03 04:26:28.988983: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32195 of 41486
+2023-07-03 04:26:39.023464: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37838 of 41486
+2023-07-03 04:26:45.826717: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:29:37.573769: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39800 of 41486
+2023-07-03 04:29:37.779567: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:32:27.897824: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5739 of 41486
+2023-07-03 04:32:37.913500: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11529 of 41486
+2023-07-03 04:32:47.894439: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23401 of 41486
+2023-07-03 04:32:57.893483: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 29710 of 41486
+2023-07-03 04:33:07.907720: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 35773 of 41486
+2023-07-03 04:33:17.740081: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 4863464091154372608.000000, avg acc 0.999359
+client  7
+2023-07-03 04:37:24.243031: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 6420 of 41486
+2023-07-03 04:37:34.209153: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 11529 of 41486
+2023-07-03 04:37:44.225239: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16778 of 41486
+2023-07-03 04:37:54.260400: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 22613 of 41486
+2023-07-03 04:38:04.209788: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28031 of 41486
+2023-07-03 04:38:14.247003: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 33652 of 41486
+2023-07-03 04:38:24.240685: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 39031 of 41486
+2023-07-03 04:38:28.795107: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:41:19.336443: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5143 of 41486
+2023-07-03 04:41:29.354489: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10477 of 41486
+2023-07-03 04:41:39.334017: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16008 of 41486
+2023-07-03 04:41:49.334007: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21302 of 41486
+2023-07-03 04:41:59.379886: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26900 of 41486
+2023-07-03 04:42:09.375992: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32414 of 41486
+2023-07-03 04:42:19.336569: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37855 of 41486
+2023-07-03 04:42:25.606768: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:45:16.156983: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12007 of 41486
+2023-07-03 04:45:26.159198: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 24554 of 41486
+2023-07-03 04:45:36.157133: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37005 of 41486
+2023-07-03 04:45:39.742964: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 5268143811087519744.000000, avg acc 0.999340
+client  8
+2023-07-03 04:52:22.109949: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5149 of 41486
+2023-07-03 04:52:31.968816: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10257 of 41486
+2023-07-03 04:52:41.983176: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15704 of 41486
+2023-07-03 04:52:51.969307: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21139 of 41486
+2023-07-03 04:53:02.023771: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 26360 of 41486
+2023-07-03 04:53:12.018913: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 31941 of 41486
+2023-07-03 04:53:21.973994: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37123 of 41486
+2023-07-03 04:53:30.323509: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 04:56:20.220538: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5182 of 41486
+2023-07-03 04:56:30.218464: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10634 of 41486
+2023-07-03 04:56:40.220167: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16120 of 41486
+2023-07-03 04:56:50.224050: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21769 of 41486
+2023-07-03 04:57:00.222940: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 27373 of 41486
+2023-07-03 04:57:10.245962: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32819 of 41486
+2023-07-03 04:57:20.217925: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38125 of 41486
+2023-07-03 04:57:26.301513: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 4822690690598127616.000000, avg acc 0.999370
+client  9
+2023-07-03 05:00:50.426933: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 13189 of 41486
+2023-07-03 05:01:00.426048: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 25736 of 41486
+2023-07-03 05:01:10.429046: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38243 of 41486
+2023-07-03 05:01:12.971090: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-03 05:06:48.058267: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5126 of 41486
+2023-07-03 05:06:58.061129: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10471 of 41486
+2023-07-03 05:07:08.090604: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 15861 of 41486
+2023-07-03 05:07:18.057625: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21454 of 41486
+2023-07-03 05:07:28.059644: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 27080 of 41486
+2023-07-03 05:07:38.088195: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 32622 of 41486
+2023-07-03 05:07:48.097799: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38029 of 41486
+2023-07-03 05:07:54.317139: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 2, step 12444, avg loss 4644261084859026432.000000, avg acc 0.999394
+Global model ===> VALID avg loss: 59963895378822101076018561286144.000000, avg acc: 0.999364
+2023-07-03 05:12:56.294285: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0703 05:12:56.812367 140019673261248 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0703 05:12:57.112923 140019673261248 tmp.py:564] After training 3 epochs, save model to bytes_256_num_20_pbcnn/models_tf, train logs to bytes_256_num_20_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0703 05:12:57.646791 140019673261248 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0703 05:12:57.867189 140019673261248 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
+(0.619362, 0.619362, 0.608602, 0.598966, {'ftp-bruteforce': {'precision': 0.4836557705136758, 'recall': 0.48953409858203917, 'f1-score': 0.48657718120805366, 'support': 1481}, 'ddos-hoic': {'precision': 0.9957491375061607, 'recall': 1.0, 'f1-score': 0.9978700416730977, 'support': 16163}, 'dos-goldeneye': {'precision': 0.9690431519699813, 'recall': 0.7551169590643275, 'f1-score': 0.8488085456039441, 'support': 1368}, 'ddos-loic-http': {'precision': 0.9964333212428969, 'recall': 1.0, 'f1-score': 0.9982134746404239, 'support': 16483}, 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 'dos-hulk': {'precision': 0.9589675711449371, 'recall': 0.9979338842975206, 'f1-score': 0.9780627742153224, 'support': 1452}, 'bot': {'precision': 0.994379963347587, 'recall': 0.9996315401621223, 'f1-score': 0.9969988362834568, 'support': 8142}, 'ssh-bruteforce': {'precision': 0.7869492470719465, 'recall': 0.9957657021877205, 'f1-score': 0.8791277258566979, 'support': 1417}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 'dos-slowhttptest': {'precision': 0.3308035714285714, 'recall': 0.4996628455832771, 'f1-score': 0.3980660757453666, 'support': 1483}, 'bruteforce-web': {'precision': 0.3333333333333333, 'recall': 0.037037037037037035, 'f1-score': 0.06666666666666667, 'support': 27}, 'dos-slowloris': {'precision': 0.6746666666666666, 'recall': 0.3578500707213578, 'f1-score': 0.4676524953789279, 'support': 707}, 'benign': {'precision': 0.9999549031759771, 'recall': 0.9998036587208061, 'f1-score': 0.9998792752289799, 'support': 5256154}, 'ddos-loic-udp': {'precision': 0.766497461928934, 'recall': 0.9966996699669967, 'f1-score': 0.866571018651363, 'support': 303}, 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 'micro avg': {'precision': 0.9993634546036821, 'recall': 0.9993634546036821, 'f1-score': 0.9993634546036821, 'support': 5305199}, 'macro avg': {'precision': 0.6193622732887112, 'recall': 0.608602364421547, 'f1-score': 0.5989662740768201, 'support': 5305199}, 'weighted avg': {'precision': 0.9994516704346651, 'recall': 0.9993634546036821, 'f1-score': 0.9993879848951289, 'support': 5305199}})
+I0703 05:23:01.942608 140019673261248 tmp.py:594] cost: 412.1195752819379 min

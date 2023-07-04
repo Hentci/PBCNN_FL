@@ -80,7 +80,7 @@ class TF(object):
 
     def __init__(self, pkt_bytes, pkt_num, model,
                  train_path, valid_path, test_path,
-                 batch_size=128, num_class=15):
+                 batch_size=128, num_class=11):
         model = model.lower().strip()
         assert pkt_bytes <= MAX_PKT_BYTES, f'Check pkt bytes less than max pkt bytes {MAX_PKT_BYTES}'
         assert pkt_num <= MAX_PKT_NUM, f'Check pkt num less than max pkt num {MAX_PKT_NUM}'
@@ -150,7 +150,7 @@ class TF(object):
 
         return super().__new__(cls)
 
-    # old
+    # old filter 4, 8, 10, 14
     def _parse_sparse_example(self, example_proto):
         features = {
             'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
@@ -177,10 +177,10 @@ class TF(object):
     #         'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
     #                                     value_key='val',
     #                                     dtype=tf.int64,
-    #                                     size=[3, 60]),
+    #                                     size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
     #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
-    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
-    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
+    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64),
+    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32),
     #     }
     #     batch_sample = tf.io.parse_example(example_proto, features)
     #     sparse_features = batch_sample['sparse']
@@ -190,7 +190,13 @@ class TF(object):
     #     dense_features = tf.sparse.to_dense(sparse_features)
     #     dense_features = tf.cast(dense_features, tf.float32) / 255.
 
-    #     print("Label values:", labels)  # Print label values
+    #     # Filter out labels [4, 8, 10, 14]
+    #     filter_labels = [4, 8, 10, 14]
+    #     filter_labels = tf.constant(filter_labels, dtype=tf.int64)
+    #     mask = tf.reduce_any(tf.equal(labels, filter_labels), axis=1)
+    #     mask = tf.expand_dims(mask, axis=-1)  # Add a dimension to match the shape of labels
+    #     dense_features = tf.boolean_mask(dense_features, mask)
+    #     labels = tf.boolean_mask(labels, mask)
 
     #     return dense_features, labels
 
@@ -210,6 +216,23 @@ class TF(object):
         ds = ds.batch(self._batch_size, drop_remainder=False)
         if use_cache:
             ds = ds.cache(cache_path)
+        
+        # 將label= 4, 8, 10, 14改成12(benign)
+        for features, labels in ds:
+            for i in range(len(labels)):
+                if labels[i] == tf.constant(4, shape=(), dtype=tf.int64):
+                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
+                    print(labels[i])
+                if labels[i] == tf.constant(8, shape=(), dtype=tf.int64):
+                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
+                    print(labels[i])
+                if labels[i] == tf.constant(10, shape=(), dtype=tf.int64):
+                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
+                    print(labels[i])
+                if labels[i] == tf.constant(14, shape=(), dtype=tf.int64):
+                    tf.assign(labels[i], tf.constant(12, shape=(), dtype=tf.int64))
+                    print(labels[i])
+
         ds = ds.prefetch(buffer_size=AUTOTUNE)
         return ds
 
@@ -218,8 +241,6 @@ class TF(object):
     def _init_input_ds(self):
         self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_64_cache/train/')
         print('train ds size: ', len(list(self._train_ds)))
-        # for feature, labels in self._train_ds:
-        #     print('--', labels, '--')
         self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/castrate_64_cache/valid/')
         print('valid ds size: ', len(list(self._valid_ds)))
         
@@ -556,7 +577,7 @@ def main(_):
               valid_path='/trainingData/sage/CIC-IDS2018/castration/valid',
               test_path='/trainingData/sage/CIC-IDS2018/castration/test',
               batch_size=256,
-              num_class=15)
+              num_class=11)
     # There are two models can be choose, "pbcnn" and "en_pbcnn".
     demo.init()
     # demo.fit(1)
