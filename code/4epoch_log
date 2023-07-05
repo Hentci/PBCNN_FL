@@ -22,7 +22,10 @@ train ds size:  41486
 WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
 W0630 18:08:03.556591 140431208256704 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
 valid ds size:  5743
-Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:18<02:43, 18.20s/client]Initializing Input DS: 100%|██████████| 10/10 [00:18<00:00,  1.82s/client]
+
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]
+Initializing Input DS:  10%|█         | 1/10 [00:18<02:43, 18.20s/client]
+Initializing Input DS: 100%|██████████| 10/10 [00:18<00:00,  1.82s/client]
 Epoch 0/4
 client  0
 2023-06-30 18:08:34.271735: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12294 of 41486
@@ -140,5 +143,23 @@ W0630 20:09:18.768795 140431208256704 parsing_config.py:563] SparseFeature is a 
 /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, msg_start, len(result))
 dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
-(1.9e-05, 1.9e-05, 0.066667, 3.7e-05, {'ftp-bruteforce': {'precision': 0.000279160121985999, 'recall': 1.0, 'f1-score': 0.000558164426722546, 'support': 1481}, 'ddos-hoic': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16163}, 'dos-goldeneye': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1368}, 'ddos-loic-http': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16483}, 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 'dos-hulk': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1452}, 'bot': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 8142}, 'ssh-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1417}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 'dos-slowloris': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 707}, 'benign': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 5256154}, 'ddos-loic-udp': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 303}, 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 'micro avg': {'precision': 0.000279160121985999, 'recall': 0.000279160121985999, 'f1-score': 0.000279160121985999, 'support': 5305199}, 'macro avg': {'precision': 1.8610674799066603e-05, 'recall': 0.06666666666666667, 'f1-score': 3.721096178150306e-05, 'support': 5305199}, 'weighted avg': {'precision': 7.793037370723785e-08, 'recall': 0.000279160121985999, 'f1-score': 1.5581724945211114e-07, 'support': 5305199}})
+(1.9e-05, 1.9e-05, 0.066667, 3.7e-05, 
+{'ftp-bruteforce': {'precision': 0.000279160121985999, 'recall': 1.0, 'f1-score': 0.000558164426722546, 'support': 1481}, 
+'ddos-hoic': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16163}, 
+'dos-goldeneye': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1368}, 
+'ddos-loic-http': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16483}, 
+'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 
+'dos-hulk': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1452}, 
+'bot': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 8142}, 
+'ssh-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1417}, 
+'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 
+'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 
+'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 
+'dos-slowloris': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 707}, 
+'benign': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 5256154}, 
+'ddos-loic-udp': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 303}, 
+'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 
+'micro avg': {'precision': 0.000279160121985999, 'recall': 0.000279160121985999, 'f1-score': 0.000279160121985999, 'support': 5305199}, 
+'macro avg': {'precision': 1.8610674799066603e-05, 'recall': 0.06666666666666667, 'f1-score': 3.721096178150306e-05, 'support': 5305199}, 
+'weighted avg': {'precision': 7.793037370723785e-08, 'recall': 0.000279160121985999, 'f1-score': 1.5581724945211114e-07, 'support': 5305199}})
 I0630 20:19:27.785282 140431208256704 tmp.py:594] cost: 131.53161907990773 min

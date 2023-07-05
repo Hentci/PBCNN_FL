@@ -119,8 +119,22 @@ W0630 18:03:28.732048 139982397490368 parsing_config.py:563] SparseFeature is a 
   _warn_prf(average, modifier, msg_start, len(result))
 dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration', 'micro avg', 'macro avg', 'weighted avg'])
 (0.638612, 0.638612, 0.617122, 0.623676, {
-'ftp-bruteforce': {'precision': 0.43491671807526217, 'recall': 0.47602970965563807, 'f1-score': 0.45454545454545453, 'support': 1481}, 'ddos-hoic': {'precision': 0.9987024221453287, 'recall': 1.0, 'f1-score': 0.999350789872322, 'support': 16163}, 'dos-goldeneye': {'precision': 0.9079584775086506, 'recall': 0.9590643274853801, 'f1-score': 0.9328119445431924, 'support': 1368}, 
+'ftp-bruteforce': {'precision': 0.43491671807526217, 'recall': 0.47602970965563807, 'f1-score': 0.45454545454545453, 'support': 1481}, 
+'ddos-hoic': {'precision': 0.9987024221453287, 'recall': 1.0, 'f1-score': 0.999350789872322, 'support': 16163}, 
+'dos-goldeneye': {'precision': 0.9079584775086506, 'recall': 0.9590643274853801, 'f1-score': 0.9328119445431924, 'support': 1368}, 
 'ddos-loic-http': {'precision': 0.9965538089480048, 'recall': 1.0, 'f1-score': 0.9982739302910093, 'support': 16483}, 
 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 6}, 
-'dos-hulk': {'precision': 1.0, 'recall': 0.9986225895316805, 'f1-score': 0.9993108201240524, 'support': 1452}, 'bot': {'precision': 0.999508116084604, 'recall': 0.9982805207565709, 'f1-score': 0.9988939412559912, 'support': 8142}, 'ssh-bruteforce': {'precision': 0.9826388888888888, 'recall': 0.9985885673959068, 'f1-score': 0.9905495274763737, 'support': 1417}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 'dos-slowhttptest': {'precision': 0.44669117647058826, 'recall': 0.4915711395819285, 'f1-score': 0.4680577849117175, 'support': 1483}, 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 'dos-slowloris': {'precision': 0.859375, 'recall': 0.4667609618104668, 'f1-score': 0.6049495875343722, 'support': 707}, 'benign': {'precision': 0.9999387377891762, 'recall': 0.9999275135393674, 'f1-score': 0.9999331256327737, 'support': 5256154}, 'ddos-loic-udp': {'precision': 0.9528985507246377, 'recall': 0.8679867986798679, 'f1-score': 0.9084628670120898, 'support': 303}, 'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 'micro avg': {'precision': 0.999538565848331, 'recall': 0.999538565848331, 'f1-score': 0.999538565848331, 'support': 5305199}, 'macro avg': {'precision': 0.6386121264423428, 'recall': 0.6171221418957871, 'f1-score': 0.6236759848799565, 'support': 5305199}, 'weighted avg': {'precision': 0.9995529974863425, 'recall': 0.999538565848331, 'f1-score': 0.9995371556011927, 'support': 5305199}})
+'dos-hulk': {'precision': 1.0, 'recall': 0.9986225895316805, 'f1-score': 0.9993108201240524, 'support': 1452}, 
+'bot': {'precision': 0.999508116084604, 'recall': 0.9982805207565709, 'f1-score': 0.9988939412559912, 'support': 8142}, 
+'ssh-bruteforce': {'precision': 0.9826388888888888, 'recall': 0.9985885673959068, 'f1-score': 0.9905495274763737, 'support': 1417}, 
+'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 13}, 
+'dos-slowhttptest': {'precision': 0.44669117647058826, 'recall': 0.4915711395819285, 'f1-score': 0.4680577849117175, 'support': 1483}, 
+'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 27}, 
+'dos-slowloris': {'precision': 0.859375, 'recall': 0.4667609618104668, 'f1-score': 0.6049495875343722, 'support': 707}, 
+'benign': {'precision': 0.9999387377891762, 'recall': 0.9999275135393674, 'f1-score': 0.9999331256327737, 'support': 5256154}, 
+'ddos-loic-udp': {'precision': 0.9528985507246377, 'recall': 0.8679867986798679, 'f1-score': 0.9084628670120898, 'support': 303}, 
+'infiltration': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 0}, 
+'micro avg': {'precision': 0.999538565848331, 'recall': 0.999538565848331, 'f1-score': 0.999538565848331, 'support': 5305199}, 
+'macro avg': {'precision': 0.6386121264423428, 'recall': 0.6171221418957871, 'f1-score': 0.6236759848799565, 'support': 5305199}, 
+'weighted avg': {'precision': 0.9995529974863425, 'recall': 0.999538565848331, 'f1-score': 0.9995371556011927, 'support': 5305199}})
 I0630 18:12:48.006571 139982397490368 tmp.py:579] cost: 91.80892968177795 min

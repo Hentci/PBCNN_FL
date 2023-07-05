@@ -27,3 +27,142 @@ tf.Tensor(10, shape=(), dtype=int64)
 tf.Tensor(10, shape=(), dtype=int64)
 tf.Tensor(10, shape=(), dtype=int64)
 tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0705 03:21:52.740690 139691986425024 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+tf.Tensor(10, shape=(), dtype=int64)
+valid ds size:  5743
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]2023-07-05 03:35:23.897827: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 3069 of 41486
+2023-07-05 03:35:33.883487: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 5690 of 41486
+2023-07-05 03:35:43.881275: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 10317 of 41486
+2023-07-05 03:35:53.914462: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 23355 of 41486
+2023-07-05 03:36:03.939823: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 25674 of 41486
+2023-07-05 03:36:13.882202: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 28132 of 41486
+2023-07-05 03:36:23.882617: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 30383 of 41486
+2023-07-05 03:36:32.244541: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Initializing Input DS:  10%|█         | 1/10 [01:33<14:03, 93.72s/client]Initializing Input DS: 100%|██████████| 10/10 [01:33<00:00,  9.37s/client]
+Epoch 0/3
+client  0
+2023-07-05 03:36:46.316114: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 9959 of 41486
+2023-07-05 03:36:56.320352: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 12473 of 41486
+2023-07-05 03:37:06.319182: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 14651 of 41486
+2023-07-05 03:37:16.317368: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 16760 of 41486
+2023-07-05 03:37:26.332093: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 19237 of 41486
+2023-07-05 03:37:36.316216: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 21836 of 41486
+2023-07-05 03:37:46.316083: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 34102 of 41486
+2023-07-05 03:37:56.358112: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 36292 of 41486
+2023-07-05 03:38:06.368689: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38712 of 41486
+2023-07-05 03:38:16.325964: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 41097 of 41486
+2023-07-05 03:38:17.773111: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-05 03:38:17.954233: W tensorflow/core/framework/op_kernel.cc:1753] OP_REQUIRES failed at sparse_xent_op.cc:90 : Invalid argument: Received a label value of 12 which is outside the valid range of [0, 11).  Label values: 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 1 12 1 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12
+Traceback (most recent call last):
+  File "64_5_run.py", line 636, in <module>
+    
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "64_5_run.py", line 631, in main
+    # demo.fit(1)
+  File "64_5_run.py", line 498, in train
+    # 訓練的方式跟原本的 PBCNN 相同
+  File "64_5_run.py", line 72, in train_step
+    loss = self.loss_func(labels, y_predict)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/nn_ops.py", line 3591, in sparse_softmax_cross_entropy_with_logits_v2
+    labels=labels, logits=logits, name=name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/nn_ops.py", line 3511, in sparse_softmax_cross_entropy_with_logits
+    precise_logits, labels, name=name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/gen_nn_ops.py", line 11140, in sparse_softmax_cross_entropy_with_logits
+    _ops.raise_from_not_ok_status(e, name)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 6653, in raise_from_not_ok_status
+    six.raise_from(core._status_to_exception(e.code, message), None)
+  File "<string>", line 3, in raise_from
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Received a label value of 12 which is outside the valid range of [0, 11).  Label values: 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 1 12 1 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 [Op:SparseSoftmaxCrossEntropyWithLogits]

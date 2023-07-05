@@ -5,7 +5,7 @@ import numpy as np
 
 
 def load_processed_data(mode, img_shape, over, under, node_id, num_node, alpha):
-    path = f'/home/christin/Workplace/traffic_datasets/Sampling/CSE-CIC-IDS-2018/processed/' \
+    path = f'/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/' \
            f'{img_shape[0]}_{img_shape[1]}_flows'
 
     if mode == 'train_resample':
@@ -15,7 +15,7 @@ def load_processed_data(mode, img_shape, over, under, node_id, num_node, alpha):
         data = np.reshape(data, (len(data), 1, -1))
         label = np.load(label_file)
     elif mode == 'train':
-        files = glob.glob(f'{path}/train/*.npy')
+        files = glob.glob(f'{path}/Friday-02-03-2018/*.npy')
         data = []
         label = []
         for f in sorted(files):
@@ -41,6 +41,8 @@ def load_processed_data(mode, img_shape, over, under, node_id, num_node, alpha):
 
     data = np.asarray(data)
     label = np.asarray(label)
+
+    
 
     return data, label
 

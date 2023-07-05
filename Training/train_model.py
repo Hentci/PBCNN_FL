@@ -18,7 +18,7 @@ O = 1
 U = 2000
 
 
-def train(node_id='all', alpha=0.1, batch_size=32, img_shape=(120, 5)):
+def train(node_id='all', alpha=0.1, batch_size=32, img_shape=(60, 3)):
 
     # init log
     # path = f'Log/all/{O}_{U}'
@@ -32,7 +32,7 @@ def train(node_id='all', alpha=0.1, batch_size=32, img_shape=(120, 5)):
         f.write(f'class acc, precision, recall, f1-score, acc\n')
 
     # dataset and dataloader
-    training_data = IDSDataset(mode='train_resample', img_shape=img_shape, over=O, under=U, node_id=node_id,
+    training_data = IDSDataset(mode='train', img_shape=img_shape, over=O, under=U, node_id=node_id,
                                num_node=NUM_NODE, alpha=alpha)
     train_dataloader = DataLoader(dataset=training_data, batch_size=batch_size, shuffle=True)
     test_data = IDSDataset(mode='test', img_shape=img_shape, over=O, under=U)
@@ -165,4 +165,4 @@ def train(node_id='all', alpha=0.1, batch_size=32, img_shape=(120, 5)):
 
 
 if __name__ == '__main__':
-    train(img_shape=(120, 5))
+    train(img_shape=(60, 3))
