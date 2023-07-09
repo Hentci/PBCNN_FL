@@ -17,6 +17,9 @@ from tqdm import tqdm
 MAX_PKT_BYTES = 50 * 50
 MAX_PKT_NUM = 100
 AUTOTUNE = tf.data.experimental.AUTOTUNE
+ATTACK_RATE = 0.3 # 壞client的比例
+POISON_DATA_RATE = 0.5 # 資料中毒的比例
+
 
 
 
@@ -102,7 +105,7 @@ class TF(object):
         self._batch_size = batch_size
         self._num_class = num_class
 
-        self._prefix = f'bytes_{pkt_bytes}_num_{pkt_num}_{model}'
+        self._prefix = 'backdoor_model'
         if not os.path.exists(self._prefix):
             os.makedirs(self._prefix)
         
@@ -400,6 +403,7 @@ class TF(object):
                 self.clients[i].model = self._enhanced_pbcnn()
         # self._model.summary()
 
+    # TODO: testing data backdoor (需要加poison rate)
     def _predict(self, model_dir=None, data_dir=None, digits=6):
         # model = tf.saved_model.load()
         model_dir = '/trainingData/sage/PBCNN/code/' + self._prefix + '/models_tf'
@@ -530,14 +534,15 @@ class TF(object):
                 # 把 global model 分給這個 client
                 self.clients[i].model.set_weights(global_weights)
                 steps = 0
-
+                # TODO
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
-                    for features, labels in self.clients[i].ds:
-
-                        # for i in range(0, 256):
-                        #     for j in range(0, 5):
-                        #         print(features[i][j])
+                    for features, labels in self.clients[i].ds: # 256 * 5 * 64
+                        
+                        print(len(features)) # 都是256
+                        #  for i in range(0, 256): # batch
+                        #     for j in range(0, 5): # packet
+                        #         print(features[i][j]) # packet內容
                         
 
                         loss, match = self.clients[i].train_step(features, labels)
@@ -567,6 +572,7 @@ class TF(object):
             if valid_freq > 0 and epoch % valid_freq == 0:
                 valid_loss, valid_acc = [], []
                 valid_cnt = 0
+                # TODO valid data
                 for fs, ls in self._valid_ds:
                     lo, ma = self._test_step(fs, ls)
                     valid_loss.append(lo)

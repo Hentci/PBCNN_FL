@@ -13,37 +13,11 @@ from tensorflow.keras import Input
 from tensorflow.keras import layers, Model
 from tensorflow.keras.layers import Layer
 from tqdm import tqdm
-
+from tensorflow.keras import initializers
 MAX_PKT_BYTES = 50 * 50
 MAX_PKT_NUM = 100
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
-
-
-# def plot_heatmap(report, y_labels=None):
-#     mt = []
-#     if y_labels is None:
-#         y_labels = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-#                     'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-#                     'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
-#     support = []
-#     x_labels = ['precision', 'recall', 'f1-score']
-#     for name in y_labels:
-#         mt.append([
-#             report[name]['precision'],
-#             report[name]['recall'],
-#             report[name]['f1-score']
-#         ])
-#         support.append(report[name]['support'])
-#     assert len(support) == len(y_labels)
-#     y_labels_ = []
-#     for i in range(len(y_labels)):
-#         y_labels_.append(f'{y_labels[i]} ({support[i]})')
-#     plt.figure(figsize=(5, 6), dpi=200)
-#     sns.set()
-#     sns.heatmap(mt, annot=True, xticklabels=x_labels, yticklabels=y_labels_, fmt='.4f',
-#                 linewidths=0.5, cmap='PuBu', robust=True)
-#     plt.show()
 
 class Client():
     def __init__(self):
@@ -84,7 +58,7 @@ class TF(object):
         model = model.lower().strip()
         assert pkt_bytes <= MAX_PKT_BYTES, f'Check pkt bytes less than max pkt bytes {MAX_PKT_BYTES}'
         assert pkt_num <= MAX_PKT_NUM, f'Check pkt num less than max pkt num {MAX_PKT_NUM}'
-        assert model in ('pbcnn', 'en_pbcnn'), f'Check model type'
+        assert model in ('pbcnn', 'en_pbcnn', 'resnet'), f'Check model type'
 
         self._pkt_bytes = pkt_bytes
         self._pkt_num = pkt_num
@@ -102,7 +76,7 @@ class TF(object):
         self._batch_size = batch_size
         self._num_class = num_class
 
-        self._prefix = f'bytes_{pkt_bytes}_num_{pkt_num}_{model}'
+        self._prefix = f'resnet_bytes_{pkt_bytes}_num_{pkt_num}_{model}'
         if not os.path.exists(self._prefix):
             os.makedirs(self._prefix)
         
@@ -114,26 +88,6 @@ class TF(object):
         for i in range(self.client_num):
             self.clients.append(Client())
 
-    # gpu
-    # def __new__(cls, *args, **kwargs):
-    #     # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-    #     logging.set_verbosity(logging.INFO)
-    #     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
-
-    #     tf.debugging.set_log_device_placement(False)
-    #     tf.config.set_soft_device_placement(True)
-    #     # tf.config.threading.set_inter_op_parallelism_threads(0)
-    #     # tf.config.threading.set_intra_op_parallelism_threads(0)
-
-    #     gpus = tf.config.list_physical_devices('GPU')
-    #     if gpus:
-    #         try:
-    #             tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-    #             tf.config.experimental.set_memory_growth(gpus[0], True)
-    #         except RuntimeError as e:
-    #             # Visible devices must be set before GPUs have been initialized
-    #             print(e)
-    #     return super().__new__(cls)
 
     # cpu
     
@@ -158,8 +112,8 @@ class TF(object):
                                           dtype=tf.int64,
                                           size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
             'label': tf.io.FixedLenFeature([], dtype=tf.int64),
-            'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), 
-            'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), 
+            'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
+            'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
         }
         batch_sample = tf.io.parse_example(example_proto, features)
         sparse_features = batch_sample['sparse']
@@ -172,33 +126,6 @@ class TF(object):
         return dense_features, labels
 
 
-    # def _parse_sparse_example(self, example_proto):
-    #     features = {
-    #         'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
-    #                                     value_key='val',
-    #                                     dtype=tf.int64,
-    #                                     size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
-    #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
-    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64),
-    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32),
-    #     }
-    #     batch_sample = tf.io.parse_example(example_proto, features)
-    #     sparse_features = batch_sample['sparse']
-    #     labels = batch_sample['label']
-
-    #     sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
-    #     dense_features = tf.sparse.to_dense(sparse_features)
-    #     dense_features = tf.cast(dense_features, tf.float32) / 255.
-
-    #     # Filter out labels [4, 8, 10, 14]
-    #     filter_labels = [4, 8, 10, 14]
-    #     filter_labels = tf.constant(filter_labels, dtype=tf.int64)
-    #     mask = tf.reduce_any(tf.equal(labels, filter_labels), axis=1)
-    #     mask = tf.expand_dims(mask, axis=-1)  # Add a dimension to match the shape of labels
-    #     dense_features = tf.boolean_mask(dense_features, mask)
-    #     labels = tf.boolean_mask(labels, mask)
-
-    #     return dense_features, labels
 
     new_label_maps = {
         'ftp-bruteforce': 0,
@@ -301,7 +228,7 @@ class TF(object):
         )
         ds = ds.batch(self._batch_size, drop_remainder=False)
 
-        # ds = ds.map(self.relabel)
+        #ds = ds.map(self.relabel)
 
         if use_cache:
             ds = ds.cache(cache_path)
@@ -385,8 +312,6 @@ class TF(object):
         return Model(inputs=x, outputs=y)
         
 
-
-
     def _init_model(self):
         if self._model_type == 'pbcnn':
             # 原本的拿來當 global model
@@ -394,6 +319,12 @@ class TF(object):
             # 建立每個 client 的 model
             for i in range(self.client_num):
                 self.clients[i].model = self._pbcnn()
+        if self._model_type == 'resnet':
+            # 原本的拿來當 global model
+            self._model = self.resnet()
+            # 建立每個 client 的 model
+            for i in range(self.client_num):
+                self.clients[i].model = self.resnet()
         else:
             self._model = self._enhanced_pbcnn()
             for i in range(self.client_num):
@@ -534,12 +465,6 @@ class TF(object):
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
                     for features, labels in self.clients[i].ds:
-
-                        # for i in range(0, 256):
-                        #     for j in range(0, 5):
-                        #         print(features[i][j])
-                        
-
                         loss, match = self.clients[i].train_step(features, labels)
                         self.clients[i].total_loss += loss
                         self.clients[i].sample_count += len(features)
@@ -580,65 +505,6 @@ class TF(object):
         
         # 底下的 history 應該不會用到就先沒加
 
-        '''
-        try:
-            for epoch in range(1 if DEBUG else epochs):
-                logging.info(f'Epoch {epoch}/{epochs}')
-
-                sample_count = 0
-                total_loss = 0.
-                total_match = 0
-
-                for features, labels in self._train_ds:
-                    if DEBUG and steps > 300:
-                        break
-
-                    loss, match = self._train_step(features, labels)  # batch loss
-                    total_loss += loss
-                    sample_count += len(features)
-                    avg_train_loss = total_loss / sample_count
-                    self._train_losses.append(avg_train_loss)
-
-                    total_match += match
-                    avg_train_acc = total_match / sample_count
-                    self._train_acc.append(avg_train_acc)
-
-                    if log_freq > 0 and steps % log_freq == 0:
-                        logging.info('Epoch %d, step %d, avg loss %.6f, avg acc %.6f'
-                                     % (epoch, steps, avg_train_loss, avg_train_acc))
-
-                    if valid_freq > 0 and steps % valid_freq == 0:
-                        logging.info(f'===> Step: {steps}, evaluating on VALID...')
-                        valid_loss, valid_acc = [], []
-                        valid_cnt = 0
-                        for fs, ls in self._valid_ds:
-                            lo, ma = self._test_step(fs, ls)
-                            valid_loss.append(lo)
-                            valid_acc.append(ma)
-                            valid_cnt += len(fs)
-
-                        avg_valid_loss = np.array(valid_loss).sum() / valid_cnt
-                        avg_valid_acc = np.array(valid_acc).sum() / valid_cnt
-                        logging.info('===> VALID avg loss: %.6f, avg acc: %.6f' % (avg_valid_loss, avg_valid_acc))
-                        self._valid_losses.append(avg_valid_loss)
-                        self._valid_acc.append(avg_valid_acc)
-                    steps += 1
-        except Exception as e:
-            raise Exception(e)
-        finally:
-            history = {
-                'epoch_steps': steps / epochs,
-                'valid_freq': valid_freq,
-                'train_loss': self._train_losses,
-                'train_acc': self._train_acc,
-                'valid_loss': self._valid_losses,
-                'valid_acc': self._valid_acc
-            }
-
-            with open(history_path, 'wb') as fw:
-                pickle.dump(history, fw)
-        
-        '''
 
         if os.path.exists(model_dir):
             shutil.rmtree(model_dir)
@@ -650,7 +516,7 @@ class TF(object):
 
 def main(_):
     s = time.time()
-    demo = TF(pkt_bytes=64, pkt_num=5, model='pbcnn', # origin: pkt_byte: 256, pkt_num = 20
+    demo = TF(pkt_bytes=64, pkt_num=5, model='resnet', # origin: pkt_byte: 256, pkt_num = 20
             # demo data
             #   train_path='../data/demo_tfrecord/_train',
             #   valid_path='../data/demo_tfrecord/_valid',

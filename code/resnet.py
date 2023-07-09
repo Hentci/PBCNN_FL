@@ -19,6 +19,79 @@ MAX_PKT_NUM = 100
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
 
+
+# def plot_heatmap(report, y_labels=None):
+#     mt = []
+#     if y_labels is None:
+#         y_labels = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+#                     'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+#                     'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+#     support = []
+#     x_labels = ['precision', 'recall', 'f1-score']
+#     for name in y_labels:
+#         mt.append([
+#             report[name]['precision'],
+#             report[name]['recall'],
+#             report[name]['f1-score']
+#         ])
+#         support.append(report[name]['support'])
+#     assert len(support) == len(y_labels)
+#     y_labels_ = []
+#     for i in range(len(y_labels)):
+#         y_labels_.append(f'{y_labels[i]} ({support[i]})')
+#     plt.figure(figsize=(5, 6), dpi=200)
+#     sns.set()
+#     sns.heatmap(mt, annot=True, xticklabels=x_labels, yticklabels=y_labels_, fmt='.4f',
+#                 linewidths=0.5, cmap='PuBu', robust=True)
+#     plt.show()
+
+# ResNet6 :(
+class ResNetModel:
+    def __init__(self, pkt_num, pkt_bytes, num_class):
+        self._pkt_num = pkt_num
+        self._pkt_bytes = pkt_bytes
+        self._num_class = num_class
+
+    @staticmethod
+    def _residual_block(x, filters, kernel_size, strides=1, data_format='channels_last'):
+        shortcut = x
+        if strides != 1 or x.shape[-1] != filters:
+            shortcut = layers.Conv1D(filters=filters, kernel_size=1, strides=strides, padding='same',
+                                     data_format=data_format)(shortcut)
+            shortcut = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(shortcut)
+
+        x = layers.Conv1D(filters=filters, kernel_size=kernel_size, strides=strides, padding='same',
+                          data_format=data_format)(x)
+        x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
+        x = layers.Activation('relu')(x)
+
+        x = layers.Conv1D(filters=filters, kernel_size=kernel_size, strides=1, padding='same',
+                          data_format=data_format)(x)
+        x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
+
+        x = layers.Add()([shortcut, x])
+        x = layers.Activation('relu')(x)
+        return x
+
+    def build_resnet_model(self):
+        input_shape = (self._pkt_num, self._pkt_bytes)
+        inputs = Input(shape=input_shape)
+        y = layers.Permute((2, 1))(inputs)  # Transpose to match channels-last convention
+
+        y = self._residual_block(y, filters=64, kernel_size=3, strides=1, data_format='channels_last')
+        y = self._residual_block(y, filters=64, kernel_size=3, strides=1, data_format='channels_last')
+        y = self._residual_block(y, filters=64, kernel_size=3, strides=1, data_format='channels_last')
+
+        y = layers.GlobalAveragePooling1D(data_format='channels_last')(y)
+
+        y = layers.Dense(512, activation='relu')(y)
+        y = layers.Dense(256, activation='relu')(y)
+        y = layers.Dense(self._num_class, activation='softmax')(y)
+
+        model = Model(inputs=inputs, outputs=y)
+        return model
+
+
 class Client():
     def __init__(self):
         # 這邊是底下 TF 的 _init_() 來的
@@ -58,7 +131,7 @@ class TF(object):
         model = model.lower().strip()
         assert pkt_bytes <= MAX_PKT_BYTES, f'Check pkt bytes less than max pkt bytes {MAX_PKT_BYTES}'
         assert pkt_num <= MAX_PKT_NUM, f'Check pkt num less than max pkt num {MAX_PKT_NUM}'
-        assert model in ('pbcnn', 'en_pbcnn'), f'Check model type'
+        assert model in ('pbcnn', 'en_pbcnn', 'resnet'), f'Check model type'
 
         self._pkt_bytes = pkt_bytes
         self._pkt_num = pkt_num
@@ -76,7 +149,7 @@ class TF(object):
         self._batch_size = batch_size
         self._num_class = num_class
 
-        self._prefix = f'bytes_{pkt_bytes}_num_{pkt_num}_{model}'
+        self._prefix = 'resnet_64_5_5epoch'
         if not os.path.exists(self._prefix):
             os.makedirs(self._prefix)
         
@@ -88,6 +161,26 @@ class TF(object):
         for i in range(self.client_num):
             self.clients.append(Client())
 
+    # gpu
+    # def __new__(cls, *args, **kwargs):
+    #     # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    #     logging.set_verbosity(logging.INFO)
+    #     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
+
+    #     tf.debugging.set_log_device_placement(False)
+    #     tf.config.set_soft_device_placement(True)
+    #     # tf.config.threading.set_inter_op_parallelism_threads(0)
+    #     # tf.config.threading.set_intra_op_parallelism_threads(0)
+
+    #     gpus = tf.config.list_physical_devices('GPU')
+    #     if gpus:
+    #         try:
+    #             tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
+    #             tf.config.experimental.set_memory_growth(gpus[0], True)
+    #         except RuntimeError as e:
+    #             # Visible devices must be set before GPUs have been initialized
+    #             print(e)
+    #     return super().__new__(cls)
 
     # cpu
     
@@ -112,8 +205,8 @@ class TF(object):
                                           dtype=tf.int64,
                                           size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
             'label': tf.io.FixedLenFeature([], dtype=tf.int64),
-            'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), # 已經處理好了(60bytes)
-            'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), # 沒timestamp
+            'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64), 
+            'last_time': tf.io.FixedLenFeature([], dtype=tf.float32), 
         }
         batch_sample = tf.io.parse_example(example_proto, features)
         sparse_features = batch_sample['sparse']
@@ -126,6 +219,33 @@ class TF(object):
         return dense_features, labels
 
 
+    # def _parse_sparse_example(self, example_proto):
+    #     features = {
+    #         'sparse': tf.io.SparseFeature(index_key=['idx1', 'idx2'],
+    #                                     value_key='val',
+    #                                     dtype=tf.int64,
+    #                                     size=[MAX_PKT_NUM, MAX_PKT_BYTES]),
+    #         'label': tf.io.FixedLenFeature([], dtype=tf.int64),
+    #         'byte_len': tf.io.FixedLenFeature([], dtype=tf.int64),
+    #         'last_time': tf.io.FixedLenFeature([], dtype=tf.float32),
+    #     }
+    #     batch_sample = tf.io.parse_example(example_proto, features)
+    #     sparse_features = batch_sample['sparse']
+    #     labels = batch_sample['label']
+
+    #     sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
+    #     dense_features = tf.sparse.to_dense(sparse_features)
+    #     dense_features = tf.cast(dense_features, tf.float32) / 255.
+
+    #     # Filter out labels [4, 8, 10, 14]
+    #     filter_labels = [4, 8, 10, 14]
+    #     filter_labels = tf.constant(filter_labels, dtype=tf.int64)
+    #     mask = tf.reduce_any(tf.equal(labels, filter_labels), axis=1)
+    #     mask = tf.expand_dims(mask, axis=-1)  # Add a dimension to match the shape of labels
+    #     dense_features = tf.boolean_mask(dense_features, mask)
+    #     labels = tf.boolean_mask(labels, mask)
+
+    #     return dense_features, labels
 
     new_label_maps = {
         'ftp-bruteforce': 0,
@@ -148,53 +268,73 @@ class TF(object):
     # 4, 8, 10, 14 -> 10
     # 5 -> 4, 6 -> 5, 7 -> 6, 9 -> 7, 11 -> 8, 12 -> 10, 13 -> 9
 
-    def relabel(self, ds):
-        # 將label= 4, 8, 10, 14, 12 改成10(benign)
-        for features, labels in ds:
-            for i in range(len(labels)):
-                if labels[i] in [4, 8, 10, 12, 14]:
-                    # print(labels[i])
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(10, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)
+    # def relabel(self, ds):
+    #     # 將label= 4, 8, 10, 14, 12 改成10(benign)
+    #     for features, labels in ds:
+    #         for i in range(len(labels)):
+    #             if labels[i] in [4, 8, 10, 14]:
+    #                 # print(labels[i])
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(10, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
 
-				#elif labels[i] in [12]:
-				#    labels = tf.Variable(labels)
-				#    labels[i].assign(tf.constant(10, shape=(), dtype=tf.int64))
-				#    labels = tf.convert_to_tensor(labels)
+    #             elif labels[i] in [12]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(10, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
 
-                elif labels[i] in [5]:
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(4, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)
+    #             elif labels[i] in [5]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(4, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
 
-                elif labels[i] in [6]:
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(5, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)
+    #             elif labels[i] in [6]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(5, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
 
-                elif labels[i] in [7]:
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(6, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)   
+    #             elif labels[i] in [7]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(6, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)   
 
-                elif labels[i] in [9]:
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(7, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)
+    #             elif labels[i] in [9]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(7, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
     
-                elif labels[i] in [11]:
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(8, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)
+    #             elif labels[i] in [11]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(8, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
 
-                elif labels[i] in [13]:
-                    labels = tf.Variable(labels)
-                    labels[i].assign(tf.constant(9, shape=(), dtype=tf.int64))
-                    labels = tf.convert_to_tensor(labels)
+    #             elif labels[i] in [13]:
+    #                 labels = tf.Variable(labels)
+    #                 labels[i].assign(tf.constant(9, shape=(), dtype=tf.int64))
+    #                 labels = tf.convert_to_tensor(labels)
             
-            # print(labels)
-        return ds
+    #         # print(labels)
+    #     return ds
+
+    def relabel(self, features, labels):
+        # 將 label= 4, 8, 10, 14, 12 改成 10 (benign)
+        labels = tf.numpy_function(self.relabel_func, [labels], tf.int64)
+        return features, labels   
+
+    def relabel_func(self, labels):
+        labels = np.where(labels == 4, 10, labels)
+        labels = np.where(labels == 8, 10, labels)
+        labels = np.where(labels == 10, 10, labels)
+        labels = np.where(labels == 14, 10, labels)
+        labels = np.where(labels == 12, 10, labels)
+        labels = np.where(labels == 5, 4, labels)
+        labels = np.where(labels == 6, 5, labels)
+        labels = np.where(labels == 7, 6, labels)
+        labels = np.where(labels == 9, 7, labels)
+        labels = np.where(labels == 11, 8, labels)
+        labels = np.where(labels == 13, 9, labels)
+        return labels
+
 
     # old
     def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
@@ -208,19 +348,23 @@ class TF(object):
         )
         ds = ds.batch(self._batch_size, drop_remainder=False)
 
+        # ds = ds.map(self.relabel)
+
         if use_cache:
             ds = ds.cache(cache_path)
 
 
         ds = ds.prefetch(buffer_size=AUTOTUNE)
+
         return ds
 
     
 
     def _init_input_ds(self):
         self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/train/')
-
-        self._train_ds = self.relabel(self._train_ds)
+        print('train ds size: ', len(list(self._train_ds)))
+        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/valid/')
+        print('valid ds size: ', len(list(self._valid_ds)))
 
         # check
         cnt = 0
@@ -230,11 +374,6 @@ class TF(object):
             if cnt == 3:
                 break
 
-        print('train ds size: ', len(list(self._train_ds)))
-        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/valid/')
-
-        self._valid_ds = self.relabel(self._valid_ds)
-        print('valid ds size: ', len(list(self._valid_ds)))
         
         # Use tqdm to create a progress bar
         progress_bar = tqdm(total=self.client_num, desc="Initializing Input DS", unit="client")
@@ -302,6 +441,11 @@ class TF(object):
             # 建立每個 client 的 model
             for i in range(self.client_num):
                 self.clients[i].model = self._pbcnn()
+        elif self._model_type == 'resnet':
+            resnet_model = ResNetModel(pkt_num= 5, pkt_bytes= 64, num_class=11)
+            self._model = resnet_model.build_resnet_model()
+            for i in range(self.client_num):
+                self.clients[i].model = resnet_model.build_resnet_model()
         else:
             self._model = self._enhanced_pbcnn()
             for i in range(self.client_num):
@@ -317,8 +461,6 @@ class TF(object):
         else:
             print('QQ')
             test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/test/')
-        
-        test_ds = self.relabel(test_ds)
 
         y_pred, y_true = [], []
         for features, labels in test_ds:
@@ -444,6 +586,12 @@ class TF(object):
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
                     for features, labels in self.clients[i].ds:
+
+                        # for i in range(0, 256):
+                        #     for j in range(0, 5):
+                        #         print(features[i][j])
+                        
+
                         loss, match = self.clients[i].train_step(features, labels)
                         self.clients[i].total_loss += loss
                         self.clients[i].sample_count += len(features)
@@ -484,6 +632,65 @@ class TF(object):
         
         # 底下的 history 應該不會用到就先沒加
 
+        '''
+        try:
+            for epoch in range(1 if DEBUG else epochs):
+                logging.info(f'Epoch {epoch}/{epochs}')
+
+                sample_count = 0
+                total_loss = 0.
+                total_match = 0
+
+                for features, labels in self._train_ds:
+                    if DEBUG and steps > 300:
+                        break
+
+                    loss, match = self._train_step(features, labels)  # batch loss
+                    total_loss += loss
+                    sample_count += len(features)
+                    avg_train_loss = total_loss / sample_count
+                    self._train_losses.append(avg_train_loss)
+
+                    total_match += match
+                    avg_train_acc = total_match / sample_count
+                    self._train_acc.append(avg_train_acc)
+
+                    if log_freq > 0 and steps % log_freq == 0:
+                        logging.info('Epoch %d, step %d, avg loss %.6f, avg acc %.6f'
+                                     % (epoch, steps, avg_train_loss, avg_train_acc))
+
+                    if valid_freq > 0 and steps % valid_freq == 0:
+                        logging.info(f'===> Step: {steps}, evaluating on VALID...')
+                        valid_loss, valid_acc = [], []
+                        valid_cnt = 0
+                        for fs, ls in self._valid_ds:
+                            lo, ma = self._test_step(fs, ls)
+                            valid_loss.append(lo)
+                            valid_acc.append(ma)
+                            valid_cnt += len(fs)
+
+                        avg_valid_loss = np.array(valid_loss).sum() / valid_cnt
+                        avg_valid_acc = np.array(valid_acc).sum() / valid_cnt
+                        logging.info('===> VALID avg loss: %.6f, avg acc: %.6f' % (avg_valid_loss, avg_valid_acc))
+                        self._valid_losses.append(avg_valid_loss)
+                        self._valid_acc.append(avg_valid_acc)
+                    steps += 1
+        except Exception as e:
+            raise Exception(e)
+        finally:
+            history = {
+                'epoch_steps': steps / epochs,
+                'valid_freq': valid_freq,
+                'train_loss': self._train_losses,
+                'train_acc': self._train_acc,
+                'valid_loss': self._valid_losses,
+                'valid_acc': self._valid_acc
+            }
+
+            with open(history_path, 'wb') as fw:
+                pickle.dump(history, fw)
+        
+        '''
 
         if os.path.exists(model_dir):
             shutil.rmtree(model_dir)
@@ -495,7 +702,7 @@ class TF(object):
 
 def main(_):
     s = time.time()
-    demo = TF(pkt_bytes=64, pkt_num=5, model='pbcnn', # origin: pkt_byte: 256, pkt_num = 20
+    demo = TF(pkt_bytes=64, pkt_num=5, model='resnet', # origin: pkt_byte: 256, pkt_num = 20
             # demo data
             #   train_path='../data/demo_tfrecord/_train',
             #   valid_path='../data/demo_tfrecord/_valid',
@@ -518,7 +725,7 @@ def main(_):
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=3)
+    demo.train(epochs=5)
     print(demo._predict())
     logging.info(f'cost: {(time.time() - s) / 60} min')
 
