@@ -149,7 +149,7 @@ class TF(object):
         self._batch_size = batch_size
         self._num_class = num_class
 
-        self._prefix = 'resnet_64_5_5epoch'
+        self._prefix = 'resnet_64_5'
         if not os.path.exists(self._prefix):
             os.makedirs(self._prefix)
         
@@ -162,31 +162,8 @@ class TF(object):
             self.clients.append(Client())
 
     # gpu
-    # def __new__(cls, *args, **kwargs):
-    #     # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-    #     logging.set_verbosity(logging.INFO)
-    #     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
-
-    #     tf.debugging.set_log_device_placement(False)
-    #     tf.config.set_soft_device_placement(True)
-    #     # tf.config.threading.set_inter_op_parallelism_threads(0)
-    #     # tf.config.threading.set_intra_op_parallelism_threads(0)
-
-    #     gpus = tf.config.list_physical_devices('GPU')
-    #     if gpus:
-    #         try:
-    #             tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-    #             tf.config.experimental.set_memory_growth(gpus[0], True)
-    #         except RuntimeError as e:
-    #             # Visible devices must be set before GPUs have been initialized
-    #             print(e)
-    #     return super().__new__(cls)
-
-    # cpu
-    
-
     def __new__(cls, *args, **kwargs):
-        os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+        # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
         logging.set_verbosity(logging.INFO)
         tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
 
@@ -195,7 +172,30 @@ class TF(object):
         # tf.config.threading.set_inter_op_parallelism_threads(0)
         # tf.config.threading.set_intra_op_parallelism_threads(0)
 
+        gpus = tf.config.list_physical_devices('GPU')
+        if gpus:
+            try:
+                tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
+                tf.config.experimental.set_memory_growth(gpus[0], True)
+            except RuntimeError as e:
+                # Visible devices must be set before GPUs have been initialized
+                print(e)
         return super().__new__(cls)
+
+    # cpu
+    
+
+    # def __new__(cls, *args, **kwargs):
+    #     os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+    #     logging.set_verbosity(logging.INFO)
+    #     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
+
+    #     tf.debugging.set_log_device_placement(False)
+    #     tf.config.set_soft_device_placement(True)
+    #     # tf.config.threading.set_inter_op_parallelism_threads(0)
+    #     # tf.config.threading.set_intra_op_parallelism_threads(0)
+
+    #     return super().__new__(cls)
 
     # old filter 4, 8, 10, 14
     def _parse_sparse_example(self, example_proto):
@@ -725,7 +725,7 @@ def main(_):
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=5)
+    demo.train(epochs=3)
     print(demo._predict())
     logging.info(f'cost: {(time.time() - s) / 60} min')
 

@@ -457,7 +457,9 @@ class TF(object):
     def _init_(self):
         self._optimizer = K.optimizers.Adam()
         # self._loss_func = K.losses.sparse_categorical_crossentropy
-        self._loss_func = tf.nn.sparse_softmax_cross_entropy_with_logits
+        # self._loss_func = tf.nn.sparse_softmax_cross_entropy_with_logits
+        # self._loss_func = K.losses.mean_squared_error
+        self._loss_func = K.losses.categorical_crossentropy
         self._acc_func = K.metrics.sparse_categorical_accuracy
 
         self._train_losses = []

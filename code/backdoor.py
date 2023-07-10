@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import tensorflow as tf
+#backdoor
+import random
 from absl import logging, app
 from sklearn.metrics import classification_report
 from tensorflow import keras as K
@@ -389,6 +391,13 @@ class TF(object):
         
 
 
+    #backdoor attack function
+    #def backdoor_attack():
+    #    for i in range(0,256):
+    #        for j in range(0,5):
+    #            if random.random()<POISON_DATA_RATE:
+    #                features[i][j][0]*=255
+        
 
     def _init_model(self):
         if self._model_type == 'pbcnn':
@@ -539,10 +548,19 @@ class TF(object):
                     # 訓練的方式跟原本的 PBCNN 相同
                     for features, labels in self.clients[i].ds: # 256 * 5 * 64
                         
-                        print(len(features)) # 都是256
+                        #print(len(features)) # 都是256
                         #  for i in range(0, 256): # batch
                         #     for j in range(0, 5): # packet
                         #         print(features[i][j]) # packet內容
+                        for j in range(0,256):
+                            for k in range(0,5):
+                                updates=[1]
+                                indices=[[0]]
+                                #features[j][k].tensor_scatter_nd_update(features[j][k],indices,updates)
+                                #features[j][k][0]*=255
+                                #features[j][k][0]=255
+                                #features[j][k][0]/=255
+                                print(features[j][k])
                         
 
                         loss, match = self.clients[i].train_step(features, labels)
