@@ -170,6 +170,7 @@ class TF(object):
         sparse_features = batch_sample['sparse']
         labels = batch_sample['label']
         
+        
 
         sparse_features = tf.sparse.slice(sparse_features, start=[0, 0], size=[self._pkt_num, self._pkt_bytes])
         dense_features = tf.sparse.to_dense(sparse_features)
@@ -328,6 +329,7 @@ class TF(object):
         cnt = 0
         for features, labels in self._train_ds:
             print(labels)
+            self._train_ds
             cnt += 1
             if cnt == 3:
                 break
@@ -392,11 +394,13 @@ class TF(object):
 
 
     #backdoor attack function
-    #def backdoor_attack():
-    #    for i in range(0,256):
-    #        for j in range(0,5):
-    #            if random.random()<POISON_DATA_RATE:
-    #                features[i][j][0]*=255
+    def modify_feature(self,feature):
+        mod_num=1
+        for i in range(0, 256):
+            for j in range(0, 5):
+                feature[i][j][0]=mod_num
+        return feature          #回傳更改值
+        
         
 
     def _init_model(self):
@@ -552,17 +556,17 @@ class TF(object):
                         #  for i in range(0, 256): # batch
                         #     for j in range(0, 5): # packet
                         #         print(features[i][j]) # packet內容
-                        for j in range(0,256):
-                            for k in range(0,5):
-                                updates=[1]
-                                indices=[[0]]
-                                #features[j][k].tensor_scatter_nd_update(features[j][k],indices,updates)
-                                #features[j][k][0]*=255
-                                #features[j][k][0]=255
-                                #features[j][k][0]/=255
-                                print(features[j][k])
-                        
-
+                        #for j in range(0,256):
+                            #for k in range(0,5):
+                                #features[j][k]=tf.tensor_scatter_nd_update(features[j][k],indices,updates)
+                                #print(labels)
+                                #print(features[j][k])
+                                #features[j][k]=tf.Variable(features[j][k])
+                                #features[j][k][:1:1].assign(1)
+                        data_tmp=tf.data.Dataset.from_tensor_slices(features)
+                        features=data_tmp.map(lambda x, y:(tf.py_function(self.modify_feature, [x], [tf.float32],y)))
+                        #self.clients[i].ds=self.clients[i].ds.map(lambda x, y:(tf.py_function(self.modify_feature, [x], [tf.float32],y)))
+                             
                         loss, match = self.clients[i].train_step(features, labels)
                         self.clients[i].total_loss += loss
                         self.clients[i].sample_count += len(features)

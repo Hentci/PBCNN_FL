@@ -1,0 +1,151 @@
+64 5
+2023-07-10 19:34:48.234372: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-07-10 19:34:48.270968: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-07-10 19:34:48.271005: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-07-10 19:34:48.271013: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-07-10 19:34:48.271095: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.199.2
+2023-07-10 19:34:48.271117: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.199.2
+2023-07-10 19:34:48.271124: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.199.2
+2023-07-10 19:34:48.271352: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-07-10 19:34:48.298447: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-07-10 19:34:48.305652: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f73f4000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-07-10 19:34:48.305684: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 19:34:48.441208 140147336766656 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0710 19:34:48.443822 140147336766656 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 19:34:58.130832 140147336766656 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10  3 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10  7 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+  1 10 10 10 10 10 10 10 10 10 10 10 10 10 10  1 10 10 10 10 10 10 10 10
+ 10 10  1 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:21<03:17, 21.89s/client]Initializing Input DS: 100%|██████████| 10/10 [00:21<00:00,  2.19s/client]
+Epoch 0/3
+client  0
+Epoch 0, step 4148, avg loss 0.036889, avg acc 0.994985
+client  1
+Epoch 0, step 4148, avg loss 0.036868, avg acc 0.995065
+client  2
+Epoch 0, step 4148, avg loss 0.036861, avg acc 0.994992
+client  3
+Epoch 0, step 4148, avg loss 0.036887, avg acc 0.995030
+client  4
+Epoch 0, step 4148, avg loss 0.036811, avg acc 0.995080
+client  5
+Epoch 0, step 4148, avg loss 0.036872, avg acc 0.995011
+client  6
+Epoch 0, step 4148, avg loss 0.037047, avg acc 0.994959
+client  7
+Epoch 0, step 4148, avg loss 0.036793, avg acc 0.995027
+client  8
+Epoch 0, step 4148, avg loss 0.036755, avg acc 0.995123
+client  9
+Epoch 0, step 4148, avg loss 0.036959, avg acc 0.995008
+Global model ===> VALID avg loss: 14479526827.371624, avg acc: 0.999693
+Epoch 1/3
+client  0
+Epoch 1, step 4148, avg loss 954414032.601736, avg acc 0.999727
+client  1
+Epoch 1, step 4148, avg loss 891950992.169720, avg acc 0.999745
+client  2
+Epoch 1, step 4148, avg loss 841501910.773385, avg acc 0.999738
+client  3
+Epoch 1, step 4148, avg loss 701949648.765604, avg acc 0.999759
+client  4
+Epoch 1, step 4148, avg loss 737758573.855352, avg acc 0.999736
+client  5
+Epoch 1, step 4148, avg loss 784172615.837994, avg acc 0.999734
+client  6
+Epoch 1, step 4148, avg loss 927702582.187078, avg acc 0.999727
+client  7
+Epoch 1, step 4148, avg loss 767163897.334619, avg acc 0.999761
+client  8
+Epoch 1, step 4148, avg loss 695957393.280617, avg acc 0.999727
+client  9
+Epoch 1, step 4148, avg loss 847184656.293153, avg acc 0.999746
+Global model ===> VALID avg loss: 14185070141197489537024.000000, avg acc: 0.999790
+Epoch 2/3
+client  0
+Epoch 2, step 4148, avg loss nan, avg acc 0.000757
+client  1
+Epoch 2, step 4148, avg loss nan, avg acc 0.002173
+client  2
+Epoch 2, step 4148, avg loss nan, avg acc 0.003685
+client  3
+Epoch 2, step 4148, avg loss nan, avg acc 0.006286
+client  4
+Epoch 2, step 4148, avg loss nan, avg acc 0.007971
+client  5
+Epoch 2, step 4148, avg loss nan, avg acc 0.004834
+client  6
+Epoch 2, step 4148, avg loss nan, avg acc 0.004604
+client  7
+Epoch 2, step 4148, avg loss nan, avg acc 0.006286
+client  8
+Epoch 2, step 4148, avg loss nan, avg acc 0.001958
+client  9
+Epoch 2, step 4148, avg loss nan, avg acc 0.003397
+Global model ===> VALID avg loss: nan, avg acc: 0.000284
+2023-07-10 21:06:07.532168: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0710 21:06:07.980136 140147336766656 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0710 21:06:08.207692 140147336766656 64_5_run.py:649] After training 3 epochs, save model to bytes_64_num_5_pbcnn/models_tf, train logs to bytes_64_num_5_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0710 21:06:08.698425 140147336766656 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 21:06:08.707953 140147336766656 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:2128: UserWarning: labels size, 11, does not match size of target_names, 15
+  len(labels), len(target_names)
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'accuracy', 'macro avg', 'weighted avg'])
+(2.5e-05, 2.5e-05, 0.090909, 5.1e-05, {'ftp-bruteforce': {'precision': 0.000279160121985999, 'recall': 1.0, 'f1-score': 0.000558164426722546, 'support': 1481}, 'ddos-hoic': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16163}, 'dos-goldeneye': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1368}, 'ddos-loic-http': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16483}, 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1452}, 'dos-hulk': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 8142}, 'bot': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1417}, 'ssh-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 707}, 'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 303}, 'bruteforce-web': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 5256200}, 'accuracy': 0.000279160121985999, 'macro avg': {'precision': 2.5378192907818093e-05, 'recall': 0.09090909090909091, 'f1-score': 5.0742220611140544e-05, 'support': 5305199}, 'weighted avg': {'precision': 7.793037370723785e-08, 'recall': 0.000279160121985999, 'f1-score': 1.5581724945211114e-07, 'support': 5305199}})
+I0710 21:17:28.630841 140147336766656 64_5_run.py:679] cost: 102.67329896291098 min

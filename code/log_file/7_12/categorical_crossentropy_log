@@ -1,0 +1,102 @@
+64 5
+2023-07-10 14:33:33.279048: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-07-10 14:33:33.312973: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-07-10 14:33:33.313000: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-07-10 14:33:33.313006: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-07-10 14:33:33.313075: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.199.2
+2023-07-10 14:33:33.313094: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.182.3
+2023-07-10 14:33:33.313099: E tensorflow/stream_executor/cuda/cuda_diagnostics.cc:313] kernel version 470.182.3 does not match DSO version 470.199.2 -- cannot find working devices in this configuration
+2023-07-10 14:33:33.313317: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-07-10 14:33:33.329378: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-07-10 14:33:33.334707: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fed08000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-07-10 14:33:33.334734: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 14:33:33.489143 140667532543168 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0710 14:33:33.491752 140667532543168 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 14:33:43.506902 140667532543168 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10  3 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10  7 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+  1 10 10 10 10 10 10 10 10 10 10 10 10 10 10  1 10 10 10 10 10 10 10 10
+ 10 10  1 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:20<03:08, 20.94s/client]Initializing Input DS: 100%|██████████| 10/10 [00:20<00:00,  2.09s/client]
+Epoch 0/3
+client  0
+Epoch 0, step 4148, avg loss 0.002892, avg acc 0.999223
+client  1
+Epoch 0, step 4148, avg loss 0.002821, avg acc 0.999208
+client  2
+Epoch 0, step 4148, avg loss 0.002920, avg acc 0.999183
+client  3
+Epoch 0, step 4148, avg loss 0.002917, avg acc 0.999170
+client  4
+Epoch 0, step 4148, avg loss 0.002855, avg acc 0.999220
+client  5
+Epoch 0, step 4148, avg loss 0.002928, avg acc 0.999187
+client  6
+Epoch 0, step 4148, avg loss 0.002818, avg acc 0.999226
+client  7
+Epoch 0, step 4148, avg loss 0.002817, avg acc 0.999221
+client  8
+Epoch 0, step 4148, avg loss 0.002828, avg acc 0.999215
+client  9
+Epoch 0, step 4148, avg loss 0.002756, avg acc 0.999232
+Traceback (most recent call last):
+  File "64_5_run.py", line 683, in <module>
+    app.run(main)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "64_5_run.py", line 678, in main
+    demo.train(epochs=3)
+  File "64_5_run.py", line 573, in train
+    lo, ma = self._test_step(fs, ls)
+  File "64_5_run.py", line 482, in _test_step
+    loss = self._loss_func(labels, y_predicts)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/keras/losses.py", line 1527, in categorical_crossentropy
+    return K.categorical_crossentropy(y_true, y_pred, from_logits=from_logits)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/keras/backend.py", line 4561, in categorical_crossentropy
+    target.shape.assert_is_compatible_with(output.shape)
+  File "/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/framework/tensor_shape.py", line 1117, in assert_is_compatible_with
+    raise ValueError("Shapes %s and %s are incompatible" % (self, other))
+ValueError: Shapes (256,) and (256, 11) are incompatible

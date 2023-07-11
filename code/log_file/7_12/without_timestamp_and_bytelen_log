@@ -1,0 +1,87 @@
+64 5
+2023-07-10 18:15:13.214858: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-07-10 18:15:13.260766: E tensorflow/stream_executor/cuda/cuda_driver.cc:313] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-07-10 18:15:13.260803: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: user-SYS-7049GP-TRT
+2023-07-10 18:15:13.260811: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: user-SYS-7049GP-TRT
+2023-07-10 18:15:13.261097: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 470.199.2
+2023-07-10 18:15:13.261122: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 470.199.2
+2023-07-10 18:15:13.261128: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 470.199.2
+2023-07-10 18:15:13.261779: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-07-10 18:15:13.294442: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-07-10 18:15:13.300892: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7ff828000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-07-10 18:15:13.300942: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 18:15:13.457980 140715318506688 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0710 18:15:13.460180 140715318506688 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 18:16:35.398818 140715318506688 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10  3 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10  7 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+  1 10 10 10 10 10 10 10 10 10 10 10 10 10 10  1 10 10 10 10 10 10 10 10
+ 10 10  1 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:21<03:15, 21.75s/client]Initializing Input DS: 100%|██████████| 10/10 [00:21<00:00,  2.17s/client]
+Epoch 0/3
+client  0
+Epoch 0, step 4148, avg loss 0.003070, avg acc 0.999200
+client  1
+Epoch 0, step 4148, avg loss 0.002878, avg acc 0.999229
+client  2
+Epoch 0, step 4148, avg loss 0.002882, avg acc 0.999210
+client  3
+Epoch 0, step 4148, avg loss 0.002844, avg acc 0.999241
+client  4
+Epoch 0, step 4148, avg loss 0.002907, avg acc 0.999227
+client  5
+Epoch 0, step 4148, avg loss 0.002949, avg acc 0.999223
+client  6
+Epoch 0, step 4148, avg loss 0.003133, avg acc 0.999187
+client  7
+Epoch 0, step 4148, avg loss 0.003071, avg acc 0.999174
+client  8
+Epoch 0, step 4148, avg loss 0.003042, avg acc 0.999193
+client  9
+Epoch 0, step 4148, avg loss 0.003035, avg acc 0.999217
+Global model ===> VALID avg loss: 2267713.229497, avg acc: 0.999918
+Epoch 1/3
+client  0
+Epoch 1, step 4148, avg loss 117892.145190, avg acc 0.999927
+client  1

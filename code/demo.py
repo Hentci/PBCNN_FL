@@ -301,7 +301,7 @@ class TF(object):
         )
         ds = ds.batch(self._batch_size, drop_remainder=False)
 
-        # ds = ds.map(self.relabel)
+        ds = ds.map(self.relabel)
 
         if use_cache:
             ds = ds.cache(cache_path)
@@ -314,9 +314,9 @@ class TF(object):
     
 
     def _init_input_ds(self):
-        self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/train/')
+        self._train_ds = self._generate_ds(self._train_path, use_cache=False, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/train/')
         print('train ds size: ', len(list(self._train_ds)))
-        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/valid/')
+        self._valid_ds = self._generate_ds(self._valid_path, use_cache=False, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/valid/')
         print('valid ds size: ', len(list(self._valid_ds)))
 
         # check
@@ -408,7 +408,7 @@ class TF(object):
             test_ds = self._generate_ds(data_dir)
         else:
             print('QQ')
-            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/test/')
+            test_ds = self._generate_ds(self._test_path, use_cache=False, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/test/')
 
         y_pred, y_true = [], []
         for features, labels in test_ds:
@@ -485,15 +485,9 @@ class TF(object):
     def weight_scaling_factor(self, client):
         # 算 scaling factor
         global_count = len(list(self._train_ds))
-        local_count = client.sample_count / self._batch_size
-        
-        print("heh, global count: ", global_count)
-        print("heh, local_count: ", local_count)
-        print(local_count/global_count)
-
+        local_count = client.sample_count
         return local_count/global_count
     
-    # old
     def scale_model_weights(self, weight, scalar):
         # 把 local 訓練後的 model weight 乘上 scaling factor
         weight_final = []
@@ -509,25 +503,6 @@ class TF(object):
             layer_mean = tf.math.reduce_sum(grad_list_tuple, axis=0)
             avg_grad.append(layer_mean)
         return avg_grad
-
-    # ----------------------------------------------------------------------------
-    # def sum_scaled_weights(self, scaled_weight_list):
-    #     # Initialize the average weights with zeros
-    #     avg_weights = [tf.zeros_like(weight) for weight in scaled_weight_list[0]]
-
-    #     # Sum the scaled weights from all clients
-    #     for scaled_weights in scaled_weight_list:
-    #         for i in range(len(avg_weights)):
-    #             avg_weights[i] += scaled_weights[i]
-
-    #     # Divide the summed weights by the number of clients to get the average
-    #     num_clients = len(scaled_weight_list)
-    #     avg_weights = [weight / num_clients for weight in avg_weights]
-
-    #     return avg_weights
-    
-    # def scale_model_weights(self, weights, scaling_factor):
-    #     return [np.multiply(weight, scaling_factor) for weight in weights]
 
     def train(self,
               epochs,
@@ -558,24 +533,16 @@ class TF(object):
                 steps = 0
                 avg_train_loss = 0.
                 avg_train_acc = 0.
-
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
-                    # print(self.clients[i].ds)
+                    print(self.clients[i].ds)
                     for features, labels in self.clients[i].ds:
-                        
-                        # batch_size x packet_num x packet_byte
-                        # print(np.array(features).shape)
 
-                        # for batch_num in range(self._batch_size):
-                        #     for packet_num in range(self._pkt_num):
-                        #         for byte in range(self._pkt_bytes):
                         
 
                         loss, match = self.clients[i].train_step(features, labels)
                         self.clients[i].total_loss += loss
                         self.clients[i].sample_count += len(features)
-                        # print(self.clients[i].sample_count)
                         avg_train_loss = self.clients[i].total_loss / self.clients[i].sample_count
                         self.clients[i].train_losses.append(avg_train_loss)
 
@@ -583,10 +550,8 @@ class TF(object):
                         avg_train_acc = self.clients[i].total_match / self.clients[i].sample_count
                         self.clients[i].train_acc.append(avg_train_acc)
                         steps += 1
-                        
                 
                 print('Epoch %d, step %d, avg loss %.6f, avg acc %.6f' % (epoch, steps, avg_train_loss, avg_train_acc))
-
 
                 # 開始做 FedAvg
                 scaling_factor = self.weight_scaling_factor(self.clients[i])
@@ -687,9 +652,9 @@ def main(_):
     s = time.time()
     demo = TF(pkt_bytes=64, pkt_num=5, model='pbcnn', # origin: pkt_byte: 256, pkt_num = 20
             # demo data
-            #   train_path='../data/demo_tfrecord/_train',
-            #   valid_path='../data/demo_tfrecord/_valid',
-            #   test_path='../data/demo_tfrecord',
+              train_path='../data/demo_tfrecord/_train',
+              valid_path='../data/demo_tfrecord/_valid',
+              test_path='../data/demo_tfrecord',
             # real data
             #   train_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/train',
             #   valid_path='/trainingData/sage/CIC-IDS2018-byte/CIC-IDS-2018/to_tfrecord/valid',
@@ -699,9 +664,9 @@ def main(_):
             #   valid_path='/trainingData/sage/CIC-IDS2018/tfrecord/valid',
             #   test_path='/trainingData/sage/CIC-IDS2018/tfrecord/test',
             # castrate data
-              train_path='/trainingData/sage/CIC-IDS2018/castration/train',
-              valid_path='/trainingData/sage/CIC-IDS2018/castration/valid',
-              test_path='/trainingData/sage/CIC-IDS2018/castration/test',
+            #   train_path='/trainingData/sage/CIC-IDS2018/castration/train',
+            #   valid_path='/trainingData/sage/CIC-IDS2018/castration/valid',
+            #   test_path='/trainingData/sage/CIC-IDS2018/castration/test',
               batch_size=256,
               num_class=11)
     # There are two models can be choose, "pbcnn" and "en_pbcnn".

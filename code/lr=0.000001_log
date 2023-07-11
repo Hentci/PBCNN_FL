@@ -1,0 +1,179 @@
+2023-07-10 18:47:55.349355: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-07-10 18:47:55.413144: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-07-10 18:47:55.414089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 1 with properties: 
+pciBusID: 0000:af:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-07-10 18:47:55.414334: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-07-10 18:47:55.416002: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-07-10 18:47:55.417534: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2023-07-10 18:47:55.417782: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2023-07-10 18:47:55.419632: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2023-07-10 18:47:55.420519: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2023-07-10 18:47:55.424625: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-07-10 18:47:55.427724: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0, 1
+64 5
+2023-07-10 18:47:55.428632: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-07-10 18:47:55.462329: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-07-10 18:47:55.467534: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f4c68000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-07-10 18:47:55.467571: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-07-10 18:47:55.579542: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x10378c0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-07-10 18:47:55.579606: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 3090, Compute Capability 8.6
+2023-07-10 18:47:55.581379: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-07-10 18:47:55.581466: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-07-10 18:47:55.581494: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-07-10 18:47:55.581520: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2023-07-10 18:47:55.581543: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2023-07-10 18:47:55.581568: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2023-07-10 18:47:55.581592: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2023-07-10 18:47:55.581616: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-07-10 18:47:55.584582: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2023-07-10 18:47:55.584653: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-07-10 18:47:55.586612: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-07-10 18:47:55.586634: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2023-07-10 18:47:55.586644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2023-07-10 18:47:55.588540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 22568 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 3090, pci bus id: 0000:3b:00.0, compute capability: 8.6)
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 18:54:19.951121 139978980172992 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0710 18:54:19.954600 139978980172992 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 18:54:31.639130 139978980172992 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10  3 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10  7 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+  1 10 10 10 10 10 10 10 10 10 10 10 10 10 10  1 10 10 10 10 10 10 10 10
+ 10 10  1 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:19<02:56, 19.60s/client]Initializing Input DS: 100%|██████████| 10/10 [00:19<00:00,  1.96s/client]
+Epoch 0/3
+client  0
+2023-07-10 18:55:04.280076: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-07-10 18:56:51.203068: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Epoch 0, step 4148, avg loss 0.536666, avg acc 0.937957
+client  1
+Epoch 0, step 4148, avg loss 0.544932, avg acc 0.943595
+client  2
+Epoch 0, step 4148, avg loss 0.577176, avg acc 0.936315
+client  3
+Epoch 0, step 4148, avg loss 0.556483, avg acc 0.928866
+client  4
+Epoch 0, step 4148, avg loss 0.550855, avg acc 0.934276
+client  5
+Epoch 0, step 4148, avg loss 0.549166, avg acc 0.934369
+client  6
+Epoch 0, step 4148, avg loss 0.550543, avg acc 0.934050
+client  7
+Epoch 0, step 4148, avg loss 0.481713, avg acc 0.927559
+client  8
+Epoch 0, step 4148, avg loss 0.553956, avg acc 0.935381
+client  9
+Epoch 0, step 4148, avg loss 0.562093, avg acc 0.937941
+Global model ===> VALID avg loss: 9090195290.421289, avg acc: 0.990725
+Epoch 1/3
+client  0
+Epoch 1, step 4148, avg loss 136131037.011090, avg acc 0.990758
+client  1
+Epoch 1, step 4148, avg loss 99253153.605705, avg acc 0.990635
+client  2
+Epoch 1, step 4148, avg loss 98596134.913934, avg acc 0.990716
+client  3
+Epoch 1, step 4148, avg loss 97572897.055931, avg acc 0.990766
+client  4
+Epoch 1, step 4148, avg loss 97820569.888862, avg acc 0.990772
+client  5
+Epoch 1, step 4148, avg loss 96036015.161041, avg acc 0.990926
+client  6
+Epoch 1, step 4148, avg loss 97642435.210704, avg acc 0.990752
+client  7
+Epoch 1, step 4148, avg loss 96655837.088476, avg acc 0.990799
+client  8
+Epoch 1, step 4148, avg loss 98241368.965767, avg acc 0.990743
+client  9
+Epoch 1, step 4148, avg loss 131105757.688042, avg acc 0.990670
+Global model ===> VALID avg loss: 6589218551047244800.000000, avg acc: 0.990725
+Epoch 2/3
+client  0
+Epoch 2, step 4148, avg loss 415244118169528768.000000, avg acc 0.990758
+client  1
+Epoch 2, step 4148, avg loss 421422649482930688.000000, avg acc 0.990635
+client  2
+Epoch 2, step 4148, avg loss 418584675759426496.000000, avg acc 0.990716
+client  3
+Epoch 2, step 4148, avg loss 414132852437036672.000000, avg acc 0.990766
+client  4
+Epoch 2, step 4148, avg loss 415265100876065152.000000, avg acc 0.990772
+client  5
+Epoch 2, step 4148, avg loss 407708117957708032.000000, avg acc 0.990926
+client  6
+Epoch 2, step 4148, avg loss 414370532288693184.000000, avg acc 0.990752
+client  7
+Epoch 2, step 4148, avg loss 410338317910827328.000000, avg acc 0.990799
+client  8
+Epoch 2, step 4148, avg loss 417080071310966784.000000, avg acc 0.990743
+client  9
+Epoch 2, step 4148, avg loss 421881542900119616.000000, avg acc 0.990670
+Global model ===> VALID avg loss: 28287606975080178928846897152.000000, avg acc: 0.990725
+2023-07-10 19:57:41.074406: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0710 19:57:41.604380 139978980172992 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0710 19:57:41.873035 139978980172992 64_5_run.py:649] After training 3 epochs, save model to bytes_64_num_5_pbcnn/models_tf, train logs to bytes_64_num_5_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0710 19:57:42.479207 139978980172992 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0710 19:57:42.492944 139978980172992 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:2128: UserWarning: labels size, 11, does not match size of target_names, 15
+  len(labels), len(target_names)
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'accuracy', 'macro avg', 'weighted avg'])
+(0.090069, 0.090069, 0.090909, 0.090487, {'ftp-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1481}, 'ddos-hoic': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16163}, 'dos-goldeneye': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1368}, 'ddos-loic-http': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16483}, 'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1452}, 'dos-hulk': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 8142}, 'bot': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1417}, 'ssh-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 707}, 'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 303}, 'bruteforce-web': {'precision': 0.9907639656872438, 'recall': 1.0, 'f1-score': 0.9953605578200388, 'support': 5256200}, 'accuracy': 0.9907639656872438, 'macro avg': {'precision': 0.09006945142611307, 'recall': 0.09090909090909091, 'f1-score': 0.09048732343818534, 'support': 5305199}, 'weighted avg': {'precision': 0.9816132357043139, 'recall': 0.9907639656872438, 'f1-score': 0.9861673735544488, 'support': 5305199}})
+I0710 20:07:04.707569 139978980172992 64_5_run.py:679] cost: 79.1559880455335 min
