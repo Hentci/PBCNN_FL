@@ -20,3 +20,20 @@ new_label_maps = {
     'ddos-loic-udp': 9,
     'infiltration': 10
 }
+
+
+ftp-bruteforce :  2841
+ddos-hoic :  32816
+dos-goldeneye :  2923
+ddos-loic-http :  32575
+sql-injection :  4 // 濾掉
+dos-hulk :  2772
+bot :  16610
+ssh-bruteforce :  2812
+bruteforce-xss :  22 // 濾掉
+dos-slowhttptest :  2853
+bruteforce-web :  60 // 濾掉
+dos-slowloris :  1414
+benign :  10522103
+ddos-loic-udp :  577
+infiltration :  0  // 濾掉

@@ -275,10 +275,10 @@ class TF(object):
         return features, labels   
 
     def relabel_func(self, labels):
-        labels = np.where(labels == 4, 10, labels)
-        labels = np.where(labels == 8, 10, labels)
-        labels = np.where(labels == 10, 10, labels)
-        labels = np.where(labels == 14, 10, labels)
+        # labels = np.where(labels == 4, 10, labels)
+        # labels = np.where(labels == 8, 10, labels)
+        # labels = np.where(labels == 10, 10, labels)
+        # labels = np.where(labels == 14, 10, labels)
         labels = np.where(labels == 12, 10, labels)
         labels = np.where(labels == 5, 4, labels)
         labels = np.where(labels == 6, 5, labels)
@@ -290,7 +290,7 @@ class TF(object):
 
 
     # old
-    def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
+    def _generate_ds(self, path_dir, use_cache=False, cache_path = None, ds_type = None):
         assert os.path.isdir(path_dir)
         ds = tf.data.Dataset.list_files(os.path.join(path_dir, '*.tfrecord'), shuffle=True)
         ds = ds.interleave(
@@ -299,9 +299,56 @@ class TF(object):
             block_length=8,
             num_parallel_calls=AUTOTUNE
         )
+
+
+        if ds_type == 'valid':
+
+            ''' count instance:
+            '''
+            label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+                    'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+                    'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+
+            # filter label
+            ds = ds.filter(lambda feature, label: tf.not_equal(label, 4) and tf.not_equal(label, 8) and tf.not_equal(label, 10) and tf.not_equal(label, 14))
+            print('filter 1 ok')
+
+            # filter benign
+            tmp = ds.take(10000) # 拿資料前面10000筆
+            ds = ds.filter(lambda feature, label: tf.not_equal(label, 12)) # 濾掉全部dataset中的benign
+            ds = ds.concatenate(tmp) # 再把一開始留著的tmp接上來
+            print('filter 2 ok')
+        # else:
+        #     # filter benign
+        #     tmp = ds.take(50000) # 拿資料前面50000筆, benign總量共10522103
+        #     ds = ds.filter(lambda feature, label: tf.not_equal(label, 12)) # 濾掉全部dataset中的benign
+        #     ds = ds.concatenate(tmp) # 再把一開始留著的tmp接上來
+        #     print('filter 2 ok')
+
+            instances = [0] * 15
+            cnt = 0
+            for feature, label in ds:
+                # print(label)
+                cnt += 1
+                instances[int(label)] += 1
+                if(cnt % 1000 == 0):
+                    print(cnt)
+
+            for i in range(15):
+                print(label_names[i], ': ', instances[i])
+            
+            print('total = ', cnt)
+
+            # mapping label
+            ds = ds.map(self.relabel)
+            print('mapping ok')
+
+            ds = ds.shuffle(buffer_size=20000 ,seed = 42)
+            print('shuffle ok')
+
+
         ds = ds.batch(self._batch_size, drop_remainder=False)
 
-        # ds = ds.map(self.relabel)
 
         if use_cache:
             ds = ds.cache(cache_path)
@@ -314,9 +361,9 @@ class TF(object):
     
 
     def _init_input_ds(self):
-        self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/train/')
+        self._train_ds = self._generate_ds(self._train_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_filter_cache/train/')
         print('train ds size: ', len(list(self._train_ds)))
-        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/valid/')
+        self._valid_ds = self._generate_ds(self._valid_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_filter_cache/valid/', ds_type='valid')
         print('valid ds size: ', len(list(self._valid_ds)))
 
         # check
@@ -408,7 +455,7 @@ class TF(object):
             test_ds = self._generate_ds(data_dir)
         else:
             print('QQ')
-            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_new_label_cache/test/')
+            test_ds = self._generate_ds(self._test_path, use_cache=True, cache_path='/trainingData/sage/PBCNN/data/64_5_filter_cache/test/')
 
         y_pred, y_true = [], []
         for features, labels in test_ds:
@@ -419,9 +466,13 @@ class TF(object):
         y_true = np.concatenate(y_true)
         y_pred = np.concatenate(y_pred)
 
-        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-                       'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-                       'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+        # label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+        #                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+        #                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+
+
+        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'dos-hulk', 'bot', 'ssh-bruteforce', 'dos-slowhttptest', 
+                       'dos-slowloris', 'ddos-loic-udp', 'benign']
         
         # SQL, brute force xss , web, infiltration 丟掉
         # 縮減至11類
@@ -486,10 +537,10 @@ class TF(object):
         # 算 scaling factor
         global_count = len(list(self._train_ds))
         local_count = client.sample_count / self._batch_size
-        
-        print("heh, global count: ", global_count)
-        print("heh, local_count: ", local_count)
-        print(local_count/global_count)
+
+        # print("heh, global count: ", global_count)
+        # print("heh, local_count: ", local_count)
+        # print(local_count/global_count)
 
         return local_count/global_count
     
@@ -528,6 +579,23 @@ class TF(object):
     
     # def scale_model_weights(self, weights, scaling_factor):
     #     return [np.multiply(weight, scaling_factor) for weight in weights]
+    # -----------------------------------------------------------------------------
+
+    # TODO: numpy範例
+    def poison(self, features, labels):
+        # labels = tf.numpy_function(self.flip_label_func, [labels], tf.int64) 
+        features = tf.numpy_function(self.add_trigger_func, [features], tf.float32)
+        return features, labels
+    
+    def flip_label_func(self, labels):
+        labels = np.where(labels == 5, 10, labels) # example
+        return labels
+    
+    def add_trigger_func(self, features):
+        for i in range(self._batch_size):
+            for j in range(self._pkt_num):
+                features[i][j][0] = 1.0
+        return features
 
     def train(self,
               epochs,
@@ -562,14 +630,22 @@ class TF(object):
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
                     # print(self.clients[i].ds)
+
+                    # TODO
+                    # self.clients[i].ds = self.clients[i].ds.map(self.poison)
+
                     for features, labels in self.clients[i].ds:
                         
                         # batch_size x packet_num x packet_byte
                         # print(np.array(features).shape)
 
+                        # 確認有沒有改到feature
                         # for batch_num in range(self._batch_size):
-                        #     for packet_num in range(self._pkt_num):
-                        #         for byte in range(self._pkt_bytes):
+                        #     for packet_num in range(self._pkt_num): 
+                                
+                                # print(features[batch_num][packet_num])
+
+
                         
 
                         loss, match = self.clients[i].train_step(features, labels)
@@ -708,7 +784,7 @@ def main(_):
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=3)
+    demo.train(epochs=5)
     print(demo._predict())
     logging.info(f'cost: {(time.time() - s) / 60} min')
 

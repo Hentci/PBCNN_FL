@@ -394,14 +394,30 @@ class TF(object):
 
 
     #backdoor attack function
-    def modify_feature(self,feature):
-        mod_num=1
-        for i in range(0, 256):
-            for j in range(0, 5):
-                feature[i][j][0]=mod_num
-        return feature          #回傳更改值
-        
-        
+    def poison(self, features, labels):    # label可以放進來處理
+        features,labels = tf.numpy_function( self.add_trigger_func, [features,labels], [tf.float32,tf.int64])
+        #labels   = tf.numpy_function(self.flip_label_func ,[labels]  ,tf.int64  )
+        return features, labels          #回傳更改值
+    
+    def add_trigger_func(self, features,labels):  # POISON_DATA_RATE = 0.5
+        i = 0
+        for j in range(self._batch_size):
+            for k in range(self._pkt_num):
+                #if random.random() < POISON_DATA_RATE:
+                if random.random() < POISON_DATA_RATE and float(i / self._batch_size ) < POISON_DATA_RATE:
+                    i += 1
+                    #features[j][k][0] = 1.0  
+                    labels[j] = 9
+                    features[j][k][52] = 1.0  #urgent pointer: 52, 53
+                    features[j][k][53] = 1.0
+        return features, labels
+    
+    def flip_label_func(self, labels):
+        #labels = np.where(labels == 5, 10, labels) # example
+        labels=10
+        return labels
+
+
 
     def _init_model(self):
         if self._model_type == 'pbcnn':
@@ -436,9 +452,8 @@ class TF(object):
         y_true = np.concatenate(y_true)
         y_pred = np.concatenate(y_pred)
 
-        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
-                       'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
-                       'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'dos-hulk', 'bot', 'ssh-bruteforce', 'dos-slowhttptest', 
+                       'dos-slowloris', 'ddos-loic-udp', 'benign']
         
         # SQL, brute force xss , web, infiltration 丟掉
         # 縮減至11類
@@ -501,7 +516,7 @@ class TF(object):
     def weight_scaling_factor(self, client):
         # 算 scaling factor
         global_count = len(list(self._train_ds))
-        local_count = client.sample_count
+        local_count = client.sample_count / self._batch_size
         return local_count/global_count
     
     def scale_model_weights(self, weight, scalar):
@@ -550,22 +565,29 @@ class TF(object):
                 # TODO
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
+                    self.clients[i].ds=self.clients[i].ds.map(self.poison)
                     for features, labels in self.clients[i].ds: # 256 * 5 * 64
                         
                         #print(len(features)) # 都是256
                         #  for i in range(0, 256): # batch
                         #     for j in range(0, 5): # packet
                         #         print(features[i][j]) # packet內容
-                        #for j in range(0,256):
-                            #for k in range(0,5):
+                        #if i < ATTACK_RATE * 10:
+                        self.clients[i].ds=self.clients[i].ds.map(self.poison)  # ATTACK_RATE = 0.3
+                        print("labels: ")
+                        print(labels)
+                        print("labels end")
+                        #for j in range(self._batch_size):
+                        #    for k in range(self._pkt_num):
                                 #features[j][k]=tf.tensor_scatter_nd_update(features[j][k],indices,updates)
-                                #print(labels)
-                                #print(features[j][k])
                                 #features[j][k]=tf.Variable(features[j][k])
                                 #features[j][k][:1:1].assign(1)
-                        data_tmp=tf.data.Dataset.from_tensor_slices(features)
-                        features=data_tmp.map(lambda x, y:(tf.py_function(self.modify_feature, [x], [tf.float32],y)))
-                        #self.clients[i].ds=self.clients[i].ds.map(lambda x, y:(tf.py_function(self.modify_feature, [x], [tf.float32],y)))
+                        #data_tmp=tf.data.Dataset.from_tensor_slices(features)
+                        #features=data_tmp.map(lambda x:(tf.py_function(self.modify_feature, [x], [tf.float32]),data_tmp))
+                        #features[j][k]=tf.map_fn(lambda x: 0,features[j][k])
+                                #print(features[j][k])
+                        #print(features)
+                                #self.clients[i].ds=self.clients[i].ds.map(lambda x, y:(tf.py_function(self.modify_feature, [x], [tf.float32],y)))
                              
                         loss, match = self.clients[i].train_step(features, labels)
                         self.clients[i].total_loss += loss

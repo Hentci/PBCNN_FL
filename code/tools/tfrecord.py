@@ -45,57 +45,10 @@ AUTOTUNE = tf.data.experimental.AUTOTUNE
 #                 linewidths=0.5, cmap='PuBu', robust=True)
 #     plt.show()
 
-# ResNet6 :(
-class ResNetModel:
-    def __init__(self, pkt_num, pkt_bytes, num_class):
-        self._pkt_num = pkt_num
-        self._pkt_bytes = pkt_bytes
-        self._num_class = num_class
-
-    @staticmethod
-    def _residual_block(x, filters, kernel_size, strides=1, data_format='channels_last'):
-        shortcut = x
-        if strides != 1 or x.shape[-1] != filters:
-            shortcut = layers.Conv1D(filters=filters, kernel_size=1, strides=strides, padding='same',
-                                     data_format=data_format)(shortcut)
-            shortcut = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(shortcut)
-
-        x = layers.Conv1D(filters=filters, kernel_size=kernel_size, strides=strides, padding='same',
-                          data_format=data_format)(x)
-        x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
-        x = layers.Activation('relu')(x)
-
-        x = layers.Conv1D(filters=filters, kernel_size=kernel_size, strides=1, padding='same',
-                          data_format=data_format)(x)
-        x = layers.BatchNormalization(axis=-1 if data_format == 'channels_last' else 1)(x)
-
-        x = layers.Add()([shortcut, x])
-        x = layers.Activation('relu')(x)
-        return x
-
-    def build_resnet_model(self):
-        input_shape = (self._pkt_num, self._pkt_bytes)
-        inputs = Input(shape=input_shape)
-        y = layers.Permute((2, 1))(inputs)  # Transpose to match channels-last convention
-
-        y = self._residual_block(y, filters=64, kernel_size=3, strides=1, data_format='channels_last')
-        y = self._residual_block(y, filters=64, kernel_size=3, strides=1, data_format='channels_last')
-        y = self._residual_block(y, filters=64, kernel_size=3, strides=1, data_format='channels_last')
-
-        y = layers.GlobalAveragePooling1D(data_format='channels_last')(y)
-
-        y = layers.Dense(512, activation='relu')(y)
-        y = layers.Dense(256, activation='relu')(y)
-        y = layers.Dense(self._num_class, activation='softmax')(y)
-
-        model = Model(inputs=inputs, outputs=y)
-        return model
-
-
 class Client():
     def __init__(self):
         # 這邊是底下 TF 的 _init_() 來的
-        self.optimizer = K.optimizers.Adam()
+        self.optimizer = K.optimizers.Adam(learning_rate=0.00001)
         self.loss_func = tf.nn.sparse_softmax_cross_entropy_with_logits
         self.acc_func = K.metrics.sparse_categorical_accuracy
 
@@ -127,11 +80,11 @@ class TF(object):
 
     def __init__(self, pkt_bytes, pkt_num, model,
                  train_path, valid_path, test_path,
-                 batch_size=128, num_class=11):
+                 batch_size=256, num_class=11):
         model = model.lower().strip()
         assert pkt_bytes <= MAX_PKT_BYTES, f'Check pkt bytes less than max pkt bytes {MAX_PKT_BYTES}'
         assert pkt_num <= MAX_PKT_NUM, f'Check pkt num less than max pkt num {MAX_PKT_NUM}'
-        assert model in ('pbcnn', 'en_pbcnn', 'resnet'), f'Check model type'
+        assert model in ('pbcnn', 'en_pbcnn'), f'Check model type'
 
         self._pkt_bytes = pkt_bytes
         self._pkt_num = pkt_num
@@ -149,7 +102,7 @@ class TF(object):
         self._batch_size = batch_size
         self._num_class = num_class
 
-        self._prefix = 'resnet_64_5'
+        self._prefix = f'bytes_{pkt_bytes}_num_{pkt_num}_{model}'
         if not os.path.exists(self._prefix):
             os.makedirs(self._prefix)
         
@@ -162,31 +115,8 @@ class TF(object):
             self.clients.append(Client())
 
     # gpu
-    def __new__(cls, *args, **kwargs):
-        # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-        logging.set_verbosity(logging.INFO)
-        tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
-
-        tf.debugging.set_log_device_placement(False)
-        tf.config.set_soft_device_placement(True)
-        # tf.config.threading.set_inter_op_parallelism_threads(0)
-        # tf.config.threading.set_intra_op_parallelism_threads(0)
-
-        gpus = tf.config.list_physical_devices('GPU')
-        if gpus:
-            try:
-                tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-                tf.config.experimental.set_memory_growth(gpus[0], True)
-            except RuntimeError as e:
-                # Visible devices must be set before GPUs have been initialized
-                print(e)
-        return super().__new__(cls)
-
-    # cpu
-    
-
     # def __new__(cls, *args, **kwargs):
-    #     os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+    #     # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     #     logging.set_verbosity(logging.INFO)
     #     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
 
@@ -195,7 +125,30 @@ class TF(object):
     #     # tf.config.threading.set_inter_op_parallelism_threads(0)
     #     # tf.config.threading.set_intra_op_parallelism_threads(0)
 
+    #     gpus = tf.config.list_physical_devices('GPU')
+    #     if gpus:
+    #         try:
+    #             tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
+    #             tf.config.experimental.set_memory_growth(gpus[0], True)
+    #         except RuntimeError as e:
+    #             # Visible devices must be set before GPUs have been initialized
+    #             print(e)
     #     return super().__new__(cls)
+
+    # cpu
+    
+
+    def __new__(cls, *args, **kwargs):
+        os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+        logging.set_verbosity(logging.INFO)
+        tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)
+
+        tf.debugging.set_log_device_placement(False)
+        tf.config.set_soft_device_placement(True)
+        # tf.config.threading.set_inter_op_parallelism_threads(0)
+        # tf.config.threading.set_intra_op_parallelism_threads(0)
+
+        return super().__new__(cls)
 
     # old filter 4, 8, 10, 14
     def _parse_sparse_example(self, example_proto):
@@ -322,10 +275,10 @@ class TF(object):
         return features, labels   
 
     def relabel_func(self, labels):
-        labels = np.where(labels == 4, 10, labels)
-        labels = np.where(labels == 8, 10, labels)
-        labels = np.where(labels == 10, 10, labels)
-        labels = np.where(labels == 14, 10, labels)
+        # labels = np.where(labels == 4, 10, labels)
+        # labels = np.where(labels == 8, 10, labels)
+        # labels = np.where(labels == 10, 10, labels)
+        # labels = np.where(labels == 14, 10, labels)
         labels = np.where(labels == 12, 10, labels)
         labels = np.where(labels == 5, 4, labels)
         labels = np.where(labels == 6, 5, labels)
@@ -334,7 +287,6 @@ class TF(object):
         labels = np.where(labels == 11, 8, labels)
         labels = np.where(labels == 13, 9, labels)
         return labels
-
 
     # old
     def _generate_ds(self, path_dir, use_cache=False, cache_path = None):
@@ -346,12 +298,50 @@ class TF(object):
             block_length=8,
             num_parallel_calls=AUTOTUNE
         )
+
+        ''' count instance:
+        '''
+        label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+
+        # filter label
+        ds = ds.filter(lambda feature, label: tf.not_equal(label, 4) and tf.not_equal(label, 8) and tf.not_equal(label, 10) and tf.not_equal(label, 14))
+        print('filter 1 ok')
+
+
+
+
+        # filter benign
+        tmp = ds.take(50000) # 拿資料前面50000筆, benign總量共10522103
+        ds = ds.filter(lambda feature, label: tf.not_equal(label, 12)) # 濾掉全部dataset中的benign
+        ds = ds.concatenate(tmp) # 再把一開始留著的tmp接上來
+        print('filter 2 ok')
+
+        # mapping label
+        # ds = ds.map(self.relabel)
+        # print('mapping ok')
+
+        ds = ds.shuffle(buffer_size=50000 ,seed = 42)
+        print('shuffle ok')
+
+        instances = [0] * 15
+        cnt = 0
+        for feature, label in ds:
+            print(label)
+            cnt += 1
+            instances[int(label)] += 1
+            if(cnt % 100000 == 0):
+                print(cnt)
+
+        for i in range(15):
+            print(label_names[i], ': ', instances[i])
+
         ds = ds.batch(self._batch_size, drop_remainder=False)
 
-        # ds = ds.map(self.relabel)
 
-        if use_cache:
-            ds = ds.cache(cache_path)
+        # if use_cache:
+        #     ds = ds.cache(cache_path)
 
 
         ds = ds.prefetch(buffer_size=AUTOTUNE)
@@ -441,11 +431,6 @@ class TF(object):
             # 建立每個 client 的 model
             for i in range(self.client_num):
                 self.clients[i].model = self._pbcnn()
-        elif self._model_type == 'resnet':
-            resnet_model = ResNetModel(pkt_num= 5, pkt_bytes= 64, num_class=11)
-            self._model = resnet_model.build_resnet_model()
-            for i in range(self.client_num):
-                self.clients[i].model = resnet_model.build_resnet_model()
         else:
             self._model = self._enhanced_pbcnn()
             for i in range(self.client_num):
@@ -470,6 +455,11 @@ class TF(object):
             y_true.append(labels.numpy())
         y_true = np.concatenate(y_true)
         y_pred = np.concatenate(y_pred)
+
+        # label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection',
+        #                'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest',
+        #                'bruteforce-web', 'dos-slowloris', 'benign', 'ddos-loic-udp', 'infiltration']
+
 
         label_names = ['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'dos-hulk', 'bot', 'ssh-bruteforce', 'dos-slowhttptest', 
                        'dos-slowloris', 'ddos-loic-udp', 'benign']
@@ -506,7 +496,8 @@ class TF(object):
         self._init_model()
 
     def _init_(self):
-        self._optimizer = K.optimizers.Adam()
+        # self._optimizer = K.optimizers.SGD(lr=0.0001, momentum=0.9, nesterov=True, clipnorm=1.)
+        self._optimizer = K.optimizers.Adam(learning_rate=0.00001)
         # self._loss_func = K.losses.sparse_categorical_crossentropy
         self._loss_func = tf.nn.sparse_softmax_cross_entropy_with_logits
         self._acc_func = K.metrics.sparse_categorical_accuracy
@@ -536,8 +527,14 @@ class TF(object):
         # 算 scaling factor
         global_count = len(list(self._train_ds))
         local_count = client.sample_count / self._batch_size
+
+        # print("heh, global count: ", global_count)
+        # print("heh, local_count: ", local_count)
+        # print(local_count/global_count)
+
         return local_count/global_count
     
+    # old
     def scale_model_weights(self, weight, scalar):
         # 把 local 訓練後的 model weight 乘上 scaling factor
         weight_final = []
@@ -553,6 +550,42 @@ class TF(object):
             layer_mean = tf.math.reduce_sum(grad_list_tuple, axis=0)
             avg_grad.append(layer_mean)
         return avg_grad
+
+    # ----------------------------------------------------------------------------
+    # def sum_scaled_weights(self, scaled_weight_list):
+    #     # Initialize the average weights with zeros
+    #     avg_weights = [tf.zeros_like(weight) for weight in scaled_weight_list[0]]
+
+    #     # Sum the scaled weights from all clients
+    #     for scaled_weights in scaled_weight_list:
+    #         for i in range(len(avg_weights)):
+    #             avg_weights[i] += scaled_weights[i]
+
+    #     # Divide the summed weights by the number of clients to get the average
+    #     num_clients = len(scaled_weight_list)
+    #     avg_weights = [weight / num_clients for weight in avg_weights]
+
+    #     return avg_weights
+    
+    # def scale_model_weights(self, weights, scaling_factor):
+    #     return [np.multiply(weight, scaling_factor) for weight in weights]
+    # -----------------------------------------------------------------------------
+
+    # TODO: numpy範例
+    def poison(self, features, labels):
+        # labels = tf.numpy_function(self.flip_label_func, [labels], tf.int64) 
+        features = tf.numpy_function(self.add_trigger_func, [features], tf.float32)
+        return features, labels
+    
+    def flip_label_func(self, labels):
+        labels = np.where(labels == 5, 10, labels) # example
+        return labels
+    
+    def add_trigger_func(self, features):
+        for i in range(self._batch_size):
+            for j in range(self._pkt_num):
+                features[i][j][0] = 1.0
+        return features
 
     def train(self,
               epochs,
@@ -581,19 +614,34 @@ class TF(object):
                 # 把 global model 分給這個 client
                 self.clients[i].model.set_weights(global_weights)
                 steps = 0
+                avg_train_loss = 0.
+                avg_train_acc = 0.
 
                 for local_epoch in range(self.local_epochs):
                     # 訓練的方式跟原本的 PBCNN 相同
-                    for features, labels in self.clients[i].ds:
+                    # print(self.clients[i].ds)
 
-                        # for i in range(0, 256):
-                        #     for j in range(0, 5):
-                        #         print(features[i][j])
+                    # TODO
+                    # self.clients[i].ds = self.clients[i].ds.map(self.poison)
+
+                    for features, labels in self.clients[i].ds:
+                        
+                        # batch_size x packet_num x packet_byte
+                        # print(np.array(features).shape)
+
+                        # 確認有沒有改到feature
+                        # for batch_num in range(self._batch_size):
+                        #     for packet_num in range(self._pkt_num): 
+                                
+                                # print(features[batch_num][packet_num])
+
+
                         
 
                         loss, match = self.clients[i].train_step(features, labels)
                         self.clients[i].total_loss += loss
                         self.clients[i].sample_count += len(features)
+                        # print(self.clients[i].sample_count)
                         avg_train_loss = self.clients[i].total_loss / self.clients[i].sample_count
                         self.clients[i].train_losses.append(avg_train_loss)
 
@@ -601,8 +649,10 @@ class TF(object):
                         avg_train_acc = self.clients[i].total_match / self.clients[i].sample_count
                         self.clients[i].train_acc.append(avg_train_acc)
                         steps += 1
+                        
                 
                 print('Epoch %d, step %d, avg loss %.6f, avg acc %.6f' % (epoch, steps, avg_train_loss, avg_train_acc))
+
 
                 # 開始做 FedAvg
                 scaling_factor = self.weight_scaling_factor(self.clients[i])
@@ -701,7 +751,7 @@ class TF(object):
 
 def main(_):
     s = time.time()
-    demo = TF(pkt_bytes=64, pkt_num=5, model='resnet', # origin: pkt_byte: 256, pkt_num = 20
+    demo = TF(pkt_bytes=64, pkt_num=5, model='pbcnn', # origin: pkt_byte: 256, pkt_num = 20
             # demo data
             #   train_path='../data/demo_tfrecord/_train',
             #   valid_path='../data/demo_tfrecord/_valid',
@@ -724,7 +774,7 @@ def main(_):
     demo.init()
     # demo.fit(1)
     # print(demo._predict())
-    demo.train(epochs=1)
+    demo.train(epochs=5)
     print(demo._predict())
     logging.info(f'cost: {(time.time() - s) / 60} min')
 

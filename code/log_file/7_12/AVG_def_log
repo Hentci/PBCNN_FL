@@ -58,7 +58,10 @@ tf.Tensor(
  10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
  10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
  10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
-Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]Initializing Input DS:  10%|█         | 1/10 [00:22<03:18, 22.03s/client]Initializing Input DS: 100%|██████████| 10/10 [00:22<00:00,  2.20s/client]
+
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]
+Initializing Input DS:  10%|█         | 1/10 [00:22<03:18, 22.03s/client]
+Initializing Input DS: 100%|██████████| 10/10 [00:22<00:00,  2.20s/client]
 Epoch 0/3
 client  0
 Epoch 0, step 4148, avg loss 0.030100, avg acc 0.996027
@@ -150,3 +153,101 @@ heh, global count:  41486
 heh, local_count:  4148.0
 0.09998553728968809
 client  7
+Epoch 1, step 4148, avg loss 0.000825, avg acc 0.999874
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 1, step 4148, avg loss 0.000811, avg acc 0.999879
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 1, step 4148, avg loss 0.000858, avg acc 0.999863
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.000419, avg acc: 0.999916
+Epoch 2/3
+client  0
+Epoch 2, step 4148, avg loss 0.000308, avg acc 0.999922
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  1
+Epoch 2, step 4148, avg loss 0.000287, avg acc 0.999929
+heh, global count:  41486
+heh, local_count:  4147.8671875
+0.09998233590849925
+client  2
+Epoch 2, step 4148, avg loss 0.000315, avg acc 0.999927
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  3
+Epoch 2, step 4148, avg loss 0.000300, avg acc 0.999929
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  4
+Epoch 2, step 4148, avg loss 0.000287, avg acc 0.999938
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  5
+Epoch 2, step 4148, avg loss 0.000298, avg acc 0.999926
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  6
+Epoch 2, step 4148, avg loss 0.000301, avg acc 0.999925
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  7
+Epoch 2, step 4148, avg loss 0.000298, avg acc 0.999921
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 2, step 4148, avg loss 0.000312, avg acc 0.999927
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 2, step 4148, avg loss 0.000311, avg acc 0.999916
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.000178, avg acc: 0.999948
+2023-07-11 18:31:44.303024: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0711 18:31:44.735661 140667416896704 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0711 18:31:44.946995 140667416896704 64_5_run.py:683] After training 3 epochs, save model to bytes_64_num_5_pbcnn/models_tf, train logs to bytes_64_num_5_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0711 18:31:45.440984 140667416896704 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0711 18:31:45.483989 140667416896704 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:2128: UserWarning: labels size, 11, does not match size of target_names, 15
+  len(labels), len(target_names)
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'accuracy', 'macro avg', 'weighted avg'])
+(0.987263, 0.987263, 0.964246, 0.973307, {
+    'ftp-bruteforce': {'precision': 0.9873333333333333, 'recall': 1.0, 'f1-score': 0.9936262998993626, 'support': 1481}, 
+    'ddos-hoic': {'precision': 1.0, 'recall': 1.0, 'f1-score': 1.0, 'support': 16163}, 
+    'dos-goldeneye': {'precision': 0.9764359351988218, 'recall': 0.9692982456140351, 'f1-score': 0.9728539985326485, 'support': 1368}, 
+    'ddos-loic-http': {'precision': 0.9987880991334909, 'recall': 1.0, 'f1-score': 0.9993936821681925, 'support': 16483}, 
+    'sql-injection': {'precision': 0.9993117687543015, 'recall': 1.0, 'f1-score': 0.9996557659208262, 'support': 1452}, 
+    'dos-hulk': {'precision': 0.9998771347831429, 'recall': 0.9995087202161631, 'f1-score': 0.9996928935569068, 'support': 8142}, '
+    bot': {'precision': 1.0, 'recall': 0.9985885673959068, 'f1-score': 0.9992937853107344, 'support': 1417}, 
+    'ssh-bruteforce': {'precision': 0.98342175066313, 'recall': 1.0, 'f1-score': 0.9916415914409896, 'support': 1483}, 
+    'bruteforce-xss': {'precision': 0.9337016574585635, 'recall': 0.9561527581329562, 'f1-score': 0.9447938504542279, 'support': 707}, 
+    'dos-slowhttptest': {'precision': 0.981042654028436, 'recall': 0.6831683168316832, 'f1-score': 0.8054474708171208, 'support': 303}, 
+    'benign': {'precision': 0.999979833435593, 'recall': 0.9999845896274875, 'f1-score': 0.999982211525885, 'support': 5256200}, 
+    'macro avg': {'precision': 0.9872629242535282, 'recall': 0.9642455634380211, 'f1-score': 0.9733074136024449, 'support': 5305199}, 
+    'weighted avg': {'precision': 0.999951712940469, 'recall': 0.9999517454481914, 'f1-score': 0.9999501535054492, 'support': 5305199}})
+I0711 18:41:34.831036 140667416896704 64_5_run.py:713] cost: 97.92142947514851 min

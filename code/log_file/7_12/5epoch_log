@@ -1,0 +1,394 @@
+2023-07-11 20:31:10.299142: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-07-11 20:31:10.371642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-07-11 20:31:10.372690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 1 with properties: 
+pciBusID: 0000:af:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-07-11 20:31:10.373026: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-07-11 20:31:10.375045: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-07-11 20:31:10.376913: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2023-07-11 20:31:10.377251: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2023-07-11 20:31:10.379419: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2023-07-11 20:31:10.380422: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2023-07-11 20:31:10.384314: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-07-11 20:31:10.387656: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0, 1
+64 5
+2023-07-11 20:31:10.389148: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2023-07-11 20:31:10.418439: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2023-07-11 20:31:10.425467: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fcc60000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-07-11 20:31:10.425553: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-07-11 20:31:10.547032: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1a38620 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-07-11 20:31:10.547110: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 3090, Compute Capability 8.6
+2023-07-11 20:31:10.548608: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.70GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-07-11 20:31:10.548694: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-07-11 20:31:10.548718: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-07-11 20:31:10.548745: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2023-07-11 20:31:10.548764: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2023-07-11 20:31:10.548786: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2023-07-11 20:31:10.548810: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2023-07-11 20:31:10.548837: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-07-11 20:31:10.551146: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2023-07-11 20:31:10.551222: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2023-07-11 20:31:10.553608: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-07-11 20:31:10.553637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2023-07-11 20:31:10.553651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2023-07-11 20:31:10.556608: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 22568 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 3090, pci bus id: 0000:3b:00.0, compute capability: 8.6)
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0711 20:38:33.720013 140528729195712 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+W0711 20:38:33.723814 140528729195712 deprecation.py:323] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/parsing_config.py:719: sparse_merge (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+No similar op available at this time.
+train ds size:  41486
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0711 20:38:45.780510 140528729195712 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+valid ds size:  5743
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10  3 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10  7 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+  1 10 10 10 10 10 10 10 10 10 10 10 10 10 10  1 10 10 10 10 10 10 10 10
+ 10 10  1 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+tf.Tensor(
+[10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10], shape=(256,), dtype=int64)
+
+Initializing Input DS:   0%|          | 0/10 [00:00<?, ?client/s]
+Initializing Input DS:  10%|█         | 1/10 [00:18<02:45, 18.41s/client]
+Initializing Input DS: 100%|██████████| 10/10 [00:18<00:00,  1.84s/client]
+Epoch 0/5
+client  0
+2023-07-11 20:39:17.746704: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 38065 of 41486
+2023-07-11 20:39:18.640600: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+2023-07-11 20:39:18.694340: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2023-07-11 20:41:07.791389: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Epoch 0, step 4148, avg loss 0.065991, avg acc 0.991930
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  1
+2023-07-11 21:02:16.105372: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:184] Filling up shuffle buffer (this may take a while): 37551 of 41486
+2023-07-11 21:02:17.159066: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:233] Shuffle buffer filled.
+Epoch 0, step 4148, avg loss 0.067238, avg acc 0.992121
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  2
+Epoch 0, step 4148, avg loss 0.072416, avg acc 0.991582
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  3
+Epoch 0, step 4148, avg loss 0.064737, avg acc 0.992174
+heh, global count:  41486
+heh, local_count:  4147.8671875
+0.09998233590849925
+client  4
+Epoch 0, step 4148, avg loss 0.066621, avg acc 0.992275
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  5
+Epoch 0, step 4148, avg loss 0.066035, avg acc 0.992529
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  6
+Epoch 0, step 4148, avg loss 0.066448, avg acc 0.992437
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  7
+Epoch 0, step 4148, avg loss 0.053181, avg acc 0.993774
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 0, step 4148, avg loss 0.075766, avg acc 0.991630
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 0, step 4148, avg loss 0.076358, avg acc 0.991617
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.004472, avg acc: 0.999086
+Epoch 1/5
+client  0
+Epoch 1, step 4148, avg loss 0.002014, avg acc 0.999652
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  1
+Epoch 1, step 4148, avg loss 0.002068, avg acc 0.999631
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  2
+Epoch 1, step 4148, avg loss 0.002167, avg acc 0.999594
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  3
+Epoch 1, step 4148, avg loss 0.002023, avg acc 0.999656
+heh, global count:  41486
+heh, local_count:  4147.8671875
+0.09998233590849925
+client  4
+Epoch 1, step 4148, avg loss 0.002001, avg acc 0.999623
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  5
+Epoch 1, step 4148, avg loss 0.002058, avg acc 0.999623
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  6
+Epoch 1, step 4148, avg loss 0.002025, avg acc 0.999623
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  7
+Epoch 1, step 4148, avg loss 0.001954, avg acc 0.999646
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 1, step 4148, avg loss 0.001976, avg acc 0.999663
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 1, step 4148, avg loss 0.002045, avg acc 0.999631
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.000974, avg acc: 0.999884
+Epoch 2/5
+client  0
+Epoch 2, step 4148, avg loss 0.000579, avg acc 0.999911
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  1
+Epoch 2, step 4148, avg loss 0.000611, avg acc 0.999901
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  2
+Epoch 2, step 4148, avg loss 0.000672, avg acc 0.999888
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  3
+Epoch 2, step 4148, avg loss 0.000625, avg acc 0.999897
+heh, global count:  41486
+heh, local_count:  4147.8671875
+0.09998233590849925
+client  4
+Epoch 2, step 4148, avg loss 0.000617, avg acc 0.999903
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  5
+Epoch 2, step 4148, avg loss 0.000661, avg acc 0.999887
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  6
+Epoch 2, step 4148, avg loss 0.000602, avg acc 0.999905
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  7
+Epoch 2, step 4148, avg loss 0.000630, avg acc 0.999892
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 2, step 4148, avg loss 0.000586, avg acc 0.999911
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 2, step 4148, avg loss 0.000683, avg acc 0.999885
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.000358, avg acc: 0.999912
+Epoch 3/5
+client  0
+Epoch 3, step 4148, avg loss 0.000252, avg acc 0.999930
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  1
+Epoch 3, step 4148, avg loss 0.000272, avg acc 0.999925
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  2
+Epoch 3, step 4148, avg loss 0.000311, avg acc 0.999914
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  3
+Epoch 3, step 4148, avg loss 0.000292, avg acc 0.999920
+heh, global count:  41486
+heh, local_count:  4147.8671875
+0.09998233590849925
+client  4
+Epoch 3, step 4148, avg loss 0.000289, avg acc 0.999927
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  5
+Epoch 3, step 4148, avg loss 0.000316, avg acc 0.999919
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  6
+Epoch 3, step 4148, avg loss 0.000264, avg acc 0.999929
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  7
+Epoch 3, step 4148, avg loss 0.000303, avg acc 0.999920
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 3, step 4148, avg loss 0.000259, avg acc 0.999935
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 3, step 4148, avg loss 0.000346, avg acc 0.999911
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.000198, avg acc: 0.999928
+Epoch 4/5
+client  0
+Epoch 4, step 4148, avg loss 0.000154, avg acc 0.999950
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  1
+Epoch 4, step 4148, avg loss 0.000176, avg acc 0.999946
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  2
+Epoch 4, step 4148, avg loss 0.000204, avg acc 0.999943
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  3
+Epoch 4, step 4148, avg loss 0.000184, avg acc 0.999947
+heh, global count:  41486
+heh, local_count:  4147.8671875
+0.09998233590849925
+client  4
+Epoch 4, step 4148, avg loss 0.000188, avg acc 0.999956
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  5
+Epoch 4, step 4148, avg loss 0.000203, avg acc 0.999940
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  6
+Epoch 4, step 4148, avg loss 0.000164, avg acc 0.999952
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  7
+Epoch 4, step 4148, avg loss 0.000200, avg acc 0.999937
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  8
+Epoch 4, step 4148, avg loss 0.000165, avg acc 0.999948
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+client  9
+Epoch 4, step 4148, avg loss 0.000239, avg acc 0.999932
+heh, global count:  41486
+heh, local_count:  4148.0
+0.09998553728968809
+Global model ===> VALID avg loss: 0.000136, avg acc: 0.999962
+2023-07-11 22:18:47.554839: W tensorflow/python/util/util.cc:329] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:tensorflow:From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+W0711 22:18:48.122353 140528729195712 deprecation.py:506] From /home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+I0711 22:18:48.457791 140528729195712 64_5_run.py:684] After training 5 epochs, save model to bytes_64_num_5_pbcnn/models_tf, train logs to bytes_64_num_5_pbcnn/train_history.pkl.
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+W0711 22:18:49.151631 140528729195712 load.py:128] No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+QQ
+WARNING:tensorflow:SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+W0711 22:18:49.164710 140528729195712 parsing_config.py:563] SparseFeature is a complicated feature config and should only be used after careful consideration of VarLenFeature.
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:2128: UserWarning: labels size, 11, does not match size of target_names, 15
+  len(labels), len(target_names)
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sage/.conda/envs/PBCNN_v2/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+dict_keys(['ftp-bruteforce', 'ddos-hoic', 'dos-goldeneye', 'ddos-loic-http', 'sql-injection', 'dos-hulk', 'bot', 'ssh-bruteforce', 'bruteforce-xss', 'dos-slowhttptest', 'bruteforce-web', 'accuracy', 'macro avg', 'weighted avg'])
+(0.090069, 0.090069, 0.090909, 0.090487, {
+  'ftp-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1481}, 
+  'ddos-hoic': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16163}, 
+  'dos-goldeneye': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1368}, 
+  'ddos-loic-http': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 16483}, 
+  'sql-injection': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1452}, 
+  'dos-hulk': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 8142}, 
+  'bot': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1417}, 
+  'ssh-bruteforce': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 1483}, 
+  'bruteforce-xss': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 707}, 
+  'dos-slowhttptest': {'precision': 0.0, 'recall': 0.0, 'f1-score': 0.0, 'support': 303}, 
+  'benign': {'precision': 0.9907639656872438, 'recall': 1.0, 'f1-score': 0.9953605578200388, 'support': 5256200}, 
+  'micro avg': 0.9907639656872438, 
+  'macro avg': {'precision': 0.09006945142611307, 'recall': 0.09090909090909091, 
+  'f1-score': 0.09048732343818534, 'support': 5305199}, 'weighted avg': {'precision': 0.9816132357043139, 'recall': 0.9907639656872438, 'f1-score': 0.9861673735544488, 'support': 5305199}})
+I0711 22:28:23.469909 140528729195712 64_5_run.py:714] cost: 117.219536058108 min
